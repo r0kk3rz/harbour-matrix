@@ -23,7 +23,7 @@ int main(int argc, char *argv[])
 
     QScopedPointer<QGuiApplication> application(SailfishApp::application(argc, argv));
     application->setApplicationName("harbour-matrix");
-    application->setApplicationVersion("0.1");
+    application->setApplicationVersion("0.2");
 
     qmlRegisterType<SyncJob>(); qRegisterMetaType<SyncJob*> ("SyncJob*");
     qmlRegisterType<Room>();    qRegisterMetaType<Room*>    ("Room*");
