@@ -47,6 +47,9 @@ ApplicationWindow
 
     property bool connectionActive: false
 
+    property string appName: "Matriksi"
+    property string version: "0.1"
+
     Connection {
         id: connection
         onReconnected: {

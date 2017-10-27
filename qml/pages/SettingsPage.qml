@@ -33,44 +33,24 @@ Page {
                 settings.setValue("blackbackground", useBlackBackground)
             }
         }
-        //Item {height: Theme.itemSizeMedium} //separator
 
-        /*Button {
-            text: "About"
-            anchors.horizontalCenter: parent.horizontalCenter
-        }*/
         SectionHeader { text: "About" }
+
         Label {
-            text: "Matriksi 0.1"
-            font.pixelSize: Theme.fontSizeExtraLarge
-            color: Theme.highlightColor
-            width: parent.width *0.8
-        }
-        Label {
-            text: "Unofficial Matrix.org client for Sailfish OS"
-            font.pixelSize: Theme.fontSizeSmall
-            color: Theme.highlightColor
-            width: parent.width
-        }
-        Label {
-            text: 'Browse our rooms and post new messages. Rooms are updated in real-time when new messages are posted.'
-            font.pixelSize: Theme.fontSizeSmall
-            width: parent.width
+            anchors { left: parent.left; right: parent.right }
+            horizontalAlignment: Text.AlignHCenter
+            verticalAlignment: Text.AlignVCenter
+            font.pixelSize: Theme.fontSizeExtraSmall
             wrapMode: Text.WordWrap
-        }
-        Label {
-            text: 'This software uses: <ul><li>libqmatrixclient library</li><li>Tensor - parts of code</li></ul>'
-            font.pixelSize: Theme.fontSizeSmall
-            width: parent.width
-            wrapMode: Text.WordWrap
-        }
-        Label {
-            text: 'Source code and issues in <a href="https://github.com/anttsam/matriksi">Github</a>.'
-            font.pixelSize: Theme.fontSizeSmall
-            linkColor: Theme.highlightColor
-            onLinkActivated: Qt.openUrlExternally(link)
+            text: qsTr("Matriksi is an unofficial Matrix Client for SailfishOS and distributed under the GPLv3 license.")
         }
 
+        Button {
+            id: aboutbutton
+            text: qsTr("About Matriksi")
+            anchors.horizontalCenter: parent.horizontalCenter
+            onClicked: pageStack.push(Qt.resolvedUrl("AboutPage.qml"))
+        }
     }
 
 
