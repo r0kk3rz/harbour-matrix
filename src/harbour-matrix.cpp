@@ -1,16 +1,19 @@
 #ifdef QT_QML_DEBUG
-//#include <QtQuick>
+#include <QtQuick>
 #endif
 
-#include <QtQuick>
 #include <sailfishapp.h>
-
+#include <QGuiApplication>
+#include <QQmlEngine>
+#include <QQmlFileSelector>
+#include <QQuickView>
 #include "connection.h"
 #include "room.h"
 #include "user.h"
 #include "jobs/syncjob.h"
 #include "models/messageeventmodel.h"
 #include "models/roomlistmodel.h"
+#include "models/userlistmodel.h"
 #include "settings.h"
 using namespace QMatrixClient;
 
@@ -23,7 +26,7 @@ int main(int argc, char *argv[])
 
     QScopedPointer<QGuiApplication> application(SailfishApp::application(argc, argv));
     application->setApplicationName("harbour-matrix");
-    application->setApplicationVersion("0.2");
+    application->setApplicationVersion("0.4");
 
     qmlRegisterType<SyncJob>(); qRegisterMetaType<SyncJob*> ("SyncJob*");
     qmlRegisterType<Room>();    qRegisterMetaType<Room*>    ("Room*");

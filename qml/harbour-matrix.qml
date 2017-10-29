@@ -48,7 +48,7 @@ ApplicationWindow
     property bool connectionActive: false
 
     property string appName: "Matriksi"
-    property string version: "0.2"
+    property string version: "0.4"
 
     Connection {
         id: connection

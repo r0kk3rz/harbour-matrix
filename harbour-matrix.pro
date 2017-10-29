@@ -14,6 +14,7 @@ include(lib/libqmatrixclient.pri)
 SOURCES += src/harbour-matrix.cpp \
     src/settings.cpp \
     src/models/messageeventmodel.cpp \
+    src/models/userlistmodel.cpp \
     src/models/roomlistmodel.cpp
 
 OTHER_FILES += qml/harbour-matrix.qml \
@@ -33,6 +34,7 @@ TRANSLATIONS += translations/harbour-matrix-de.ts
 HEADERS += \
     src/settings.h \
     src/models/messageeventmodel.h \
+    src/models/userlistmodel.h \
     src/models/roomlistmodel.h
 
 DISTFILES += \
