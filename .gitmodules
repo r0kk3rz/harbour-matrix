@@ -1,0 +1,3 @@
+[submodule "libqmatrixclient"]
+	path = libqmatrixclient
+	url = ../../davidar/libqmatrixclient.git
