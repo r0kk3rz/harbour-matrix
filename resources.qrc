@@ -1,5 +1,6 @@
 <RCC>
     <qresource prefix="/">
         <file>res/harbour-matrix.png</file>
+        <file>res/icon-spain.png</file>
     </qresource>
 </RCC>

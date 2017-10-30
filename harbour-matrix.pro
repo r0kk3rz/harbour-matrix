@@ -41,6 +41,7 @@ DISTFILES += \
     qml/components/about/ThirdPartyLabel.qml \
     qml/components/custom/BackgroundRectangle.qml \    
     qml/components/custom/ClickableLabel.qml \
+    qml/components/IconTextButton.qml \
     qml/pages/ThirdPartyPage.qml \
     qml/pages/DevelopersPage.qml \
     qml/pages/AboutPage.qml \    
