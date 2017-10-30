@@ -97,7 +97,7 @@ Page {
 
         PullDownMenu {
             MenuItem {
-                text: qsTr"Settings"
+                text: qsTr("Settings")
                 onClicked: {
                     pageStack.push(settingsPage)
                 }

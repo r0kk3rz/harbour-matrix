@@ -25,6 +25,8 @@
 #include "lib/connection.h"
 #include "lib/room.h"
 
+const int RoomEventStateRole = Qt::UserRole + 1;
+
 RoomListModel::RoomListModel(QObject* parent)
     : QAbstractListModel(parent)
 {
@@ -57,6 +59,8 @@ void RoomListModel::addRoom(QMatrixClient::Room* room)
 {
     beginInsertRows(QModelIndex(), m_rooms.count(), m_rooms.count());
     connect( room, &QMatrixClient::Room::namesChanged, this, &RoomListModel::namesChanged );
+    connect( room, &QMatrixClient::Room::unreadMessagesChanged, this, &RoomListModel::unreadMessagesChanged );
+    connect( room, &QMatrixClient::Room::highlightCountChanged, this, &RoomListModel::highlightCountChanged );
     m_rooms.append(room);
     endInsertRows();
 }
@@ -81,15 +85,26 @@ QVariant RoomListModel::data(const QModelIndex& index, int role) const
     QMatrixClient::Room* room = m_rooms.at(index.row());
     if( role == Qt::DisplayRole )
     {
-        return room->displayName();
+		return room->displayName();
     }
-    if( role == Qt::ForegroundRole )
+	if ( role == RoomEventStateRole )
     {
-        if( room->highlightCount() > 0 )
-            return QBrush(QColor("orange"));
-        return QVariant();
+		if (room->highlightCount() > 0) {
+			return "highlight";
+		} else if (room->hasUnreadMessages()) {
+			return "unread";
+		} else {
+			return "normal";
+		}
     }
     return QVariant();
+}
+
+QHash<int, QByteArray> RoomListModel::roleNames() const {
+	return QHash<int, QByteArray>({
+					  std::make_pair(Qt::DisplayRole, QByteArray("display")),
+					  std::make_pair(RoomEventStateRole, QByteArray("roomEventState"))
+		  });
 }
 
 void RoomListModel::namesChanged(QMatrixClient::Room* room)
@@ -99,6 +114,12 @@ void RoomListModel::namesChanged(QMatrixClient::Room* room)
 }
 
 void RoomListModel::unreadMessagesChanged(QMatrixClient::Room* room)
+{
+    int row = m_rooms.indexOf(room);
+    emit dataChanged(index(row), index(row));
+}
+
+void RoomListModel::highlightCountChanged(QMatrixClient::Room* room)
 {
     int row = m_rooms.indexOf(room);
     emit dataChanged(index(row), index(row));

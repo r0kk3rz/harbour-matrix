@@ -78,11 +78,23 @@
         <source>Matrix</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Login</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>RoomsPage</name>
     <message>
         <source>Join room...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Rooms</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Settings</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -94,6 +106,22 @@
     </message>
     <message>
         <source>Matriksi is an unofficial Matrix Client for SailfishOS and distributed under the GPLv3 license.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Fancy colors</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Use fancy colors on user names</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Dark background</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Use dark background on chat</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -116,6 +144,13 @@
     </message>
     <message>
         <source>The LGPL-2.1 license</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>TranslationsPage</name>
+    <message>
+        <source>Translators</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

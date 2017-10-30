@@ -40,10 +40,13 @@ class RoomListModel: public QAbstractListModel
         QVariant data(const QModelIndex& index, int role = Qt::DisplayRole) const override;
         Q_INVOKABLE int rowCount(const QModelIndex& parent=QModelIndex()) const override;
 
+		QHash<int, QByteArray> roleNames() const override;
+
     private slots:
         void namesChanged(QMatrixClient::Room* room);
         void unreadMessagesChanged(QMatrixClient::Room* room);
         void addRoom(QMatrixClient::Room* room);
+        void highlightCountChanged(QMatrixClient::Room* room);
 
     private:
         QMatrixClient::Connection* m_connection;

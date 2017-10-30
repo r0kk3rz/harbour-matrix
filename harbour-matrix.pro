@@ -12,7 +12,6 @@ CONFIG += c++11 sailfishapp
 include(lib/libqmatrixclient.pri)
 
 SOURCES += src/harbour-matrix.cpp \
-    src/settings.cpp \
     src/models/messageeventmodel.cpp \
     src/models/roomlistmodel.cpp
 
@@ -32,7 +31,6 @@ TRANSLATIONS += translations/harbour-matrix.ts \
                 translations/harbour-matrix.es.ts 
 
 HEADERS += \
-    src/settings.h \
     src/models/messageeventmodel.h \
     src/models/roomlistmodel.h
 
@@ -41,9 +39,10 @@ DISTFILES += \
     qml/components/about/ThirdPartyLabel.qml \
     qml/components/custom/BackgroundRectangle.qml \    
     qml/components/custom/ClickableLabel.qml \
-    qml/components/IconTextButton.qml \
+    qml/components/translation/IconTextButton.qml \
     qml/pages/ThirdPartyPage.qml \
     qml/pages/DevelopersPage.qml \
+    qml/pages/TranslationsPage.qml \
     qml/pages/AboutPage.qml \    
     qml/pages/Login.qml \
     qml/pages/RoomsPage.qml \
