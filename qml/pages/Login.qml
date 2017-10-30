@@ -76,7 +76,7 @@ Item {
         }
         Button {
            id: loginbutton
-            text: "Login"
+            text: qsTr("Login")
             onClicked: login()
 
         }
