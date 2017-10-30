@@ -84,7 +84,7 @@ Page {
         currentIndex: -1
 
         header: PageHeader {
-            title: "Rooms"
+            title: qsTr("Rooms")
             GlassItem {
                 color: connectionActive ? "green" : "red"
                 //falloffRadius: Math.exp(fpixw.value)
@@ -97,7 +97,7 @@ Page {
 
         PullDownMenu {
             MenuItem {
-                text: "Settings"
+                text: qsTr"Settings"
                 onClicked: {
                     pageStack.push(settingsPage)
                 }
