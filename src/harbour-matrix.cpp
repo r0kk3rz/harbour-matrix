@@ -13,7 +13,6 @@
 #include "jobs/syncjob.h"
 #include "models/messageeventmodel.h"
 #include "models/roomlistmodel.h"
-#include "models/userlistmodel.h"
 #include "settings.h"
 using namespace QMatrixClient;
 
@@ -26,7 +25,7 @@ int main(int argc, char *argv[])
 
     QScopedPointer<QGuiApplication> application(SailfishApp::application(argc, argv));
     application->setApplicationName("harbour-matrix");
-    application->setApplicationVersion("0.4");
+    application->setApplicationVersion("0.5");
 
     qmlRegisterType<SyncJob>(); qRegisterMetaType<SyncJob*> ("SyncJob*");
     qmlRegisterType<Room>();    qRegisterMetaType<Room*>    ("Room*");
