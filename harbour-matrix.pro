@@ -14,7 +14,6 @@ include(lib/libqmatrixclient.pri)
 SOURCES += src/harbour-matrix.cpp \
     src/settings.cpp \
     src/models/messageeventmodel.cpp \
-    src/models/userlistmodel.cpp \
     src/models/roomlistmodel.cpp
 
 OTHER_FILES += qml/harbour-matrix.qml \
@@ -29,12 +28,12 @@ SAILFISHAPP_ICONS = 86x86 108x108 128x128 256x256
 
 CONFIG += sailfishapp_i18n
 
-TRANSLATIONS += translations/harbour-matrix-de.ts
+TRANSLATIONS += translations/harbour-matrix.ts \
+                translations/harbour-matrix.es 
 
 HEADERS += \
     src/settings.h \
     src/models/messageeventmodel.h \
-    src/models/userlistmodel.h \
     src/models/roomlistmodel.h
 
 DISTFILES += \
