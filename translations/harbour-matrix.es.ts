@@ -9,22 +9,27 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="57"/>
+        <location filename="../qml/pages/AboutPage.qml" line="68"/>
         <source>An unofficial Matrix Client for SailfishOS</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="80"/>
+        <location filename="../qml/pages/AboutPage.qml" line="77"/>
+        <source>Matriksi is an unofficial Matrix Client for SailfishOS and distributed under the GPLv3 license.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AboutPage.qml" line="89"/>
         <source>Developers</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="88"/>
+        <location filename="../qml/pages/AboutPage.qml" line="97"/>
         <source>Donate with Paypal</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="97"/>
+        <location filename="../qml/pages/AboutPage.qml" line="106"/>
         <source>Translations</source>
         <translation type="unfinished"></translation>
     </message>
@@ -32,7 +37,7 @@
 <context>
     <name>ChatRoom</name>
     <message>
-        <location filename="../qml/pages/ChatRoom.qml" line="36"/>
+        <location filename="../qml/pages/ChatRoom.qml" line="35"/>
         <source>Say something...</source>
         <translation type="unfinished"></translation>
     </message>
@@ -70,6 +75,11 @@
         <source>Previous developer</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <location filename="../qml/pages/DevelopersPage.qml" line="40"/>
+        <source>Contributors</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>Login</name>
@@ -80,17 +90,17 @@
     </message>
     <message>
         <location filename="../qml/pages/Login.qml" line="60"/>
-        <source>Matrix</source>
+        <source>Matriksi</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/pages/Login.qml" line="67"/>
-        <source>Username</source>
+        <source>Your Matrix Username</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/pages/Login.qml" line="75"/>
-        <source>Password</source>
+        <source>Your Matrix Password</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -102,17 +112,17 @@
 <context>
     <name>RoomsPage</name>
     <message>
-        <location filename="../qml/pages/RoomsPage.qml" line="87"/>
+        <location filename="../qml/pages/RoomsPage.qml" line="85"/>
         <source>Rooms</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/RoomsPage.qml" line="100"/>
-        <source>Settings</source>
+        <location filename="../qml/pages/RoomsPage.qml" line="97"/>
+        <source>About Matriksi</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/RoomsPage.qml" line="147"/>
+        <location filename="../qml/pages/RoomsPage.qml" line="146"/>
         <source>Join room...</source>
         <translation type="unfinished"></translation>
     </message>
@@ -137,16 +147,6 @@
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="28"/>
         <source>Use dark background on chat</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="45"/>
-        <source>Matriksi is an unofficial Matrix Client for SailfishOS and distributed under the GPLv3 license.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="50"/>
-        <source>About Matriksi</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

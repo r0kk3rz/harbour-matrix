@@ -28,12 +28,17 @@ Page
 
             CollaboratorsLabel {
                 title: qsTr("New developers");
-                labelData: [ "Rudi Timmermans & Dylan Van Assche" ]
+                labelData: [ "Rudi Timmermans" ]
             }
 
             CollaboratorsLabel {
                 title: qsTr("Previous developer");
                 labelData: [ "Sami Anttila" ]
+            }
+
+            CollaboratorsLabel {
+                title: qsTr("Contributors");
+                labelData: [ "r0kk3rz" ]
             }
         }
     }

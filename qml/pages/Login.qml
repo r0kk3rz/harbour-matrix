@@ -36,7 +36,7 @@ Item {
                 anchors.fill: parent
                 fillMode: Image.PreserveAspectFit
                 antialiasing: true
-                //source: "qrc:/logo.png"
+                source: "qrc:/res/harbour-matrix.png"
 
                 RotationAnimation on rotation {
                     loops: Animation.Infinite
@@ -57,14 +57,14 @@ Item {
         Label {
             id: label
             font.pixelSize: phantomLabel.font.pixelSize * 5/2
-            text: qsTr("Matrix")
+            text: qsTr("Matriksi")
             color: "#888"
         }
 
         TextField {
             id: userNameField
             width: parent.width
-            placeholderText: qsTr("Username")
+            placeholderText: qsTr("Your Matrix Username")
         }
 
 
@@ -72,7 +72,7 @@ Item {
             id: passwordField
             echoMode: TextInput.Password
             width: parent.width
-            placeholderText: qsTr("Password")
+            placeholderText: qsTr("Your Matrix Password")
         }
         Button {
            id: loginbutton

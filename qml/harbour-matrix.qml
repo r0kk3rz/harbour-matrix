@@ -49,7 +49,7 @@ ApplicationWindow
     property bool connectionActive: false
 
     property string appName: "Matriksi"
-    property string version: "0.5"
+    property string version: "0.6 Alpha"
 
     Connection {
         id: connection
@@ -131,6 +131,10 @@ ApplicationWindow
     }
     SettingsPage {
         id: settingsPage
+    }
+
+    AboutPage {
+        id: aboutPage
     }
 
     ConfigurationGroup

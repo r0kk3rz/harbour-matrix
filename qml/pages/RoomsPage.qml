@@ -36,11 +36,9 @@ import Matrix 1.0
 Page {
     id: page
 
-    // To enable PullDownMenu, place our content in a SilicaFlickable
     signal enterRoom(var room)
     signal joinRoom(string name)
 
-    //property bool initialised: false
     enabled: initialised
     opacity: initialised ? 1: 0
 
@@ -87,8 +85,6 @@ Page {
             title: qsTr("Rooms")
             GlassItem {
                 color: connectionActive ? "green" : "red"
-                //falloffRadius: Math.exp(fpixw.value)
-                //radius: Math.exp(pixw.value)
                 cache: false
                 anchors.verticalCenter: parent.verticalCenter
             }
@@ -96,8 +92,15 @@ Page {
         }
 
         PullDownMenu {
+
+           MenuItem {
+                text: qsTr("About Matriksi")
+                anchors.horizontalCenter: parent.horizontalCenter
+                onClicked: pageStack.push(aboutPage)
+            }
+
             MenuItem {
-                text: qsTr("Settings")
+                text: "Settings"
                 onClicked: {
                     pageStack.push(settingsPage)
                 }
@@ -107,10 +110,6 @@ Page {
         delegate: ListItem {
             width: parent.width
             contentHeight: Theme.itemSizeSmall
-
-
-            //highlighted: (roomListView.currentIndex == index)
-
 
             Label {
                 id: roomLabel

@@ -48,6 +48,17 @@ Page
 
                 Label
                 {
+                    id: sgversion
+                    anchors { left: parent.left; right: parent.right }
+                    horizontalAlignment: Text.AlignHCenter
+                    verticalAlignment: Text.AlignVCenter
+                    font.pixelSize: Theme.fontSizeExtraSmall
+                    color: Theme.secondaryColor
+                    text: { window.appName + " v" + window.version }
+                }
+
+                Label
+                {
                     id: sginfo
                     anchors { left: parent.left; right: parent.right }
                     horizontalAlignment: Text.AlignHCenter
@@ -57,15 +68,13 @@ Page
                     text: qsTr("An unofficial Matrix Client for SailfishOS")
                 }
 
-                Label
-                {
-                    id: sgversion
+                Label {
                     anchors { left: parent.left; right: parent.right }
                     horizontalAlignment: Text.AlignHCenter
                     verticalAlignment: Text.AlignVCenter
                     font.pixelSize: Theme.fontSizeExtraSmall
-                    color: Theme.secondaryColor
-                    text: { window.appName + " v" + window.version }
+                    wrapMode: Text.WordWrap
+                    text: qsTr("Matriksi is an unofficial Matrix Client for SailfishOS and distributed under the GPLv3 license.")
                 }
             }
 

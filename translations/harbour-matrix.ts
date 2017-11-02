@@ -23,6 +23,10 @@
         <source>Translations</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Matriksi is an unofficial Matrix Client for SailfishOS and distributed under the GPLv3 license.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ChatRoom</name>
@@ -59,6 +63,10 @@
         <source>Previous developer</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Contributors</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>Login</name>
@@ -67,19 +75,19 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Username</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Password</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Matrix</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Login</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Matriksi</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Your Matrix Username</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Your Matrix Password</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -94,20 +102,12 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Settings</source>
+        <source>About Matriksi</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>SettingsPage</name>
-    <message>
-        <source>About Matriksi</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Matriksi is an unofficial Matrix Client for SailfishOS and distributed under the GPLv3 license.</source>
-        <translation type="unfinished"></translation>
-    </message>
     <message>
         <source>Fancy colors</source>
         <translation type="unfinished"></translation>

@@ -30,9 +30,8 @@ SilicaListView {
         header: TextField {
             id: textEntry
             width: parent.width
-            //anchors.bottom: chatView.bottom
-            //focus: true
-            //textColor: "black"
+            anchors.bottom: chatView.bottom
+            focus: true
             placeholderText: qsTr("Say something...")
             EnterKey.onClicked: {
                 sendLine(text)
@@ -61,7 +60,6 @@ SilicaListView {
                 Label {
                     id: labelColumn
                     width: eventType == "message" ? (Screen.sizeCategory >= Screen.Large) ? parent.width * 0.2 : chatView.isPortrait ? parent.width*0.3 : parent.width * 0.2 :0
-                    //width: parent.width * 0.3
                     height: parent.height
                     text: eventType == "message" ? author : ""
                     color: Theme.highlightColor
@@ -91,13 +89,11 @@ SilicaListView {
                 Label {
                     x: labelColumn.width+10
                     width: chatView.width -x
-                    //height: contentHeight
                     id: chattext
                     text: content
                     color: eventType == "message" ? Theme.primaryColor: Theme.secondaryColor
                     wrapMode: Text.WordWrap
                     font.pixelSize: Theme.fontSizeSmall
-                   // textFormat: Text.RichText
 
                 }
                 onPressAndHold: {
@@ -118,13 +114,11 @@ SilicaListView {
                 TextArea {
                     x: 10
                     width: page.width -x
-                    //height: contentHeight
                     id: chattext
                     text: chatview.textvalue
                     color: Theme.highlightColor
                     wrapMode: Text.WordWrap
                     font.pixelSize: Theme.fontSizeExtraSmall
-                    //readOnly: true
                     Component.onCompleted: selectAll();
                 }
 
@@ -133,31 +127,6 @@ SilicaListView {
         VerticalScrollDecorator {
             flickable: chatView
         }
-
-        /*delegate: Row {
-            id: message
-            width: parent.width
-            spacing: 8
-
-            Label {
-                id: timelabel
-                text: time.toLocaleTimeString("hh:mm:ss")
-                color: "grey"
-            }
-            Label {
-                width: 64
-                elide: Text.ElideRight
-                text: eventType == "message" ? author : "***"
-                color: eventType == "message" ? "grey" : "lightgrey"
-                horizontalAlignment: Text.AlignRight
-            }
-            Label {
-                text: content
-                wrapMode: Text.Wrap
-                width: parent.width - (x - parent.x) - spacing
-                color: eventType == "message" ? "black" : "lightgrey"
-            }
-        }*/
 
         section {
             property: "date"
