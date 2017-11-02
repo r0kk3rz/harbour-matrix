@@ -30,6 +30,7 @@
 
 import QtQuick 2.0
 import Sailfish.Silica 1.0
+import Nemo.Configuration 1.0
 import "pages"
 import Matrix 1.0
 
@@ -56,7 +57,7 @@ ApplicationWindow
             console.log("reconnected!")
             connectionActive = true
         }
-        onConnectionError: {
+        onNetworkError: {
             console.log("Connection Error, reconnecting...")
             connection.reconnect();
             connectionActive = false
@@ -77,7 +78,6 @@ ApplicationWindow
 
 
     }
-    Settings   { id: settings }
 
     function resync() {
         if(!initialised) {
@@ -95,8 +95,8 @@ ApplicationWindow
         connection.connected.connect(function() {
             settings.setValue("user",  connection.userId())
             settings.setValue("token", connection.token())
+            settings.sync()
 
-            connection.connectionError.connect(connection.reconnect)
             connection.syncDone.connect(resync)
             connection.reconnected.connect(resync)
 
@@ -105,10 +105,10 @@ ApplicationWindow
 
         var userParts = user.split(':')
         if(userParts.length === 1 || userParts[1] === "matrix.org") {
-            connect(user, pass)
+            connect(user, pass, "sailfish")
         } else {
             connection.resolved.connect(function() {
-                connect(user, pass)
+                connect(user, pass, "sailfish")
             })
             connection.resolveError.connect(function() {
                 console.log("Couldn't resolve server!")
@@ -118,10 +118,8 @@ ApplicationWindow
     }
 
     function loadSettings (){
-        if (settings.contains("fancycolors")) useFancyColors = settings.getSetting("fancycolors")
-        else settings.setValue("fancycolors", useFancyColors)
-        if (settings.contains("blackbackground")) useBlackBackground = settings.getSetting("blackbackground")
-        else settings.setValue("blackbackground", useBlackBackground)
+        useFancyColors = settings.value("fancycolors",useFancyColors)
+        useBlackBackground = settings.value("blackbackground", useBlackBackground)
     }
 
     RoomView {
@@ -135,14 +133,20 @@ ApplicationWindow
         id: settingsPage
     }
 
+    ConfigurationGroup
+    {
+        id: settings
+        path: "/apps/harbour-matrix/settings"
+    }
+
     Login {
         id: login
         window: window
         anchors.fill: parent
         Component.onCompleted: {
-            var user =  settings.value("user")
-            var token = settings.value("token")
-            if(user && token) {
+            var user =  settings.value("user", "")
+            var token = settings.value("token", "")
+            if(user != "" && token != "") {
                 login.login(true)
                 window.login(user, token, connection.connectWithToken)
             }

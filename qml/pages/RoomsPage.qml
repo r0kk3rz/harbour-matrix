@@ -114,7 +114,7 @@ Page {
 
             Label {
                 id: roomLabel
-                text:(rooms.roomAt(index).name() == "") ? display : rooms.roomAt(index).name()
+                text:(rooms.roomAt(index).name == "") ? display : rooms.roomAt(index).name
                 color: pressed? Theme.secondaryColor: (rooms.roomAt(index).highlightCount > 0) ? Theme.highlightColor : Theme.primaryColor
                 //elide: Text.ElideRight
                 font.bold: (rooms.roomAt(index).highlightCount > 0)

@@ -46,7 +46,7 @@ SilicaListView {
             //anchors.bottom: chatView.bottom
             //focus: true
             //textColor: "black"
-            placeholderText: qsTr("Message @") + currentRoom.displayName()
+            placeholderText: qsTr("Message @") + currentRoom.displayName
             //wrapMode: Text.
             EnterKey.onClicked: {
                 sendLine(text)
