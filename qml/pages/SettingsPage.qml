@@ -1,10 +1,16 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
+import Nemo.Configuration 1.0
 //import Matrix 1.0
 
 
 Page {
     id: settingsPage
+
+    ConfigurationGroup {
+        id: settings
+         path: "/apps/harbour-matrix/settings"
+    }
 
     Column {
         width: parent.width -x

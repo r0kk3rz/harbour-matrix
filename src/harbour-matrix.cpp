@@ -13,7 +13,6 @@
 #include "jobs/syncjob.h"
 #include "models/messageeventmodel.h"
 #include "models/roomlistmodel.h"
-#include "settings.h"
 using namespace QMatrixClient;
 
 Q_DECLARE_METATYPE(SyncJob*)
@@ -33,7 +32,6 @@ int main(int argc, char *argv[])
     qmlRegisterType<Connection>        ("Matrix", 1, 0, "Connection");
     qmlRegisterType<MessageEventModel> ("Matrix", 1, 0, "MessageEventModel");
     qmlRegisterType<RoomListModel>     ("Matrix", 1, 0, "RoomListModel");
-    qmlRegisterType<Settings>          ("Matrix", 1, 0, "Settings");
 
     QScopedPointer<QQuickView> view(SailfishApp::createView());
     QQmlEngine* engine = view->engine();
