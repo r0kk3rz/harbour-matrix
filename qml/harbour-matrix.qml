@@ -82,8 +82,6 @@ ApplicationWindow
     function resync() {
         if(!initialised) {
             login.visible = false
-            //mainView.visible = true
-            //roomListItem.init()
             initialised = true
         }
         connection.sync(30000)

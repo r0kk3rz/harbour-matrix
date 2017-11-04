@@ -5,8 +5,6 @@ i18n_files.path = /usr/share/$$TARGET
 
 INSTALLS += i18n_files
 
-DEFINES += APP_VERSION=\\\"$$APP_VERSION\\\"
-
 CONFIG += c++11 sailfishapp
 
 include(lib/libqmatrixclient.pri)
