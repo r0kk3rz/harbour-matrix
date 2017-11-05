@@ -115,7 +115,9 @@ Page {
                 id: roomLabel
                 text:(rooms.roomAt(index).name == "") ? display : rooms.roomAt(index).name
                 color: pressed? Theme.secondaryColor: (rooms.roomAt(index).highlightCount > 0) ? Theme.highlightColor : Theme.primaryColor
+                //elide: Text.ElideRight
                 font.bold: (rooms.roomAt(index).highlightCount > 0)
+                //anchors.margins: 2
                 anchors.leftMargin: Theme.paddingLarge
                 anchors.left: parent.left
                 anchors.right: parent.right
@@ -130,6 +132,11 @@ Page {
             }
 
         }
+
+        /*onCountChanged: if(initialised) {
+            roomListView.currentIndex = count-1
+            enterRoom(rooms.roomAt(count-1))
+          }*/
     }
 
     TextField {
@@ -145,5 +152,10 @@ Page {
         enterRoom.connect(roomView.setRoom)
         joinRoom.connect(connection.joinRoom)
     }
+    /*onStatusChanged: {
+        if (status === PageStatus.Active && pageStack.depth >= 1) {
+            pageStack.pushAttached(roomView)
+        }
+    }*/
 }
 

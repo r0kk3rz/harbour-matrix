@@ -75,11 +75,6 @@
         <source>Previous developer</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
-        <location filename="../qml/pages/DevelopersPage.qml" line="40"/>
-        <source>Contributors</source>
-        <translation type="unfinished"></translation>
-    </message>
 </context>
 <context>
     <name>Login</name>
@@ -122,7 +117,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/RoomsPage.qml" line="139"/>
+        <location filename="../qml/pages/RoomsPage.qml" line="146"/>
         <source>Join room...</source>
         <translation type="unfinished"></translation>
     </message>
