@@ -23,17 +23,17 @@ Page
             PageHeader
             {
                 id: pageheader
-                title: qsTr("Developers")
+                title: qsTr("Matriksi developers")
             }
 
             CollaboratorsLabel {
-                title: qsTr("New developers");
-                labelData: [ "Rudi Timmermans", "r0kk3rz"  ]
+                title: qsTr("Developers");
+                labelData: [ "Xray2000", "r0kk3rz"  ]
             }
 
             CollaboratorsLabel {
                 title: qsTr("Previous developer");
-                labelData: [ "Sami Anttila" ]
+                labelData: [ "Anttsam" ]
             }
         }
     }

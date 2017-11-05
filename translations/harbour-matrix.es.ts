@@ -62,12 +62,12 @@
     <name>DevelopersPage</name>
     <message>
         <location filename="../qml/pages/DevelopersPage.qml" line="26"/>
-        <source>Developers</source>
+        <source>Matriksi developers</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/pages/DevelopersPage.qml" line="30"/>
-        <source>New developers</source>
+        <source>Developers</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
