@@ -122,7 +122,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/RoomsPage.qml" line="146"/>
+        <location filename="../qml/pages/RoomsPage.qml" line="139"/>
         <source>Join room...</source>
         <translation type="unfinished"></translation>
     </message>
