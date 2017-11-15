@@ -51,8 +51,9 @@ ApplicationWindow
     property string appName: "Matriksi"
     property string version: "0.6 Alpha"
 
-    Connection {
-        id: connection
+    Connections {
+        target: connection
+
         onReconnected: {
             console.log("reconnected!")
             connectionActive = true
@@ -75,8 +76,6 @@ ApplicationWindow
             //connection.reconnect();
             connectionActive = false
         }
-
-
     }
 
     function resync() {
