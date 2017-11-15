@@ -28,8 +28,7 @@
 #include "lib/events/event.h"
 #include "lib/events/roommessageevent.h"
 #include "lib/events/roommemberevent.h"
-#include "lib/events/roomaliasesevent.h"
-#include "lib/events/unknownevent.h"
+#include "lib/events/simplestateevents.h"
 
 MessageEventModel::MessageEventModel(QObject* parent)
     : QAbstractListModel(parent)
@@ -215,6 +214,18 @@ QVariant MessageEventModel::data(const QModelIndex& index, int role) const
         }
         return "Unknown Event";
     }
+
+    if( role == AvatarRole )
+    {
+        if( event->type() == QMatrixClient::EventType::RoomMessage )
+        {
+            QMatrixClient::RoomMessageEvent* e = static_cast<QMatrixClient::RoomMessageEvent*>(event);
+            QMatrixClient::User *user = m_connection->user(e->senderId());
+            return user->avatar(5, 5).toImage();
+        }
+        return QVariant();
+    }
+
 //     if( event->type() == QMatrixClient::EventType::Unknown )
 //     {
 //         QMatrixClient::UnknownEvent* e = static_cast<QMatrixClient::UnknownEvent*>(event);
@@ -231,5 +242,6 @@ QHash<int, QByteArray> MessageEventModel::roleNames() const
     roles[DateRole] = "date";
     roles[AuthorRole] = "author";
     roles[ContentRole] = "content";
+    roles[AvatarRole] = "avatar";
     return roles;
 }

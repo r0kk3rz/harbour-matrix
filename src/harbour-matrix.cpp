@@ -13,6 +13,7 @@
 #include "jobs/syncjob.h"
 #include "models/messageeventmodel.h"
 #include "models/roomlistmodel.h"
+#include "modelimageprovider.h"
 using namespace QMatrixClient;
 
 Q_DECLARE_METATYPE(SyncJob*)
@@ -35,6 +36,8 @@ int main(int argc, char *argv[])
     QScopedPointer<QQuickView> view(SailfishApp::createView());
     QQmlEngine* engine = view->engine();
     QObject::connect(engine, SIGNAL(quit()), application.data(), SLOT(quit()));
+
+    engine->addImageProvider("modelPixmaps", new ModelImageProvider);
 
     view->setSource(SailfishApp::pathTo("qml/harbour-matrix.qml"));
 

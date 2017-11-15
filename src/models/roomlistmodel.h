@@ -31,6 +31,10 @@ class RoomListModel: public QAbstractListModel
 {
         Q_OBJECT
     public:
+        enum RoomEventRoles {
+            RoomEventStateRole = Qt::UserRole + 1,
+            AvatarRole
+        };
         RoomListModel(QObject* parent=0);
         virtual ~RoomListModel();
 
@@ -47,10 +51,12 @@ class RoomListModel: public QAbstractListModel
         void unreadMessagesChanged(QMatrixClient::Room* room);
         void addRoom(QMatrixClient::Room* room);
         void highlightCountChanged(QMatrixClient::Room* room);
+        void avatarChanged(QMatrixClient::Room* room, const QVector<int>& roles = {});
 
     private:
         QMatrixClient::Connection* m_connection;
         QList<QMatrixClient::Room*> m_rooms;
+        QPixmap* avatar;
 };
 
 #endif // ROOMLISTMODEL_H

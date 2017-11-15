@@ -11,7 +11,8 @@ include(lib/libqmatrixclient.pri)
 
 SOURCES += src/harbour-matrix.cpp \
     src/models/messageeventmodel.cpp \
-    src/models/roomlistmodel.cpp
+    src/models/roomlistmodel.cpp \
+    src/modelimageprovider.cpp
 
 OTHER_FILES += qml/harbour-matrix.qml \
     qml/cover/CoverPage.qml \

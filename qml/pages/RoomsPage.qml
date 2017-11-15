@@ -111,18 +111,30 @@ Page {
             width: parent.width
             contentHeight: Theme.itemSizeSmall
 
-            Label {
-                id: roomLabel
-                text:(rooms.roomAt(index).name == "") ? display : rooms.roomAt(index).name
-                color: pressed? Theme.secondaryColor: (rooms.roomAt(index).highlightCount > 0) ? Theme.highlightColor : Theme.primaryColor
-                //elide: Text.ElideRight
-                font.bold: (rooms.roomAt(index).highlightCount > 0)
-                //anchors.margins: 2
-                anchors.leftMargin: Theme.paddingLarge
-                anchors.left: parent.left
-                anchors.right: parent.right
-                anchors.verticalCenter: parent.verticalCenter
-                font.pixelSize: Theme.fontSizeMedium
+            Item {
+                Image {
+                    id: roomAvatar
+                    fillMode: Image.PreserveAspectFit
+                    height: Theme.iconSizeMedium
+                    width: Theme.iconSizeMedium
+                    source: avatar //rooms.roomAt(index).avatar(Theme.iconSizeSmall, Theme.iconSizeSmall)
+                    //source: "image://modelPixmaps/" + rooms.roomAt(index)
+                    cache: false
+                }
+
+                Label {
+                    id: roomLabel
+                    text:(rooms.roomAt(index).name == "") ? display : rooms.roomAt(index).name
+                    color: pressed? Theme.secondaryColor: (rooms.roomAt(index).highlightCount > 0) ? Theme.highlightColor : Theme.primaryColor
+                    //elide: Text.ElideRight
+                    font.bold: (rooms.roomAt(index).highlightCount > 0)
+                    //anchors.margins: 2
+                    anchors.leftMargin: Theme.paddingLarge
+                    anchors.left: roomAvatar.right
+                    anchors.right: parent.right
+                    anchors.verticalCenter: parent.verticalCenter
+                    font.pixelSize: Theme.fontSizeMedium
+                }
             }
 
             onClicked: {
