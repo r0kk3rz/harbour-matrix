@@ -56,15 +56,11 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>New developers</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Previous developer</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Contributors</source>
+        <source>Matriksi developers</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
