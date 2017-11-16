@@ -99,11 +99,11 @@ Page {
                 onClicked: pageStack.push(aboutPage)
             }
 
-            MenuItem {
-                text: "Settings"
-                onClicked: {
-                    pageStack.push(settingsPage)
-                }
+           MenuItem {
+               text: "Settings"
+               onClicked: {
+                   pageStack.push(settingsPage)
+               }
             }
         }
 

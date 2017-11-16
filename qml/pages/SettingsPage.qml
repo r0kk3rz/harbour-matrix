@@ -10,7 +10,11 @@ Page {
         width: parent.width -x
         spacing: Theme.paddingMedium
         x: Theme.paddingLarge
+
         PageHeader {title: "Settings"}
+
+        SectionHeader{ text: qsTr("Matriksi Settings") }
+
         TextSwitch {
             id: colorSwitch
             text: qsTr("Fancy colors")
@@ -22,6 +26,7 @@ Page {
                 settings.setValue("fancycolors", useFancyColors)
             }
         }
+
         TextSwitch {
             id: bgSwitch
             text: qsTr("Dark background")
@@ -33,5 +38,14 @@ Page {
                 settings.setValue("blackbackground", useBlackBackground)
             }
         }
+
+       SectionHeader{ text: qsTr("Account") }
+
+        TextSwitch {
+           id: lgSwitch
+           text: qsTr("Logout")
+           description: qsTr("Please restart Matriksi in order to log in with another account")
+           onClicked: scriptLauncher.launchScript()
+           }
+       }
     }
-}

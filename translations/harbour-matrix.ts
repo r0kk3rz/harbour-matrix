@@ -191,6 +191,22 @@
         <source>Use dark background on chat</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Logout</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Please restart Matriksi in order to log in with another account</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Account</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Matriksi Settings</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ThirdPartyLabel</name>
