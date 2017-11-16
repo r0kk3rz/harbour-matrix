@@ -51,8 +51,9 @@ ApplicationWindow
     property string appName: "Matriksi"
     property string version: "0.6 Alpha"
 
-    Connection {
-        id: connection
+    Connections {
+        target: connection
+
         onReconnected: {
             console.log("reconnected!")
             connectionActive = true
@@ -75,8 +76,6 @@ ApplicationWindow
             //connection.reconnect();
             connectionActive = false
         }
-
-
     }
 
     function resync() {
@@ -93,6 +92,7 @@ ApplicationWindow
         connection.connected.connect(function() {
             settings.setValue("user",  connection.userId())
             settings.setValue("token", connection.token())
+            settings.setValue("device_id", connection.deviceId())
             settings.sync()
 
             connection.syncDone.connect(resync)
@@ -103,10 +103,10 @@ ApplicationWindow
 
         var userParts = user.split(':')
         if(userParts.length === 1 || userParts[1] === "matrix.org") {
-            connect(user, pass, "sailfish")
+            connect(user, pass, settings.value("device_id", "sailfish"))
         } else {
             connection.resolved.connect(function() {
-                connect(user, pass, "sailfish")
+                connect(user, pass, settings.value("device_id","sailfish"))
             })
             connection.resolveError.connect(function() {
                 console.log("Couldn't resolve server!")

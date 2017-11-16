@@ -11,6 +11,7 @@
 #include "room.h"
 #include "user.h"
 #include "jobs/syncjob.h"
+#include "imageprovider.h"
 #include "models/messageeventmodel.h"
 #include "models/roomlistmodel.h"
 using namespace QMatrixClient;
@@ -32,10 +33,15 @@ int main(int argc, char *argv[])
     qmlRegisterType<MessageEventModel> ("Matrix", 1, 0, "MessageEventModel");
     qmlRegisterType<RoomListModel>     ("Matrix", 1, 0, "RoomListModel");
 
+    Connection conn;
+
     QScopedPointer<QQuickView> view(SailfishApp::createView());
     QQmlEngine* engine = view->engine();
+    engine->addImageProvider("mxc", new ImageProvider(&conn));
     QObject::connect(engine, SIGNAL(quit()), application.data(), SLOT(quit()));
 
+
+    view->rootContext()->setContextProperty("connection",&conn);
     view->setSource(SailfishApp::pathTo("qml/harbour-matrix.qml"));
 
     view->show();
