@@ -1,5 +1,7 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
+import "../components/textlabel"
+
 Item {
     property variant window
 
@@ -11,10 +13,12 @@ Item {
         userNameField.enabled = false
         passwordField.enabled = false
         loginbutton.enabled = false
+        accountbutton.enabled = false
         showstuff = false
         userNameField.opacity = 0
         passwordField.opacity = 0
         loginbutton.opacity = 0
+        accountbutton.opacity = 0
     }
 
     Column {
@@ -64,7 +68,7 @@ Item {
         TextField {
             id: userNameField
             width: parent.width
-            placeholderText: qsTr("Your Matrix Username")
+            placeholderText: qsTr("User Name or Matrix ID:")
         }
 
 
@@ -72,13 +76,23 @@ Item {
             id: passwordField
             echoMode: TextInput.Password
             width: parent.width
-            placeholderText: qsTr("Your Matrix Password")
+            placeholderText: qsTr("Password:")
         }
+
         Button {
            id: loginbutton
             text: qsTr("Login")
+            anchors.horizontalCenter: parent.horizontalCenter
             onClicked: login()
 
+        }
+
+        Button {
+           id: accountbutton
+            text: qsTr("Create an Matrix account")
+            anchors.horizontalCenter: parent.horizontalCenter
+            onClicked: { Qt.openUrlExternally("https://riot.im/app/#/register");
+           }
         }
 
         NumberAnimation on opacity {
@@ -89,4 +103,4 @@ Item {
 
         Component.onCompleted: fadeIn.start()
     }
-}
+ }

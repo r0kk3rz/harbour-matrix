@@ -13,11 +13,11 @@ Name:       harbour-matrix
 %{!?qtc_make:%define qtc_make make}
 %{?qtc_builddir:%define _builddir %qtc_builddir}
 Summary:    Unofficial Matrix.org client
-Version:    0.7
+Version:    0.8
 Release:    0
 Group:      Qt/Qt
-License:    LICENSE
-URL:        http://example.org/
+License:    GPLv3
+URL:        https://github.com/Sailbook/harbour-matrix
 Source0:    %{name}-%{version}.tar.bz2
 Source100:  harbour-matrix.yaml
 Requires:   sailfishsilica-qt5 >= 0.10.9

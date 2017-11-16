@@ -30,7 +30,7 @@
 
 import QtQuick 2.0
 import Sailfish.Silica 1.0
-import Nemo.Configuration 1.0
+import org.nemomobile.configuration 1.0
 import "pages"
 import Matrix 1.0
 
@@ -49,7 +49,7 @@ ApplicationWindow
     property bool connectionActive: false
 
     property string appName: "Matriksi"
-    property string version: "0.7 Alpha"
+    property string version: "0.8 Alpha"
 
     Connections {
         target: connection

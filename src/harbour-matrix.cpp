@@ -15,6 +15,7 @@
 #include "imageprovider.h"
 #include "models/messageeventmodel.h"
 #include "models/roomlistmodel.h"
+
 using namespace QMatrixClient;
 
 Q_DECLARE_METATYPE(SyncJob*)

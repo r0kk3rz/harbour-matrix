@@ -71,19 +71,23 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Login</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Matriksi</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Your Matrix Username</source>
+        <source>Login</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Your Matrix Password</source>
+        <source>Create an Matrix account</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>User Name or Matrix ID:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Password:</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

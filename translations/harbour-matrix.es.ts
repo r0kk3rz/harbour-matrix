@@ -79,28 +79,33 @@
 <context>
     <name>Login</name>
     <message>
-        <location filename="../qml/pages/Login.qml" line="9"/>
+        <location filename="../qml/pages/Login.qml" line="11"/>
         <source>Please wait...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/Login.qml" line="60"/>
+        <location filename="../qml/pages/Login.qml" line="64"/>
         <source>Matriksi</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/Login.qml" line="67"/>
-        <source>Your Matrix Username</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/Login.qml" line="75"/>
-        <source>Your Matrix Password</source>
+        <location filename="../qml/pages/Login.qml" line="71"/>
+        <source>User Name or Matrix ID:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/pages/Login.qml" line="79"/>
+        <source>Password:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/Login.qml" line="84"/>
         <source>Login</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/Login.qml" line="92"/>
+        <source>Create an Matrix account</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
