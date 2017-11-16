@@ -105,6 +105,89 @@
     </message>
 </context>
 <context>
+    <name>MessageEventModel</name>
+    <message>
+        <location filename="../src/models/messageeventmodel.cpp" line="217"/>
+        <source>invited %1 to the room</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/models/messageeventmodel.cpp" line="218"/>
+        <source>joined the room</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/models/messageeventmodel.cpp" line="224"/>
+        <source>cleared the display name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/models/messageeventmodel.cpp" line="226"/>
+        <source>changed the display name to %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/models/messageeventmodel.cpp" line="234"/>
+        <source>cleared the avatar</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/models/messageeventmodel.cpp" line="236"/>
+        <source>updated the avatar</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/models/messageeventmodel.cpp" line="242"/>
+        <source>doesn&apos;t want %1 in the room anymore</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/models/messageeventmodel.cpp" line="244"/>
+        <source>left the room</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/models/messageeventmodel.cpp" line="247"/>
+        <source>banned %1 from the room</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/models/messageeventmodel.cpp" line="249"/>
+        <source>self-banned from the room</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/models/messageeventmodel.cpp" line="251"/>
+        <source>knocked</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/models/messageeventmodel.cpp" line="262"/>
+        <source>set aliases to: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/models/messageeventmodel.cpp" line="267"/>
+        <source>set the room main alias to: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/models/messageeventmodel.cpp" line="272"/>
+        <source>set the room name to: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/models/messageeventmodel.cpp" line="277"/>
+        <source>set the topic to: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/models/messageeventmodel.cpp" line="282"/>
+        <source>activated End-to-End Encryption (algorithm: %1)</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>RoomsPage</name>
     <message>
         <location filename="../qml/pages/RoomsPage.qml" line="85"/>

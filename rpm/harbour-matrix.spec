@@ -13,7 +13,7 @@ Name:       harbour-matrix
 %{!?qtc_make:%define qtc_make make}
 %{?qtc_builddir:%define _builddir %qtc_builddir}
 Summary:    Unofficial Matrix.org client
-Version:    0.6
+Version:    0.7
 Release:    0
 Group:      Qt/Qt
 License:    LICENSE
@@ -21,6 +21,7 @@ URL:        http://example.org/
 Source0:    %{name}-%{version}.tar.bz2
 Source100:  harbour-matrix.yaml
 Requires:   sailfishsilica-qt5 >= 0.10.9
+Requires:   nemo-qml-plugin-configuration-qt5
 BuildRequires:  pkgconfig(sailfishapp) >= 1.0.2
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Qml)

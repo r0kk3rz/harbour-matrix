@@ -25,6 +25,8 @@
 #include "lib/connection.h"
 #include "lib/room.h"
 
+const int RoomEventStateRole = Qt::UserRole + 1;
+
 RoomListModel::RoomListModel(QObject* parent)
     : QAbstractListModel(parent)
 {
@@ -42,6 +44,7 @@ void RoomListModel::setConnection(QMatrixClient::Connection* connection)
     m_rooms.clear();
     connect( connection, &QMatrixClient::Connection::newRoom, this, &RoomListModel::addRoom );
     for( QMatrixClient::Room* room: connection->roomMap().values() ) {
+        connect( room, &QMatrixClient::Room::namesChanged, this, &RoomListModel::namesChanged );
         m_rooms.append(room);
     }
     endResetModel();
@@ -58,7 +61,6 @@ void RoomListModel::addRoom(QMatrixClient::Room* room)
     connect( room, &QMatrixClient::Room::namesChanged, this, &RoomListModel::namesChanged );
     connect( room, &QMatrixClient::Room::unreadMessagesChanged, this, &RoomListModel::unreadMessagesChanged );
     connect( room, &QMatrixClient::Room::highlightCountChanged, this, &RoomListModel::highlightCountChanged );
-    connect( room, &QMatrixClient::Room::avatarChanged, this, [=]{ avatarChanged(room, { RoomEventRoles::AvatarRole }); });
     m_rooms.append(room);
     endInsertRows();
 }
@@ -81,62 +83,29 @@ QVariant RoomListModel::data(const QModelIndex& index, int role) const
         return QVariant();
     }
     QMatrixClient::Room* room = m_rooms.at(index.row());
-
-    switch (role)
+    if( role == Qt::DisplayRole )
     {
-        case Qt::DisplayRole:
-            return room->displayName();
-        case RoomEventStateRole:
-        {
-            if (room->highlightCount() > 0) {
-                return "highlight";
-            } else if (room->hasUnreadMessages()) {
-                return "unread";
-            } else {
-                return "normal";
-            }
-        }
-        //case Qt::DecorationRole:
-        case RoomEventRoles::AvatarRole:
-        {
-            qDebug()  << "Avatar found!";
-            //avatar = new QPixmap();
-            //avatar = room->avatar(16, 16);
-            //if (!avatar->isNull())
-                return QString("image://modelPixmaps/" + QString::number((qulonglong)room));
-            //return avatar;
-            /*switch( room->joinState() )
-            {
-                case QMatrixClient::JoinState::Join:
-                    return QIcon(":/irc-channel-joined.svg");
-                case QMatrixClient::JoinState::Invite:
-                    return QIcon(":/irc-channel-invited.svg");
-                case QMatrixClient::JoinState::Leave:
-                    return QIcon(":/irc-channel-parted.svg");
-            }*/
-        }
-        default:
-            return QVariant();
+		return room->displayName();
     }
+	if ( role == RoomEventStateRole )
+    {
+		if (room->highlightCount() > 0) {
+			return "highlight";
+		} else if (room->hasUnreadMessages()) {
+			return "unread";
+		} else {
+			return "normal";
+		}
+    }
+    return QVariant();
 }
 
-//QHash<int, QByteArray> RoomListModel::roleNames() const {
-//	return QHash<int, QByteArray>({
-//					  std::make_pair(Qt::DisplayRole, QByteArray("display")),
-//                      std::make_pair(RoomEventStateRole, QByteArray("roomEventState"))
-//
-//		  });
-//}
-
-QHash<int, QByteArray> RoomListModel::roleNames() const
-{
-    QHash<int, QByteArray> roles = QAbstractItemModel::roleNames();
-    roles[Qt::DisplayRole] = "display";
-    roles[RoomEventStateRole] = "roomEventState";
-    roles[AvatarRole] = "avatar";
-    return roles;
+QHash<int, QByteArray> RoomListModel::roleNames() const {
+	return QHash<int, QByteArray>({
+					  std::make_pair(Qt::DisplayRole, QByteArray("display")),
+					  std::make_pair(RoomEventStateRole, QByteArray("roomEventState"))
+		  });
 }
-
 
 void RoomListModel::namesChanged(QMatrixClient::Room* room)
 {
@@ -155,13 +124,3 @@ void RoomListModel::highlightCountChanged(QMatrixClient::Room* room)
     int row = m_rooms.indexOf(room);
     emit dataChanged(index(row), index(row));
 }
-
-void RoomListModel::avatarChanged(QMatrixClient::Room* room, const QVector<int>& roles)
-{
-    int row = m_rooms.indexOf(room);
-    if (row == -1)
-        qCritical() << "Room" << room->id() << "not found in the room list";
-    else
-        emit dataChanged(index(row), index(row), roles);
-}
-

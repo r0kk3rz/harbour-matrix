@@ -12,7 +12,7 @@ include(lib/libqmatrixclient.pri)
 SOURCES += src/harbour-matrix.cpp \
     src/models/messageeventmodel.cpp \
     src/models/roomlistmodel.cpp \
-    src/modelimageprovider.cpp
+    src/imageprovider.cpp
 
 OTHER_FILES += qml/harbour-matrix.qml \
     qml/cover/CoverPage.qml \
@@ -31,7 +31,8 @@ TRANSLATIONS += translations/harbour-matrix.ts \
 
 HEADERS += \
     src/models/messageeventmodel.h \
-    src/models/roomlistmodel.h
+    src/models/roomlistmodel.h \
+    src/imageprovider.h
 
 DISTFILES += \
     qml/components/about/CollaboratorsLabel.qml \

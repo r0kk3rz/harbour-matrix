@@ -35,11 +35,13 @@ class MessageEventModel: public QAbstractListModel
     public:
         enum EventRoles {
             EventTypeRole = Qt::UserRole + 1,
+            EventIdRole,
             TimeRole,
             DateRole,
             AuthorRole,
             ContentRole,
-            AvatarRole
+            ContentTypeRole,
+            HighlightRole,
         };
 
         MessageEventModel(QObject* parent=0);
