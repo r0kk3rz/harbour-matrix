@@ -7,6 +7,7 @@
 #include <QQmlEngine>
 #include <QQmlFileSelector>
 #include <QQuickView>
+#include <QQmlContext>
 #include "connection.h"
 #include "room.h"
 #include "user.h"
@@ -41,7 +42,7 @@ int main(int argc, char *argv[])
     QObject::connect(engine, SIGNAL(quit()), application.data(), SLOT(quit()));
 
 
-    view->rootContext()->setContextProperty("connection",&conn);
+    view->rootContext()->setContextProperty("connection", &conn);
     view->setSource(SailfishApp::pathTo("qml/harbour-matrix.qml"));
 
     view->show();

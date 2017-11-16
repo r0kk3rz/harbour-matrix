@@ -61,7 +61,6 @@ void RoomListModel::addRoom(QMatrixClient::Room* room)
     connect( room, &QMatrixClient::Room::namesChanged, this, &RoomListModel::namesChanged );
     connect( room, &QMatrixClient::Room::unreadMessagesChanged, this, &RoomListModel::unreadMessagesChanged );
     connect( room, &QMatrixClient::Room::highlightCountChanged, this, &RoomListModel::highlightCountChanged );
-    connect( room, &QMatrixClient::Room::avatarChanged, this, &RoomListModel::avatarChanged );
     m_rooms.append(room);
     endInsertRows();
 }
@@ -87,9 +86,6 @@ QVariant RoomListModel::data(const QModelIndex& index, int role) const
     if( role == Qt::DisplayRole )
     {
 		return room->displayName();
-        auto avatar = room->avatar(16, 16);
-        if (!avatar.isNull())
-        return avatar;
     }
 	if ( role == RoomEventStateRole )
     {

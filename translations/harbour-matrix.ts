@@ -88,6 +88,73 @@
     </message>
 </context>
 <context>
+    <name>MessageEventModel</name>
+    <message>
+        <source>invited %1 to the room</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>joined the room</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>cleared the display name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>changed the display name to %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>cleared the avatar</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>updated the avatar</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>doesn&apos;t want %1 in the room anymore</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>left the room</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>banned %1 from the room</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>self-banned from the room</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>knocked</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>set aliases to: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>set the room main alias to: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>set the room name to: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>set the topic to: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>activated End-to-End Encryption (algorithm: %1)</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>RoomsPage</name>
     <message>
         <source>Join room...</source>
