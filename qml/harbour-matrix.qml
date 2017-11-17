@@ -83,7 +83,7 @@ ApplicationWindow
             login.visible = false
             initialised = true
         }
-        connection.sync(30000)
+        connection.sync(3000)
     }
 
     function login(user, pass, connect) {

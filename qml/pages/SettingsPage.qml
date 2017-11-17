@@ -46,7 +46,7 @@ Page {
         Button {
            text: qsTr("Logout")
            anchors.horizontalCenter: parent.horizontalCenter
-           onClicked: { remorse.execute("Logging out...", function() { scriptLauncher.launchScript() })
+           onClicked: { remorse.execute("Logging out", function() { scriptLauncher.launchScript() })
            }
        }
 
