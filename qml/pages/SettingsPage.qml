@@ -38,20 +38,5 @@ Page {
                 settings.setValue("blackbackground", useBlackBackground)
             }
         }
-
-       SectionHeader{ text: qsTr("Account") }            
-
-        TextLabel { labelText: qsTr("Please restart Matriksi in order to log in with another account.") }
-
-        Button {
-           text: qsTr("Logout")
-           anchors.horizontalCenter: parent.horizontalCenter
-           onClicked: { remorse.execute("Logging out", function() { scriptLauncher.launchScript() })
-           }
-       }
-
-        RemorsePopup {
-            id: remorse
-        }
     }
  }

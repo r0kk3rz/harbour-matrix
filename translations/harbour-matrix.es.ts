@@ -195,17 +195,27 @@
 <context>
     <name>RoomsPage</name>
     <message>
-        <location filename="../qml/pages/RoomsPage.qml" line="85"/>
+        <location filename="../qml/pages/RoomsPage.qml" line="87"/>
         <source>Rooms</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/RoomsPage.qml" line="97"/>
+        <location filename="../qml/pages/RoomsPage.qml" line="99"/>
         <source>About Matriksi</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/RoomsPage.qml" line="146"/>
+        <location filename="../qml/pages/RoomsPage.qml" line="111"/>
+        <source>Logout</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/RoomsPage.qml" line="112"/>
+        <source>Logging out</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/RoomsPage.qml" line="151"/>
         <source>Join room...</source>
         <translation type="unfinished"></translation>
     </message>
@@ -235,21 +245,6 @@
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="33"/>
         <source>Use dark background on chat</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="42"/>
-        <source>Account</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="44"/>
-        <source>Please restart Matriksi in order to log in with another account.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="47"/>
-        <source>Logout</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

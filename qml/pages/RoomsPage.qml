@@ -44,6 +44,8 @@ Page {
 
     Behavior on opacity {NumberAnimation{duration: 400}}
 
+    RemorsePopup { id: remorse }
+
     RoomListModel {
         id: rooms
     }
@@ -95,7 +97,6 @@ Page {
 
            MenuItem {
                 text: qsTr("About Matriksi")
-                anchors.horizontalCenter: parent.horizontalCenter
                 onClicked: pageStack.push(aboutPage)
             }
 
@@ -103,9 +104,19 @@ Page {
                text: "Settings"
                onClicked: {
                    pageStack.push(settingsPage)
-               }
             }
-        }
+         }
+
+           MenuItem {
+               text: qsTr("Logout")
+               onClicked: remorse.execute(qsTr("Logging out"), function(){
+                   connection.logout()
+                   scriptLauncher.launchScript()
+                   pageStack.clear();
+                   pageStack.replace(Qt.resolvedUrl("../harbour-matrix.qml"));
+             });
+          }
+       }
 
         delegate: ListItem {
             width: parent.width
@@ -130,13 +141,7 @@ Page {
                 enterRoom(rooms.roomAt(index))
                 pageStack.push(roomView)
             }
-
         }
-
-        /*onCountChanged: if(initialised) {
-            roomListView.currentIndex = count-1
-            enterRoom(rooms.roomAt(count-1))
-          }*/
     }
 
     TextField {
@@ -152,10 +157,4 @@ Page {
         enterRoom.connect(roomView.setRoom)
         joinRoom.connect(connection.joinRoom)
     }
-    /*onStatusChanged: {
-        if (status === PageStatus.Active && pageStack.depth >= 1) {
-            pageStack.pushAttached(roomView)
-        }
-    }*/
-}
-
+  }
