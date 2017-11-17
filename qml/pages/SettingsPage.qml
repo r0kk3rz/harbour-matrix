@@ -1,6 +1,6 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
-//import Matrix 1.0
+import "../components/textlabel"
 
 
 Page {
@@ -39,13 +39,19 @@ Page {
             }
         }
 
-       SectionHeader{ text: qsTr("Account") }
+       SectionHeader{ text: qsTr("Account") }            
 
-        TextSwitch {
-           id: lgSwitch
+        TextLabel { labelText: qsTr("Please restart Matriksi in order to log in with another account.") }
+
+        Button {
            text: qsTr("Logout")
-           description: qsTr("Please restart Matriksi in order to log in with another account")
-           onClicked: scriptLauncher.launchScript()
+           anchors.horizontalCenter: parent.horizontalCenter
+           onClicked: { remorse.execute("Logging out...", function() { scriptLauncher.launchScript() })
            }
        }
+
+        RemorsePopup {
+            id: remorse
+        }
     }
+ }

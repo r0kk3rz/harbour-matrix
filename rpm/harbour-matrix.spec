@@ -13,7 +13,7 @@ Name:       harbour-matrix
 %{!?qtc_make:%define qtc_make make}
 %{?qtc_builddir:%define _builddir %qtc_builddir}
 Summary:    Unofficial Matrix.org client
-Version:    0.8
+Version:    0.9
 Release:    0
 Group:      Qt/Qt
 License:    GPLv3

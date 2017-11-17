@@ -243,13 +243,13 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="46"/>
-        <source>Logout</source>
+        <location filename="../qml/pages/SettingsPage.qml" line="44"/>
+        <source>Please restart Matriksi in order to log in with another account.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="47"/>
-        <source>Please restart Matriksi in order to log in with another account</source>
+        <source>Logout</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
