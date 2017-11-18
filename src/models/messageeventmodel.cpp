@@ -192,7 +192,7 @@ QVariant MessageEventModel::data(const QModelIndex& index, int role) const
             case MessageEventType::Image:
                 {
                     auto content = static_cast<const ImageContent*>(e->content());
-                    return QUrl("image://mtx/" +
+                    return QUrl("image://mxc/" +
                                 content->url.host() + content->url.path());
                 }
             default:
@@ -303,7 +303,7 @@ QVariant MessageEventModel::data(const QModelIndex& index, int role) const
     if(role == Qt::DecorationRole)
     {
         User *user = m_connection->user(event->senderId());
-        return user->avatarUrl().toString().replace("mxc://", "image://mxc/");
+        return QUrl("image://mxc/" + user->avatarUrl().host() + user->avatarUrl().path());
     }
 
     if( role == EventIdRole )

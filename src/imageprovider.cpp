@@ -35,11 +35,15 @@ ImageProvider::ImageProvider(QMatrixClient::Connection* connection)
 QPixmap ImageProvider::requestPixmap(const QString& id,
                                      QSize* size, const QSize& requestedSize)
 {
-    QMutexLocker locker(&m_mutex);
-    qDebug() << "ImageProvider::requestPixmap:" << "mxc://" << id << " : " << requestedSize.width() << "x" << requestedSize.height();
+    QPixmap result;
+
+    if(id == "")
+    {
+        return result;
+    }
 
     QWaitCondition condition;
-    QPixmap result;
+
     QMetaObject::invokeMethod(this, "doRequest", Qt::QueuedConnection,
                               Q_ARG(QString, "mxc://" + id), Q_ARG(QSize, requestedSize),
                               Q_ARG(QPixmap*, &result),
@@ -50,18 +54,12 @@ QPixmap ImageProvider::requestPixmap(const QString& id,
     {
         *size = result.size();
     }
-    else
-    {
-        qDebug() << "ImageProvider::requestPixmap: Null Image";
-    }
 
     return result;
 }
 
 void ImageProvider::setConnection(const QMatrixClient::Connection* connection)
 {
-    QMutexLocker locker(&m_mutex);
-
     m_connection = connection;
 }
 
@@ -70,7 +68,6 @@ void ImageProvider::doRequest(QString id, QSize requestedSize, QPixmap* pixmap,
 {
     Q_ASSERT(pixmap);
     Q_ASSERT(condition);
-    QMutexLocker locker(&m_mutex);
     if( !m_connection )
     {
         qDebug() << "ImageProvider::requestPixmap: no connection!";
@@ -80,14 +77,13 @@ void ImageProvider::doRequest(QString id, QSize requestedSize, QPixmap* pixmap,
     }
 
     using QMatrixClient::MediaThumbnailJob;
-    auto job = m_connection->callApi<MediaThumbnailJob>(QUrl(id),
-                QSize(100,100));
-    connect( job, &MediaThumbnailJob::success, this, [=]()
-    {
-        // No need to lock because we don't deal with the ImageProvider state
-        qDebug() << "gotImage";
+    auto job = m_connection->callApi<MediaThumbnailJob>(QUrl(id), requestedSize);
 
-        *pixmap = job->scaledThumbnail(requestedSize);
+    connect( job, &MediaThumbnailJob::finished, this, [=]()
+    {
+        // TODO: need to check result to see if this is success or not
+        // No need to lock because we don't deal with the ImageProvider state
+        *pixmap = job->thumbnail();
         condition->wakeAll();
     } );
 }
