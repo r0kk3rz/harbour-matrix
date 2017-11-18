@@ -1,5 +1,6 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
+import QtQuick 2.0
 import "../components/textlabel"
 
 Item {
@@ -63,6 +64,7 @@ Item {
                     duration: 60000
                 }
             }
+
             BusyIndicator {
                 anchors.centerIn: parent
                 running: !showstuff
@@ -74,8 +76,9 @@ Item {
 
         Label {
             id: label
-            font.pixelSize: phantomLabel.font.pixelSize * 5/2
+            font.pixelSize: phantomLabel.font.pixelSize * 3/2
             text: qsTr("Matriksi")
+            anchors.horizontalCenter: parent.horizontalCenter
             color: "#888"
         }
 

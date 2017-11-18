@@ -12,6 +12,10 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <source>Matriksi is an unofficial Matrix Client for SailfishOS and distributed under the GPLv3 license.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>Developers</source>
         <translation type="unfinished"></translation>
     </message>
@@ -21,10 +25,6 @@
     </message>
     <message>
         <source>Translations</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Matriksi is an unofficial Matrix Client for SailfishOS and distributed under the GPLv3 license.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -75,19 +75,23 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <source>User Name or Matrix ID:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>username[:server][:port]</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Password:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>Login</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Create an Matrix account</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>User Name or Matrix ID:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Password:</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

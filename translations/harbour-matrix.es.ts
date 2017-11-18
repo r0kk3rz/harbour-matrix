@@ -4,32 +4,32 @@
 <context>
     <name>AboutPage</name>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="24"/>
+        <location filename="../qml/pages/AboutPage.qml" line="18"/>
         <source>About Matriksi</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="68"/>
+        <location filename="../qml/pages/AboutPage.qml" line="62"/>
         <source>An unofficial Matrix Client for SailfishOS</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="77"/>
+        <location filename="../qml/pages/AboutPage.qml" line="71"/>
         <source>Matriksi is an unofficial Matrix Client for SailfishOS and distributed under the GPLv3 license.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="89"/>
+        <location filename="../qml/pages/AboutPage.qml" line="83"/>
         <source>Developers</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="97"/>
+        <location filename="../qml/pages/AboutPage.qml" line="91"/>
         <source>Donate with Paypal</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="106"/>
+        <location filename="../qml/pages/AboutPage.qml" line="100"/>
         <source>Translations</source>
         <translation type="unfinished"></translation>
     </message>
@@ -61,17 +61,17 @@
 <context>
     <name>DevelopersPage</name>
     <message>
-        <location filename="../qml/pages/DevelopersPage.qml" line="26"/>
+        <location filename="../qml/pages/DevelopersPage.qml" line="18"/>
         <source>Matriksi developers</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DevelopersPage.qml" line="30"/>
+        <location filename="../qml/pages/DevelopersPage.qml" line="22"/>
         <source>Developers</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DevelopersPage.qml" line="35"/>
+        <location filename="../qml/pages/DevelopersPage.qml" line="27"/>
         <source>Previous developer</source>
         <translation type="unfinished"></translation>
     </message>
@@ -79,32 +79,38 @@
 <context>
     <name>Login</name>
     <message>
-        <location filename="../qml/pages/Login.qml" line="11"/>
+        <location filename="../qml/pages/Login.qml" line="12"/>
         <source>Please wait...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/Login.qml" line="64"/>
+        <location filename="../qml/pages/Login.qml" line="27"/>
+        <location filename="../qml/pages/Login.qml" line="79"/>
         <source>Matriksi</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/Login.qml" line="71"/>
+        <location filename="../qml/pages/Login.qml" line="87"/>
         <source>User Name or Matrix ID:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/Login.qml" line="79"/>
+        <location filename="../qml/pages/Login.qml" line="88"/>
+        <source>username[:server][:port]</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/Login.qml" line="96"/>
         <source>Password:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/Login.qml" line="84"/>
+        <location filename="../qml/pages/Login.qml" line="101"/>
         <source>Login</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/Login.qml" line="92"/>
+        <location filename="../qml/pages/Login.qml" line="109"/>
         <source>Create an Matrix account</source>
         <translation type="unfinished"></translation>
     </message>
