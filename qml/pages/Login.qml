@@ -21,6 +21,20 @@ Item {
         accountbutton.opacity = 0
     }
 
+    function abortLogin()
+    {
+        label.text = qsTr("Matriksi")
+        userNameField.enabled = true
+        passwordField.enabled = true
+        loginbutton.enabled = true
+        accountbutton.enabled = true
+        showstuff = true
+        userNameField.opacity = 1
+        passwordField.opacity = 1
+        loginbutton.opacity = 1
+        accountbutton.opacity = 1
+    }
+
     Column {
         width: parent.width /1.5
         anchors.centerIn: parent
@@ -69,6 +83,7 @@ Item {
             id: userNameField
             width: parent.width
             placeholderText: qsTr("User Name or Matrix ID:")
+            label: qsTr("username[:server][:port]");
         }
 
 
