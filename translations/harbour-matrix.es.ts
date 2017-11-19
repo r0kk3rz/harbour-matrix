@@ -85,32 +85,32 @@
     </message>
     <message>
         <location filename="../qml/pages/Login.qml" line="27"/>
-        <location filename="../qml/pages/Login.qml" line="79"/>
+        <location filename="../qml/pages/Login.qml" line="80"/>
         <source>Matriksi</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/Login.qml" line="87"/>
+        <location filename="../qml/pages/Login.qml" line="88"/>
         <source>User Name or Matrix ID:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/Login.qml" line="88"/>
+        <location filename="../qml/pages/Login.qml" line="89"/>
         <source>username[:server][:port]</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/Login.qml" line="96"/>
+        <location filename="../qml/pages/Login.qml" line="97"/>
         <source>Password:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/Login.qml" line="101"/>
+        <location filename="../qml/pages/Login.qml" line="102"/>
         <source>Login</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/Login.qml" line="109"/>
+        <location filename="../qml/pages/Login.qml" line="110"/>
         <source>Create an Matrix account</source>
         <translation type="unfinished"></translation>
     </message>
