@@ -31,7 +31,7 @@
 import QtQuick 2.2
 import Sailfish.Silica 1.0
 import Matrix 1.0
-
+import "../components/custom"
 
 Page {
     id: page
@@ -123,14 +123,13 @@ Page {
             contentHeight: Theme.itemSizeSmall
 
             Item {
-                Image {
+                height: parent.height
+
+                AvatarImage {
                     id: roomAvatar
-                    fillMode: Image.PreserveAspectFit
-                    height: Theme.iconSizeMedium
-                    width: Theme.iconSizeMedium
-                    source: avatar //rooms.roomAt(index).avatar(Theme.iconSizeSmall, Theme.iconSizeSmall)
-                    //source: "image://modelPixmaps/" + rooms.roomAt(index)
-                    cache: false
+                    iconSource: avatar
+                    iconSize: Theme.paddingLarge + Theme.paddingMedium
+                    anchors.verticalCenter: parent.verticalCenter
                 }
 
                 Label {
@@ -140,7 +139,7 @@ Page {
                     //elide: Text.ElideRight
                     font.bold: (rooms.roomAt(index).highlightCount > 0)
                     //anchors.margins: 2
-                    anchors.leftMargin: Theme.paddingLarge
+                    anchors.leftMargin: Theme.paddingMedium
                     anchors.left: roomAvatar.right
                     anchors.right: parent.right
                     anchors.verticalCenter: parent.verticalCenter

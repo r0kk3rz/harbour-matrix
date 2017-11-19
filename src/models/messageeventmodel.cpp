@@ -306,6 +306,12 @@ QVariant MessageEventModel::data(const QModelIndex& index, int role) const
         return QUrl("image://mxc/" + user->avatarUrl().host() + user->avatarUrl().path());
     }
 
+    if(role == AvatarRole)
+    {
+        User *user = m_connection->user(event->senderId());
+        return QUrl("image://mxc/" + user->avatarUrl().host() + user->avatarUrl().path());
+    }
+
     if( role == EventIdRole )
     {
         return event->id();
@@ -325,6 +331,7 @@ QHash<int, QByteArray> MessageEventModel::roleNames() const
     roles[ContentRole] = "content";
     roles[ContentTypeRole] = "contentType";
     roles[HighlightRole] = "highlight";
+    roles[AvatarRole] = "avatar";
 
     return roles;
 }

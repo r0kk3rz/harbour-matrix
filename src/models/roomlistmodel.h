@@ -56,7 +56,6 @@ class RoomListModel: public QAbstractListModel
     private:
         QMatrixClient::Connection* m_connection;
         QList<QMatrixClient::Room*> m_rooms;
-        QPixmap* avatar;
 };
 
 #endif // ROOMLISTMODEL_H
