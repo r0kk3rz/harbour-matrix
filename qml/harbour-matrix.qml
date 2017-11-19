@@ -30,7 +30,7 @@
 
 import QtQuick 2.0
 import Sailfish.Silica 1.0
-import Nemo.Configuration 1.0
+import org.nemomobile.configuration 1.0
 import "pages"
 import Matrix 1.0
 
@@ -49,19 +49,16 @@ ApplicationWindow
     property bool connectionActive: false
 
     property string appName: "Matriksi"
-    property string version: "0.7 Alpha"
+    property string version: "0.9.2 Alpha"
 
     Connections {
         target: connection
 
-        onReconnected: {
-            console.log("reconnected!")
-            connectionActive = true
-        }
         onNetworkError: {
             console.log("Connection Error, reconnecting...")
             connection.reconnect();
             connectionActive = false
+            login.abortLogin()
         }
         onConnected: {
             console.log("connected!")
@@ -70,11 +67,22 @@ ApplicationWindow
         onLoggedOut: {
             console.log("Logged out...")
             connectionActive = false
+            login.abortLogin()
         }
         onLoginError: {
-            console.log("Login Error, reconnecting...")
-            //connection.reconnect();
+            console.log("Login Error")
             connectionActive = false
+            login.abortLogin()
+        }
+        onSyncError:{
+            console.log("Sync Error");
+            connectionActive = false;
+            login.abortLogin()
+        }
+        onResolveError:{
+            console.log("Resolve Error");
+            connectionActive = false;
+            login.abortLogin()
         }
     }
 
@@ -83,7 +91,7 @@ ApplicationWindow
             login.visible = false
             initialised = true
         }
-        connection.sync(30000)
+        connection.sync(3000)
     }
 
     function login(user, pass, connect) {
@@ -103,14 +111,13 @@ ApplicationWindow
 
         var userParts = user.split(':')
         if(userParts.length === 1 || userParts[1] === "matrix.org") {
+            console.log("Connect to matrix.org")
             connect(user, pass, settings.value("device_id", "sailfish"))
         } else {
             connection.resolved.connect(function() {
                 connect(user, pass, settings.value("device_id","sailfish"))
             })
-            connection.resolveError.connect(function() {
-                console.log("Couldn't resolve server!")
-            })
+            console.log("ResolveServer: " + userParts[1])
             connection.resolveServer(userParts[1])
         }
     }

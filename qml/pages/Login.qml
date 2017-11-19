@@ -1,5 +1,7 @@
-import QtQuick 2.0
+import QtQuick 2.2
 import Sailfish.Silica 1.0
+import "../components/textlabel"
+
 Item {
     property variant window
 
@@ -11,10 +13,26 @@ Item {
         userNameField.enabled = false
         passwordField.enabled = false
         loginbutton.enabled = false
+        accountbutton.enabled = false
         showstuff = false
         userNameField.opacity = 0
         passwordField.opacity = 0
         loginbutton.opacity = 0
+        accountbutton.opacity = 0
+    }
+
+    function abortLogin()
+    {
+        label.text = qsTr("Matriksi")
+        userNameField.enabled = true
+        passwordField.enabled = true
+        loginbutton.enabled = true
+        accountbutton.enabled = true
+        showstuff = true
+        userNameField.opacity = 1
+        passwordField.opacity = 1
+        loginbutton.opacity = 1
+        accountbutton.opacity = 1
     }
 
     Column {
@@ -45,6 +63,7 @@ Item {
                     duration: 60000
                 }
             }
+
             BusyIndicator {
                 anchors.centerIn: parent
                 running: !showstuff
@@ -56,15 +75,17 @@ Item {
 
         Label {
             id: label
-            font.pixelSize: phantomLabel.font.pixelSize * 5/2
+            font.pixelSize: phantomLabel.font.pixelSize * 3/2
             text: qsTr("Matriksi")
+            anchors.horizontalCenter: parent.horizontalCenter
             color: "#888"
         }
 
         TextField {
             id: userNameField
             width: parent.width
-            placeholderText: qsTr("Your Matrix Username")
+            placeholderText: qsTr("User Name or Matrix ID:")
+            label: qsTr("username[:server][:port]");
         }
 
 
@@ -72,13 +93,23 @@ Item {
             id: passwordField
             echoMode: TextInput.Password
             width: parent.width
-            placeholderText: qsTr("Your Matrix Password")
+            placeholderText: qsTr("Password:")
         }
+
         Button {
            id: loginbutton
             text: qsTr("Login")
+            anchors.horizontalCenter: parent.horizontalCenter
             onClicked: login()
 
+        }
+
+        Button {
+           id: accountbutton
+            text: qsTr("Create an Matrix account")
+            anchors.horizontalCenter: parent.horizontalCenter
+            onClicked: { Qt.openUrlExternally("https://riot.im/app/#/register");
+           }
         }
 
         NumberAnimation on opacity {
@@ -89,4 +120,4 @@ Item {
 
         Component.onCompleted: fadeIn.start()
     }
-}
+ }

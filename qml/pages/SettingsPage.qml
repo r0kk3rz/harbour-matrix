@@ -1,6 +1,6 @@
-import QtQuick 2.0
+import QtQuick 2.2
 import Sailfish.Silica 1.0
-//import Matrix 1.0
+import "../components/textlabel"
 
 
 Page {
@@ -10,7 +10,11 @@ Page {
         width: parent.width -x
         spacing: Theme.paddingMedium
         x: Theme.paddingLarge
+
         PageHeader {title: "Settings"}
+
+        SectionHeader{ text: qsTr("Matriksi Settings") }
+
         TextSwitch {
             id: colorSwitch
             text: qsTr("Fancy colors")
@@ -22,6 +26,7 @@ Page {
                 settings.setValue("fancycolors", useFancyColors)
             }
         }
+
         TextSwitch {
             id: bgSwitch
             text: qsTr("Dark background")
@@ -34,6 +39,4 @@ Page {
             }
         }
     }
-
-
-}
+ }

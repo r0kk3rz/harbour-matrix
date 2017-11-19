@@ -12,6 +12,7 @@ include(lib/libqmatrixclient.pri)
 SOURCES += src/harbour-matrix.cpp \
     src/models/messageeventmodel.cpp \
     src/models/roomlistmodel.cpp \
+    src/scriptlauncher.cpp \
     src/imageprovider.cpp
 
 OTHER_FILES += qml/harbour-matrix.qml \
@@ -32,6 +33,7 @@ TRANSLATIONS += translations/harbour-matrix.ts \
 HEADERS += \
     src/models/messageeventmodel.h \
     src/models/roomlistmodel.h \
+    src/scriptlauncher.h \
     src/imageprovider.h
 
 DISTFILES += \
@@ -39,6 +41,7 @@ DISTFILES += \
     qml/components/about/ThirdPartyLabel.qml \
     qml/components/custom/BackgroundRectangle.qml \    
     qml/components/custom/ClickableLabel.qml \
+    qml/components/textlabel/TextLabel.qml \
     qml/components/translation/IconTextButton.qml \
     qml/pages/ThirdPartyPage.qml \
     qml/pages/DevelopersPage.qml \

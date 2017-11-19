@@ -1,20 +1,12 @@
-import QtQuick 2.1
+import QtQuick 2.2
 import Sailfish.Silica 1.0
 import "../components/about"
 
 Page
 {
     id: developerspage
-    allowedOrientations: Orientation.Portrait
 
-    SilicaFlickable
-    {
-        anchors.fill: parent
-        contentHeight: content.height
-
-        VerticalScrollDecorator { flickable: parent }
-
-        Column
+    Column
         {
             id: content
             width: parent.width
@@ -28,7 +20,7 @@ Page
 
             CollaboratorsLabel {
                 title: qsTr("Developers");
-                labelData: [ "Xray2000", "r0kk3rz"  ]
+                labelData: [ "Xray2000", "r0kk3rz", "minitreintje"  ]
             }
 
             CollaboratorsLabel {
@@ -37,4 +29,3 @@ Page
             }
         }
     }
-}

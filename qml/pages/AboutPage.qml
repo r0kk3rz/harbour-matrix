@@ -1,18 +1,12 @@
-import QtQuick 2.1
+import QtQuick 2.2
 import Sailfish.Silica 1.0
 import "../components/custom"
 
 Page
 {
     id: aboutpage
-    allowedOrientations: Orientation.Portrait
 
-    SilicaFlickable
-    {
-        anchors.fill: parent
-        contentHeight: content.height
-
-        Column
+    Column
         {
             id: content
             width: parent.width
@@ -110,4 +104,4 @@ Page
              }
          }
       }
-   }
+

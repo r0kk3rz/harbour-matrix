@@ -8,13 +8,16 @@
 #include <QQmlFileSelector>
 #include <QQuickView>
 #include <QQmlContext>
+#include <QScopedPointer>
 #include "connection.h"
 #include "room.h"
 #include "user.h"
 #include "jobs/syncjob.h"
 #include "imageprovider.h"
+#include "src/scriptlauncher.h"
 #include "models/messageeventmodel.h"
 #include "models/roomlistmodel.h"
+
 using namespace QMatrixClient;
 
 Q_DECLARE_METATYPE(SyncJob*)
@@ -41,7 +44,9 @@ int main(int argc, char *argv[])
     engine->addImageProvider("mxc", new ImageProvider(&conn));
     QObject::connect(engine, SIGNAL(quit()), application.data(), SLOT(quit()));
 
+    ScriptLauncher launcher;
 
+    view->rootContext()->setContextProperty("scriptLauncher", &launcher);
     view->rootContext()->setContextProperty("connection", &conn);
     view->setSource(SailfishApp::pathTo("qml/harbour-matrix.qml"));
 

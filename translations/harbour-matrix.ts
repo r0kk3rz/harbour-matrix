@@ -12,6 +12,10 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <source>Matriksi is an unofficial Matrix Client for SailfishOS and distributed under the GPLv3 license.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>Developers</source>
         <translation type="unfinished"></translation>
     </message>
@@ -21,10 +25,6 @@
     </message>
     <message>
         <source>Translations</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Matriksi is an unofficial Matrix Client for SailfishOS and distributed under the GPLv3 license.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -71,19 +71,27 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Login</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Matriksi</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Your Matrix Username</source>
+        <source>User Name or Matrix ID:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Your Matrix Password</source>
+        <source>username[:server][:port]</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Password:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Login</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Create an Matrix account</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -168,6 +176,14 @@
         <source>About Matriksi</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Logout</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Logging out</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>SettingsPage</name>
@@ -185,6 +201,10 @@
     </message>
     <message>
         <source>Use dark background on chat</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Matriksi Settings</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
