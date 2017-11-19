@@ -79,38 +79,38 @@
 <context>
     <name>Login</name>
     <message>
-        <location filename="../qml/pages/Login.qml" line="12"/>
+        <location filename="../qml/pages/Login.qml" line="11"/>
         <source>Please wait...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/Login.qml" line="27"/>
-        <location filename="../qml/pages/Login.qml" line="80"/>
+        <location filename="../qml/pages/Login.qml" line="26"/>
+        <location filename="../qml/pages/Login.qml" line="79"/>
         <source>Matriksi</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/Login.qml" line="88"/>
+        <location filename="../qml/pages/Login.qml" line="87"/>
         <source>User Name or Matrix ID:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/Login.qml" line="89"/>
+        <location filename="../qml/pages/Login.qml" line="88"/>
         <source>username[:server][:port]</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/Login.qml" line="97"/>
+        <location filename="../qml/pages/Login.qml" line="96"/>
         <source>Password:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/Login.qml" line="102"/>
+        <location filename="../qml/pages/Login.qml" line="101"/>
         <source>Login</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/Login.qml" line="110"/>
+        <location filename="../qml/pages/Login.qml" line="109"/>
         <source>Create an Matrix account</source>
         <translation type="unfinished"></translation>
     </message>
