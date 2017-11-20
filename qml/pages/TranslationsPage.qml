@@ -18,6 +18,12 @@ Page {
 
             IconTextButton {
                 anchors.horizontalCenter: parent.horizontalCenter
+                text: "Cintema"
+                iconSource: "qrc:/res/icon-germany.png"
+            }
+
+            IconTextButton {
+                anchors.horizontalCenter: parent.horizontalCenter
                 text: "Carlos Gonzalez"
                 iconSource: "qrc:/res/icon-spain.png"
             }
