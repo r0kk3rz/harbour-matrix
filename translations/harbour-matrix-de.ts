@@ -97,7 +97,7 @@
     <message>
         <location filename="../qml/pages/Login.qml" line="88"/>
         <source>username[:server][:port]</source>
-        <translation>username[:server][:port]</translation>
+        <translation>Benutzername[:Server][:Port]</translation>
     </message>
     <message>
         <location filename="../qml/pages/Login.qml" line="96"/>
@@ -107,7 +107,7 @@
     <message>
         <location filename="../qml/pages/Login.qml" line="101"/>
         <source>Login</source>
-        <translation>Login</translation>
+        <translation>Anmelden</translation>
     </message>
     <message>
         <location filename="../qml/pages/Login.qml" line="109"/>

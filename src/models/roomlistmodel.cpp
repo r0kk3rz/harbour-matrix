@@ -25,6 +25,8 @@
 #include "lib/connection.h"
 #include "lib/room.h"
 
+const int RoomEventStateRole = Qt::UserRole + 1;
+
 RoomListModel::RoomListModel(QObject* parent)
     : QAbstractListModel(parent)
 {
@@ -59,7 +61,6 @@ void RoomListModel::addRoom(QMatrixClient::Room* room)
     connect( room, &QMatrixClient::Room::namesChanged, this, &RoomListModel::namesChanged );
     connect( room, &QMatrixClient::Room::unreadMessagesChanged, this, &RoomListModel::unreadMessagesChanged );
     connect( room, &QMatrixClient::Room::highlightCountChanged, this, &RoomListModel::highlightCountChanged );
-    connect( room, &QMatrixClient::Room::avatarChanged, this, [=]{ avatarChanged(room, { RoomEventRoles::AvatarRole }); });
     m_rooms.append(room);
     endInsertRows();
 }
@@ -96,21 +97,14 @@ QVariant RoomListModel::data(const QModelIndex& index, int role) const
 			return "normal";
 		}
     }
-    if ( role == AvatarRole)
-    {
-        //return room->avatarUrl().toString().replace("mxc://", "image://mxc/");
-        return QUrl("image://mxc/" + room->avatarUrl().host() + room->avatarUrl().path());
-    }
     return QVariant();
 }
 
-QHash<int, QByteArray> RoomListModel::roleNames() const
-{
-    QHash<int, QByteArray> roles = QAbstractItemModel::roleNames();
-    roles[Qt::DisplayRole] = "display";
-    roles[RoomEventStateRole] = "roomEventState";
-    roles[AvatarRole] = "avatar";
-    return roles;
+QHash<int, QByteArray> RoomListModel::roleNames() const {
+	return QHash<int, QByteArray>({
+					  std::make_pair(Qt::DisplayRole, QByteArray("display")),
+					  std::make_pair(RoomEventStateRole, QByteArray("roomEventState"))
+		  });
 }
 
 void RoomListModel::namesChanged(QMatrixClient::Room* room)
@@ -129,13 +123,4 @@ void RoomListModel::highlightCountChanged(QMatrixClient::Room* room)
 {
     int row = m_rooms.indexOf(room);
     emit dataChanged(index(row), index(row));
-}
-
-void RoomListModel::avatarChanged(QMatrixClient::Room* room, const QVector<int>& roles)
-{
-    int row = m_rooms.indexOf(room);
-    if (row == -1)
-        qCritical() << "Room" << room->id() << "not found in the room list";
-    else
-        emit dataChanged(index(row), index(row), roles);
 }

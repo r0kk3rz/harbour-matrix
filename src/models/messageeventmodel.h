@@ -42,7 +42,6 @@ class MessageEventModel: public QAbstractListModel
             ContentRole,
             ContentTypeRole,
             HighlightRole,
-            AvatarRole,
         };
 
         MessageEventModel(QObject* parent=0);
