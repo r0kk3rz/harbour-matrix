@@ -213,7 +213,7 @@
     <message>
         <location filename="../qml/pages/RoomsPage.qml" line="104"/>
         <source>Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Einstellungen</translation>
     </message>
     <message>
         <location filename="../qml/pages/RoomsPage.qml" line="111"/>
