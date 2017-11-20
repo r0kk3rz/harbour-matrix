@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="es_ES">
+<TS version="2.1" language="de_DE">
 <context>
     <name>AboutPage</name>
     <message>
@@ -97,7 +97,7 @@
     <message>
         <location filename="../qml/pages/Login.qml" line="88"/>
         <source>username[:server][:port]</source>
-        <translation type="unfinished"></translation>
+        <translation>username[:server][:port]</translation>
     </message>
     <message>
         <location filename="../qml/pages/Login.qml" line="96"/>
@@ -107,7 +107,7 @@
     <message>
         <location filename="../qml/pages/Login.qml" line="101"/>
         <source>Login</source>
-        <translation type="unfinished"></translation>
+        <translation>Login</translation>
     </message>
     <message>
         <location filename="../qml/pages/Login.qml" line="109"/>
