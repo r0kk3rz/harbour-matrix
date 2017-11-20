@@ -150,7 +150,7 @@
     <message>
         <location filename="../src/models/messageeventmodel.cpp" line="224"/>
         <source>doesn&apos;t want %1 in the room anymore</source>
-        <translation>möchte, dass %1 den Raum verlässt</translation>
+        <translation>möchte dass %1 den Raum verlässt</translation>
     </message>
     <message>
         <location filename="../src/models/messageeventmodel.cpp" line="226"/>
@@ -175,27 +175,27 @@
     <message>
         <location filename="../src/models/messageeventmodel.cpp" line="244"/>
         <source>set aliases to: %1</source>
-        <translation>ändert den Alias in: %1</translation>
+        <translation>hat den Alias geändert in: %1</translation>
     </message>
     <message>
         <location filename="../src/models/messageeventmodel.cpp" line="249"/>
         <source>set the room main alias to: %1</source>
-        <translation>ändert den Hauptalias des Raumes in: %1</translation>
+        <translation>hat den Hauptalias des Raumes geändert in: %1</translation>
     </message>
     <message>
         <location filename="../src/models/messageeventmodel.cpp" line="254"/>
         <source>set the room name to: %1</source>
-        <translation>ändert den Raumnamen in: %1</translation>
+        <translation>hat den Raumnamen geändert in: %1</translation>
     </message>
     <message>
         <location filename="../src/models/messageeventmodel.cpp" line="259"/>
         <source>set the topic to: %1</source>
-        <translation>ändert das Thema in: %1</translation>
+        <translation>hat das Thema geändert in: %1</translation>
     </message>
     <message>
         <location filename="../src/models/messageeventmodel.cpp" line="264"/>
         <source>activated End-to-End Encryption (algorithm: %1)</source>
-        <translation>aktiviert End-zu-End-Verschlüsselung</translation>
+        <translation>hat End-zu-End-Verschlüsselung aktiviert (Algorithmus: %1)</translation>
     </message>
 </context>
 <context>
@@ -211,6 +211,12 @@
         <translation>Über Matriksi</translation>
     </message>
     <message>
+        <location filename="../qml/pages/RoomsPage.qml" line="104"/>
+        <source>Settings</source>
+        <translation>Einstellungen</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/RoomsPage.qml" line="111"/>
         <location filename="../qml/pages/RoomsPage.qml" line="81"/>
         <source>Logout</source>
         <translation>Abmelden</translation>
@@ -223,7 +229,7 @@
     <message>
         <location filename="../qml/pages/RoomsPage.qml" line="132"/>
         <source>Join room...</source>
-        <translation>Betrete den Raum...</translation>
+        <translation>Betrete einen Raum...</translation>
     </message>
 </context>
 <context>
@@ -236,7 +242,7 @@
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="20"/>
         <source>Fancy colors</source>
-        <translation>originelle Farben</translation>
+        <translation>Originelle Farben</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="21"/>
@@ -246,7 +252,7 @@
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="32"/>
         <source>Dark background</source>
-        <translation>dunkler Hintergrund</translation>
+        <translation>Dunkler Hintergrund</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="33"/>
