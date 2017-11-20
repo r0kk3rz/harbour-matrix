@@ -1,21 +1,3 @@
-/******************************************************************************
- * Copyright (C) 2015 Felix Rohrbach <kde@fxrh.de>
- *
- * This library is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 2.1 of the License, or (at your option) any later version.
- *
- * This library is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public
- * License along with this library; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
- */
-
 #include "messageeventmodel.h"
 
 #include <algorithm>
@@ -53,12 +35,12 @@ void MessageEventModel::changeRoom(QMatrixClient::Room* room)
     {
         using namespace QMatrixClient;
         connect( room, &Room::aboutToAddNewMessages,
-				[=](const RoomEvents& events)
+                [=](const RoomEvents& events)
                 {
                     beginInsertRows(QModelIndex(), 0, events.size() - 1);
                 });
         connect( room, &Room::aboutToAddHistoricalMessages,
-				[=](const RoomEvents& events)
+                [=](const RoomEvents& events)
                 {
                     beginInsertRows(QModelIndex(),
                                     rowCount(), rowCount() + events.size() - 1);
@@ -78,7 +60,7 @@ int MessageEventModel::rowCount(const QModelIndex& parent) const
 {
     if( !m_currentRoom || parent.isValid() )
         return 0;
-	return m_currentRoom->messageEvents().size();
+    return m_currentRoom->messageEvents().size();
 }
 
 QVariant MessageEventModel::data(const QModelIndex& index, int role) const
@@ -86,7 +68,7 @@ QVariant MessageEventModel::data(const QModelIndex& index, int role) const
     using namespace QMatrixClient;
 
     if( !m_currentRoom ||
-			index.row() < 0 || index.row() >= m_currentRoom->messageEvents().size() )
+            index.row() < 0 || index.row() >= m_currentRoom->messageEvents().size() )
         return QVariant();
 
     RoomEvent *event = (m_currentRoom->messageEvents().end() - index.row() - 1)->event();
@@ -97,7 +79,7 @@ QVariant MessageEventModel::data(const QModelIndex& index, int role) const
         {
             RoomMessageEvent* e = static_cast<RoomMessageEvent*>(event);
             User* user = m_connection->user(e->senderId());
-			return QString("%1 (%2): %3").arg(user->displayname()).arg(user->id()).arg(e->plainBody());
+            return QString("%1 (%2): %3").arg(user->displayname()).arg(user->id()).arg(e->plainBody());
         }
         if( event->type() == EventType::RoomMember )
         {
@@ -141,7 +123,7 @@ QVariant MessageEventModel::data(const QModelIndex& index, int role) const
 
     if( role == TimeRole )
     {
-		return event->timestamp();
+        return event->timestamp();
     }
 
     if( role == DateRole )
@@ -306,6 +288,12 @@ QVariant MessageEventModel::data(const QModelIndex& index, int role) const
         return QUrl("image://mxc/" + user->avatarUrl().host() + user->avatarUrl().path());
     }
 
+    if(role == AvatarRole)
+    {
+        User *user = m_connection->user(event->senderId());
+        return QUrl("image://mxc/" + user->avatarUrl().host() + user->avatarUrl().path());
+    }
+
     if( role == EventIdRole )
     {
         return event->id();
@@ -325,6 +313,7 @@ QHash<int, QByteArray> MessageEventModel::roleNames() const
     roles[ContentRole] = "content";
     roles[ContentTypeRole] = "contentType";
     roles[HighlightRole] = "highlight";
+    roles[AvatarRole] = "avatar";
 
     return roles;
 }
