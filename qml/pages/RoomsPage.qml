@@ -31,7 +31,7 @@
 import QtQuick 2.2
 import Sailfish.Silica 1.0
 import Matrix 1.0
-
+import "../components/custom"
 
 Page {
     id: page
@@ -122,18 +122,29 @@ Page {
             width: parent.width
             contentHeight: Theme.itemSizeSmall
 
-            Label {
-                id: roomLabel
-                text:(rooms.roomAt(index).name == "") ? display : rooms.roomAt(index).name
-                color: pressed? Theme.secondaryColor: (rooms.roomAt(index).highlightCount > 0) ? Theme.highlightColor : Theme.primaryColor
-                //elide: Text.ElideRight
-                font.bold: (rooms.roomAt(index).highlightCount > 0)
-                //anchors.margins: 2
-                anchors.leftMargin: Theme.paddingLarge
-                anchors.left: parent.left
-                anchors.right: parent.right
-                anchors.verticalCenter: parent.verticalCenter
-                font.pixelSize: Theme.fontSizeMedium
+            Item {
+                height: parent.height
+
+                AvatarImage {
+                    id: roomAvatar
+                    iconSource: avatar
+                    iconSize: Theme.paddingLarge + Theme.paddingMedium
+                    anchors.verticalCenter: parent.verticalCenter
+                }
+
+                Label {
+                    id: roomLabel
+                    text:(rooms.roomAt(index).name == "") ? display : rooms.roomAt(index).name
+                    color: pressed? Theme.secondaryColor: (rooms.roomAt(index).highlightCount > 0) ? Theme.highlightColor : Theme.primaryColor
+                    //elide: Text.ElideRight
+                    font.bold: (rooms.roomAt(index).highlightCount > 0)
+                    //anchors.margins: 2
+                    anchors.leftMargin: Theme.paddingMedium
+                    anchors.left: roomAvatar.right
+                    anchors.right: parent.right
+                    anchors.verticalCenter: parent.verticalCenter
+                    font.pixelSize: Theme.fontSizeMedium
+                }
             }
 
             onClicked: {
