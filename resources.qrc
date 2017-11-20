@@ -3,6 +3,6 @@
         <file>res/harbour-matrix.png</file>
         <file>res/icon-spain.png</file>
         <file>res/icon-germany.png</file>   
-        <file>res/circle.png</file>     
+        <file>res/circle.png</file>    
     </qresource>
 </RCC>

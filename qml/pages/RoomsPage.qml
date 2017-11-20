@@ -71,7 +71,7 @@ Page {
             }
 
            MenuItem {
-               text: "Settings"
+               text: qsTr("Settings")
                onClicked: {
                    pageStack.push(settingsPage)
             }
@@ -97,7 +97,7 @@ Page {
 
                 AvatarImage {
                     id: roomAvatar
-                    iconSource: avatar
+                    iconSource: "qrc:///res/harbour-matrix.png"
                     iconSize: Theme.paddingLarge + Theme.paddingMedium
                     anchors.verticalCenter: parent.verticalCenter
                 }
@@ -106,7 +106,7 @@ Page {
                     id: roomLabel
                     text:(rooms.roomAt(index).name == "") ? display : rooms.roomAt(index).name
                     color: pressed? Theme.secondaryColor: (rooms.roomAt(index).highlightCount > 0) ? Theme.highlightColor : Theme.primaryColor
-                    //elide: Text.ElideRight
+
                     font.bold: (rooms.roomAt(index).highlightCount > 0)
                     //anchors.margins: 2
                     anchors.leftMargin: Theme.paddingMedium
