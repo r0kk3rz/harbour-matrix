@@ -1,7 +1,7 @@
 import QtQuick 2.2
 import Sailfish.Silica 1.0
 import Matrix 1.0
-import "../components/custom"
+
 
 SilicaListView {
         id: chatView
@@ -83,7 +83,6 @@ SilicaListView {
                         width: height
                         radius: height/2
                         anchors.bottom: parent.bottom
-                        //visible: false
                         color: eventType == "message" ? useFancyColors ? stringToColour(author): Theme.secondaryHighlightColor: ""
                         Label {
                             anchors.centerIn: parent
@@ -91,14 +90,6 @@ SilicaListView {
                             font.pixelSize: parent.height *0.8
                         }
                     }
-                    AvatarImage {
-                        id: userAvatar
-                        iconSource: avatar
-                        iconSize: Theme.paddingLarge + Theme.paddingMedium
-                        anchors.bottom: parent.bottom
-                        visible: avatar == Image.Null ? false : true
-                    }
-
                     Label {
                         id: authorLabel
                         text: eventType == "message" ? author : ""
