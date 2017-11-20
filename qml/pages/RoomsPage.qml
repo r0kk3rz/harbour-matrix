@@ -101,7 +101,7 @@ Page {
             }
 
            MenuItem {
-               text: "Settings"
+               text: qsTr("Settings")
                onClicked: {
                    pageStack.push(settingsPage)
             }

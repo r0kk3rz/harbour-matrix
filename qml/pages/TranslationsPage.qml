@@ -18,7 +18,7 @@ Page {
 
             IconTextButton {
                 anchors.horizontalCenter: parent.horizontalCenter
-                text: "Cintema"
+                text: "Inte"
                 iconSource: "qrc:/res/icon-germany.png"
             }
 
