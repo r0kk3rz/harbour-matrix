@@ -97,7 +97,7 @@
     <message>
         <location filename="../qml/pages/Login.qml" line="88"/>
         <source>username[:server][:port]</source>
-        <translation>username[:server][:port]</translation>
+        <translation>Benutzername[:Server][:Port]</translation>
     </message>
     <message>
         <location filename="../qml/pages/Login.qml" line="96"/>
@@ -107,7 +107,7 @@
     <message>
         <location filename="../qml/pages/Login.qml" line="101"/>
         <source>Login</source>
-        <translation>Login</translation>
+        <translation>Anmelden</translation>
     </message>
     <message>
         <location filename="../qml/pages/Login.qml" line="109"/>
@@ -150,7 +150,7 @@
     <message>
         <location filename="../src/models/messageeventmodel.cpp" line="242"/>
         <source>doesn&apos;t want %1 in the room anymore</source>
-        <translation>möchte, dass %1 den Raum verlässt</translation>
+        <translation>möchte dass %1 den Raum verlässt</translation>
     </message>
     <message>
         <location filename="../src/models/messageeventmodel.cpp" line="244"/>
@@ -175,27 +175,27 @@
     <message>
         <location filename="../src/models/messageeventmodel.cpp" line="262"/>
         <source>set aliases to: %1</source>
-        <translation>ändert den Alias in: %1</translation>
+        <translation>hat den Alias geändert in: %1</translation>
     </message>
     <message>
         <location filename="../src/models/messageeventmodel.cpp" line="267"/>
         <source>set the room main alias to: %1</source>
-        <translation>ändert den Hauptalias des Raumes in: %1</translation>
+        <translation>hat den Hauptalias des Raumes geändert in: %1</translation>
     </message>
     <message>
         <location filename="../src/models/messageeventmodel.cpp" line="272"/>
         <source>set the room name to: %1</source>
-        <translation>ändert den Raumnamen in: %1</translation>
+        <translation>hat den Raumnamen geändert in: %1</translation>
     </message>
     <message>
         <location filename="../src/models/messageeventmodel.cpp" line="277"/>
         <source>set the topic to: %1</source>
-        <translation>ändert das Thema in: %1</translation>
+        <translation>hat das Thema geändert in: %1</translation>
     </message>
     <message>
         <location filename="../src/models/messageeventmodel.cpp" line="282"/>
         <source>activated End-to-End Encryption (algorithm: %1)</source>
-        <translation>aktiviert End-zu-End-Verschlüsselung</translation>
+        <translation>hat End-zu-End-Verschlüsselung aktiviert (Algorithmus: %1)</translation>
     </message>
 </context>
 <context>
@@ -223,7 +223,7 @@
     <message>
         <location filename="../qml/pages/RoomsPage.qml" line="151"/>
         <source>Join room...</source>
-        <translation>Betrete den Raum...</translation>
+        <translation>Betrete einen Raum...</translation>
     </message>
 </context>
 <context>
@@ -236,7 +236,7 @@
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="20"/>
         <source>Fancy colors</source>
-        <translation>originelle Farben</translation>
+        <translation>Originelle Farben</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="21"/>
@@ -246,7 +246,7 @@
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="32"/>
         <source>Dark background</source>
-        <translation>dunkler Hintergrund</translation>
+        <translation>Dunkler Hintergrund</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="33"/>
