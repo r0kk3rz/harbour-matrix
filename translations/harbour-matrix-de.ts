@@ -211,6 +211,11 @@
         <translation>Über Matriksi</translation>
     </message>
     <message>
+        <location filename="../qml/pages/RoomsPage.qml" line="104"/>
+        <source>Settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../qml/pages/RoomsPage.qml" line="111"/>
         <source>Logout</source>
         <translation>Abmelden</translation>
