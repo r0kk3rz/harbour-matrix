@@ -114,14 +114,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>cleared the avatar</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>updated the avatar</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>doesn&apos;t want %1 in the room anymore</source>
         <translation type="unfinished"></translation>
     </message>
@@ -159,6 +151,14 @@
     </message>
     <message>
         <source>activated End-to-End Encryption (algorithm: %1)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>cleared the avatar</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>updated the avatar</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

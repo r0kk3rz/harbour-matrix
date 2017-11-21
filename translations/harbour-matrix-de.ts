@@ -140,12 +140,12 @@
     <message>
         <location filename="../src/models/messageeventmodel.cpp" line="216"/>
         <source>cleared the avatar</source>
-        <translation>hat den Avatar gelöscht</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/models/messageeventmodel.cpp" line="218"/>
         <source>updated the avatar</source>
-        <translation>hat den Avatar aktualisiert</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/models/messageeventmodel.cpp" line="224"/>

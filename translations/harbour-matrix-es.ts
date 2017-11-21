@@ -114,14 +114,6 @@
         <translation>cambió el nombre a %1</translation>
     </message>
     <message>
-        <source>cleared the avatar</source>
-        <translation>borró el avatar</translation>
-    </message>
-    <message>
-        <source>updated the avatar</source>
-        <translation>actualizó el avatar</translation>
-    </message>
-    <message>
         <source>doesn&apos;t want %1 in the room anymore</source>
         <translation>ya no quiere a %1 en la sala</translation>
     </message>
@@ -160,6 +152,14 @@
     <message>
         <source>activated End-to-End Encryption (algorithm: %1)</source>
         <translation>Cifrado end-to-end activado (algoritmo:%1)</translation>
+    </message>
+    <message>
+        <source>cleared the avatar</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>updated the avatar</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
