@@ -49,7 +49,7 @@ ApplicationWindow
     property bool connectionActive: false
 
     property string appName: "Matriksi"
-    property string version: "0.9.4 Beta"
+    property string version: "0.9.5 Beta"
 
     Connections {
         target: connection
