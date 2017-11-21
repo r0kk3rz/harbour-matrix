@@ -106,9 +106,7 @@ Page {
                     id: roomLabel
                     text:(rooms.roomAt(index).name == "") ? display : rooms.roomAt(index).name
                     color: pressed? Theme.secondaryColor: (rooms.roomAt(index).highlightCount > 0) ? Theme.highlightColor : Theme.primaryColor
-
                     font.bold: (rooms.roomAt(index).highlightCount > 0)
-                    //anchors.margins: 2
                     anchors.leftMargin: Theme.paddingMedium
                     anchors.left: roomAvatar.right
                     anchors.right: parent.right

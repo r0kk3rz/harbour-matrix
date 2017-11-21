@@ -14,7 +14,7 @@ Name:       harbour-matrix
 %{?qtc_builddir:%define _builddir %qtc_builddir}
 Summary:    Unofficial Matrix.org client
 Version:    0.9
-Release:    3
+Release:    4
 Group:      Qt/Qt
 License:    GPLv3
 URL:        https://github.com/Sailbook/harbour-matrix
