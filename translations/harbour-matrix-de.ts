@@ -226,7 +226,7 @@
         <translation>Abmeldung</translation>
     </message>
     <message>
-        <location filename="../qml/pages/RoomsPage.qml" line="132"/>
+        <location filename="../qml/pages/RoomsPage.qml" line="130"/>
         <source>Join room...</source>
         <translation>Betrete einen Raum...</translation>
     </message>
