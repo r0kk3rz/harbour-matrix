@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="es">
+<TS version="2.0" language="es">
 <context>
     <name>AboutPage</name>
     <message>
@@ -13,7 +13,7 @@
     </message>
     <message>
         <source>Matriksi is an unofficial Matrix Client for SailfishOS and distributed under the GPLv3 license.</source>
-        <translation>Matriksi es un cliente no oficial de Matrix para SailfishOS y distribuido bajo la licencia GPLv3</translation>
+        <translation>Matriksi es un cliente no oficial de Matrix para SailfishOS y distribuido bajo la licencia GPLv3.</translation>
     </message>
     <message>
         <source>Developers</source>
@@ -68,7 +68,7 @@
     <name>Login</name>
     <message>
         <source>Please wait...</source>
-        <translation>Por favor esperar...</translation>
+        <translation>Por favor espera...</translation>
     </message>
     <message>
         <source>Matriksi</source>
@@ -76,7 +76,7 @@
     </message>
     <message>
         <source>User Name or Matrix ID:</source>
-        <translation>Nombre de ususario o ID de Matrix</translation>
+        <translation>Nombre de usuario o ID de Matrix:</translation>
     </message>
     <message>
         <source>username[:server][:port]</source>
@@ -99,78 +99,78 @@
     <name>MessageEventModel</name>
     <message>
         <source>invited %1 to the room</source>
-        <translation>Invitado %1 para la sala</translation>
+        <translation>%1 ha sido invitado a la sala</translation>
     </message>
     <message>
         <source>joined the room</source>
-        <translation>Unido a una sala</translation>
+        <translation>se unió a la sala</translation>
     </message>
     <message>
         <source>cleared the display name</source>
-        <translation type="unfinished"></translation>
+        <translation>borró el nombre</translation>
     </message>
     <message>
         <source>changed the display name to %1</source>
-        <translation type="unfinished"></translation>
+        <translation>cambió el nombre a %1</translation>
     </message>
     <message>
         <source>cleared the avatar</source>
-        <translation type="unfinished"></translation>
+        <translation>borró el avatar</translation>
     </message>
     <message>
         <source>updated the avatar</source>
-        <translation type="unfinished"></translation>
+        <translation>actualizó el avatar</translation>
     </message>
     <message>
         <source>doesn&apos;t want %1 in the room anymore</source>
-        <translation type="unfinished"></translation>
+        <translation>ya no quiere a %1 en la sala</translation>
     </message>
     <message>
         <source>left the room</source>
-        <translation type="unfinished"></translation>
+        <translation>dejó la sala</translation>
     </message>
     <message>
         <source>banned %1 from the room</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 ha sido bloqueado</translation>
     </message>
     <message>
         <source>self-banned from the room</source>
-        <translation type="unfinished"></translation>
+        <translation>se auto expulsó de la sala</translation>
     </message>
     <message>
         <source>knocked</source>
-        <translation type="unfinished"></translation>
+        <translation>eliminado</translation>
     </message>
     <message>
         <source>set aliases to: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>establecer alias a: %1</translation>
     </message>
     <message>
         <source>set the room main alias to: %1</source>
-        <translation>establecer el alias principal de la sala a:% 1</translation>
+        <translation>establecer el alias principal de la sala a:%1</translation>
     </message>
     <message>
         <source>set the room name to: %1</source>
-        <translation>establecer el nombre de la sala a:% 1</translation>
+        <translation>establecer el nombre de la sala a:%1</translation>
     </message>
     <message>
         <source>set the topic to: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>establecer tema a: %1</translation>
     </message>
     <message>
         <source>activated End-to-End Encryption (algorithm: %1)</source>
-        <translation>Cifrado end-to-end activado (algoritmo:% 1)</translation>
+        <translation>Cifrado end-to-end activado (algoritmo:%1)</translation>
     </message>
 </context>
 <context>
     <name>RoomsPage</name>
     <message>
         <source>Join room...</source>
-        <translation>Unirse a una sala</translation>
+        <translation>Unirse a una sala...</translation>
     </message>
     <message>
         <source>Rooms</source>
-        <translation>salas</translation>
+        <translation>Salas</translation>
     </message>
     <message>
         <source>About Matriksi</source>
@@ -205,7 +205,7 @@
     </message>
     <message>
         <source>Use dark background on chat</source>
-        <translation>Usa fondo oscuro en la charla</translation>
+        <translation>Usa fondo oscuro en la conversación</translation>
     </message>
     <message>
         <source>Matriksi Settings</source>
@@ -231,7 +231,7 @@
     </message>
     <message>
         <source>The LGPL-2.1 license</source>
-        <translation>La LGPL-2.1</translation>
+        <translation>La licencia LGPL-2.1</translation>
     </message>
 </context>
 <context>
