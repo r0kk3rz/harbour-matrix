@@ -31,7 +31,7 @@ Page {
             IconTextButton {
                 anchors.horizontalCenter: parent.horizontalCenter
                 text: "Carlos Gonzalez"
-                iconSource: "qrc:/res/icon-spain.png"
+                iconSource: "qrc:/res/icon-guatemala.png"
             }
          }
     }
