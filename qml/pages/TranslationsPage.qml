@@ -24,7 +24,7 @@ Page {
 
             IconTextButton {
                 anchors.horizontalCenter: parent.horizontalCenter
-                text: "Carmenfdezb"
+                text: "Carmen Fdez"
                 iconSource: "qrc:/res/icon-spain.png"
             }
 
