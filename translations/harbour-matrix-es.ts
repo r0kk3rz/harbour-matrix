@@ -5,105 +5,105 @@
     <name>AboutPage</name>
     <message>
         <source>About Matriksi</source>
-        <translation type="unfinished"></translation>
+        <translation>Acerca de</translation>
     </message>
     <message>
         <source>An unofficial Matrix Client for SailfishOS</source>
-        <translation type="unfinished"></translation>
+        <translation>Un cliente no oficial de Matrix para SailfishOS</translation>
     </message>
     <message>
         <source>Matriksi is an unofficial Matrix Client for SailfishOS and distributed under the GPLv3 license.</source>
-        <translation type="unfinished"></translation>
+        <translation>Matriksi es un cliente no oficial de Matrix para SailfishOS y distribuido bajo la licencia GPLv3</translation>
     </message>
     <message>
         <source>Developers</source>
-        <translation type="unfinished"></translation>
+        <translation>Desarrolladores</translation>
     </message>
     <message>
         <source>Donate with Paypal</source>
-        <translation type="unfinished"></translation>
+        <translation>Donar por paypal</translation>
     </message>
     <message>
         <source>Translations</source>
-        <translation type="unfinished"></translation>
+        <translation>Traductores</translation>
     </message>
 </context>
 <context>
     <name>ChatRoom</name>
     <message>
         <source>Say something...</source>
-        <translation type="unfinished"></translation>
+        <translation>Decir algo...</translation>
     </message>
 </context>
 <context>
     <name>ChatRoom2</name>
     <message>
         <source>Message @</source>
-        <translation type="unfinished"></translation>
+        <translation>Mensaje @</translation>
     </message>
 </context>
 <context>
     <name>CoverPage</name>
     <message>
         <source>My Cover</source>
-        <translation type="unfinished"></translation>
+        <translation>Mi portada</translation>
     </message>
 </context>
 <context>
     <name>DevelopersPage</name>
     <message>
         <source>Developers</source>
-        <translation type="unfinished"></translation>
+        <translation>Desarrolladores</translation>
     </message>
     <message>
         <source>Previous developer</source>
-        <translation type="unfinished"></translation>
+        <translation>Desarrolladores anteriores</translation>
     </message>
     <message>
         <source>Matriksi developers</source>
-        <translation type="unfinished"></translation>
+        <translation>Desarrollador de Matriksi</translation>
     </message>
 </context>
 <context>
     <name>Login</name>
     <message>
         <source>Please wait...</source>
-        <translation type="unfinished"></translation>
+        <translation>Por favor esperar...</translation>
     </message>
     <message>
         <source>Matriksi</source>
-        <translation type="unfinished"></translation>
+        <translation>Matriksi</translation>
     </message>
     <message>
         <source>User Name or Matrix ID:</source>
-        <translation type="unfinished"></translation>
+        <translation>Nombre de ususario o ID de Matrix</translation>
     </message>
     <message>
         <source>username[:server][:port]</source>
-        <translation type="unfinished"></translation>
+        <translation>Nombre de usuario[:servidor][:puerto]</translation>
     </message>
     <message>
         <source>Password:</source>
-        <translation type="unfinished"></translation>
+        <translation>Contraseña:</translation>
     </message>
     <message>
         <source>Login</source>
-        <translation type="unfinished"></translation>
+        <translation>Iniciar sesión</translation>
     </message>
     <message>
         <source>Create an Matrix account</source>
-        <translation type="unfinished"></translation>
+        <translation>Crear cuenta de Matrix</translation>
     </message>
 </context>
 <context>
     <name>MessageEventModel</name>
     <message>
         <source>invited %1 to the room</source>
-        <translation type="unfinished"></translation>
+        <translation>Invitado %1 para la sala</translation>
     </message>
     <message>
         <source>joined the room</source>
-        <translation type="unfinished"></translation>
+        <translation>Unido a una sala</translation>
     </message>
     <message>
         <source>cleared the display name</source>
@@ -147,11 +147,11 @@
     </message>
     <message>
         <source>set the room main alias to: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>establecer el alias principal de la sala a:% 1</translation>
     </message>
     <message>
         <source>set the room name to: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>establecer el nombre de la sala a:% 1</translation>
     </message>
     <message>
         <source>set the topic to: %1</source>
@@ -159,86 +159,86 @@
     </message>
     <message>
         <source>activated End-to-End Encryption (algorithm: %1)</source>
-        <translation type="unfinished"></translation>
+        <translation>Cifrado end-to-end activado (algoritmo:% 1)</translation>
     </message>
 </context>
 <context>
     <name>RoomsPage</name>
     <message>
         <source>Join room...</source>
-        <translation type="unfinished"></translation>
+        <translation>Unirse a una sala</translation>
     </message>
     <message>
         <source>Rooms</source>
-        <translation type="unfinished"></translation>
+        <translation>salas</translation>
     </message>
     <message>
         <source>About Matriksi</source>
-        <translation type="unfinished"></translation>
+        <translation>Acerca de</translation>
     </message>
     <message>
         <source>Logout</source>
-        <translation type="unfinished"></translation>
+        <translation>Cerrar sesión</translation>
     </message>
     <message>
         <source>Logging out</source>
-        <translation type="unfinished"></translation>
+        <translation>Cerrando sesión</translation>
     </message>
     <message>
         <source>Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Ajustes</translation>
     </message>
 </context>
 <context>
     <name>SettingsPage</name>
     <message>
         <source>Fancy colors</source>
-        <translation type="unfinished"></translation>
+        <translation>Colores elegantes</translation>
     </message>
     <message>
         <source>Use fancy colors on user names</source>
-        <translation type="unfinished"></translation>
+        <translation>Usa colores elegantes en nombres de usuario</translation>
     </message>
     <message>
         <source>Dark background</source>
-        <translation type="unfinished"></translation>
+        <translation>Fondo oscuro</translation>
     </message>
     <message>
         <source>Use dark background on chat</source>
-        <translation type="unfinished"></translation>
+        <translation>Usa fondo oscuro en la charla</translation>
     </message>
     <message>
         <source>Matriksi Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Ajustes</translation>
     </message>
 </context>
 <context>
     <name>ThirdPartyLabel</name>
     <message>
         <source>License</source>
-        <translation type="unfinished"></translation>
+        <translation>Licencia</translation>
     </message>
     <message>
         <source>Project Page</source>
-        <translation type="unfinished"></translation>
+        <translation>Página del proyecto</translation>
     </message>
 </context>
 <context>
     <name>ThirdPartyPage</name>
     <message>
         <source>Third Party</source>
-        <translation type="unfinished"></translation>
+        <translation>Terceros</translation>
     </message>
     <message>
         <source>The LGPL-2.1 license</source>
-        <translation type="unfinished"></translation>
+        <translation>La LGPL-2.1</translation>
     </message>
 </context>
 <context>
     <name>TranslationsPage</name>
     <message>
         <source>Translators</source>
-        <translation type="unfinished"></translation>
+        <translation>Traductores</translation>
     </message>
 </context>
 </TS>
