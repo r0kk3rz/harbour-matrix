@@ -133,33 +133,16 @@ SilicaListView {
                 }
             }
 
-            /*Rectangle {
-                color: "#99bb99"
-                height: chatView.ListView.previousSection != chatView.ListView.section ? 20 : 0
-                width: parent.width
-                visible: chatView.ListView.previousSection != chatView.ListView.section ? true : false
-                Text { text: chatView.ListView.section }
-            }*/
-
-            /*onPressAndHold: {
-                //if (!contextMenu)
-                 //   contextMenu = contextMenuComponent.createObject(chatView)
-                //chatView.textvalue = chattext.text
-                showMenu(myListItem)
-            }*/
             Component {
                 id: contextMenuComponent
                 ContextMenu {
                     TextArea {
                         x: 10
                         width: chatView.width -x
-                        //height: contentHeight
-                        //id: chattext
                         text: content
                         color: Theme.highlightColor
                         wrapMode: Text.WordWrap
                         font.pixelSize: Theme.fontSizeExtraSmall
-                        //readOnly: true
                         Component.onCompleted: selectAll();
                     }
 
@@ -167,10 +150,6 @@ SilicaListView {
             }
 
         }
-
-
-
-
 
         VerticalScrollDecorator {
             flickable: chatView

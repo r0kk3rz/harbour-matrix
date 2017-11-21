@@ -30,7 +30,7 @@ Item {
             sourceSize: Qt.size(iconSize, iconSize)
             visible: false //(wrapper.userName) ? false : true
         }
-        
+
         Image {
             id: mask
             source: "qrc:/res/circle.png"
