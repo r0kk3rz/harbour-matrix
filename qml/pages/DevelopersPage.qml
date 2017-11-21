@@ -20,7 +20,7 @@ Page
 
             CollaboratorsLabel {
                 title: qsTr("Developers");
-                labelData: [ "Xray2000", "r0kk3rz", "minitreintje"  ]
+                labelData: [ "Xray2000", "r0kk3rz", "minitreintje", "AlmAck" ]
             }
 
             CollaboratorsLabel {
