@@ -52,4 +52,5 @@ Item {
 
         onClicked: wrapper.clicked();
     }
-}
+  }
+

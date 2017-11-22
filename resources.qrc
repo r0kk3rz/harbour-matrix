@@ -2,8 +2,8 @@
     <qresource prefix="/">
         <file>res/harbour-matrix.png</file>
         <file>res/icon-spain.png</file>
-        <file>res/icon-guatemala.png</file>
         <file>res/icon-germany.png</file>   
-        <file>res/circle.png</file>    
+        <file>res/circle.png</file>  
+        <file>res/noavatar.png</file>    
     </qresource>
 </RCC>
