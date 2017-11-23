@@ -48,7 +48,7 @@ Page {
         width: parent.width
         height: parent.height - textEntry.height
 
-        anchors.fill: parent
+        anchors.top: parent.top
 
         clip: true
         currentIndex: -1
