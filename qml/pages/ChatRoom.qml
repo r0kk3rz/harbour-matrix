@@ -36,8 +36,8 @@ SilicaListView {
                 sendLine(text)
                 textEntry.text = ""
             }
-
         }
+
         delegate: Item {
             id: myListItem
             property Item contextMenu
@@ -93,7 +93,6 @@ SilicaListView {
                     color: eventType == "message" ? Theme.primaryColor: Theme.secondaryColor
                     wrapMode: Text.WordWrap
                     font.pixelSize: Theme.fontSizeSmall
-
                 }
 
                 onPressAndHold: {

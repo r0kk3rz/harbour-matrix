@@ -45,7 +45,7 @@
 <context>
     <name>ChatRoom2</name>
     <message>
-        <location filename="../qml/pages/ChatRoom2.qml" line="49"/>
+        <location filename="../qml/pages/ChatRoom2.qml" line="48"/>
         <source>Message @</source>
         <translation>Nachricht @</translation>
     </message>
@@ -226,13 +226,18 @@
         <translation>Abmeldung</translation>
     </message>
     <message>
-        <location filename="../qml/pages/RoomsPage.qml" line="130"/>
+        <location filename="../qml/pages/RoomsPage.qml" line="132"/>
         <source>Join room...</source>
         <translation>Betrete einen Raum...</translation>
     </message>
 </context>
 <context>
     <name>SettingsPage</name>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="14"/>
+        <source>Settings</source>
+        <translation type="unfinished">Einstellungen</translation>
+    </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="16"/>
         <source>Matriksi Settings</source>

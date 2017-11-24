@@ -94,6 +94,8 @@ Page {
 
             Item {
                 height: parent.height
+                x: Theme.paddingMedium
+                width: parent.width - x-x
 
                 AvatarImage {
                     id: roomAvatar

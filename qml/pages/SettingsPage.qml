@@ -11,7 +11,7 @@ Page {
         spacing: Theme.paddingMedium
         x: Theme.paddingLarge
 
-        PageHeader {title: "Settings"}
+        PageHeader { title: qsTr("Settings") }
 
         SectionHeader{ text: qsTr("Matriksi Settings") }
 
