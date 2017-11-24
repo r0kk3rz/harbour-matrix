@@ -155,11 +155,11 @@
     </message>
     <message>
         <source>cleared the avatar</source>
-        <translation type="unfinished"></translation>
+        <translation>borró el avatar</translation>
     </message>
     <message>
         <source>updated the avatar</source>
-        <translation type="unfinished"></translation>
+        <translation>actualizó el avatar</translation>
     </message>
 </context>
 <context>
@@ -213,7 +213,7 @@
     </message>
     <message>
         <source>Settings</source>
-        <translation type="unfinished">Ajustes</translation>
+        <translation>Ajustes</translation>
     </message>
 </context>
 <context>
