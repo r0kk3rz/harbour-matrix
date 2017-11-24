@@ -63,6 +63,10 @@
         <source>Matriksi developers</source>
         <translation>Desarrollador de Matriksi</translation>
     </message>
+    <message>
+        <source>Contributors</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>Login</name>

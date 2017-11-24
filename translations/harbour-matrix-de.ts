@@ -75,6 +75,11 @@
         <source>Previous developer</source>
         <translation>Frühere Entwickler</translation>
     </message>
+    <message>
+        <location filename="../qml/pages/DevelopersPage.qml" line="32"/>
+        <source>Contributors</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>Login</name>

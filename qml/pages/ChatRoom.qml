@@ -85,7 +85,7 @@ SilicaListView {
                     opacity: 0.4
                 }
 
-                Label {
+                Label{
                     x: labelColumn.width+10
                     width: chatView.width -x
                     id: chattext
@@ -101,7 +101,6 @@ SilicaListView {
                     chatview.textvalue = chattext.text
                     contextMenu.show(myListItem)
                 }
-
             }
         }
 

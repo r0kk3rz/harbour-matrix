@@ -20,12 +20,17 @@ Page
 
             CollaboratorsLabel {
                 title: qsTr("Developers");
-                labelData: [ "Xray2000", "r0kk3rz", "minitreintje", "AlmAck" ]
+                labelData: [ "Xray2000", "r0kk3rz", "AlmAck" ]
             }
 
             CollaboratorsLabel {
                 title: qsTr("Previous developer");
                 labelData: [ "Anttsam" ]
+            }
+
+            CollaboratorsLabel {
+                title: qsTr("Contributors");
+                labelData: [ "minitreintje", "KitsuneRal" ]
             }
         }
     }
