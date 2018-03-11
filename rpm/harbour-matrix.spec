@@ -19,7 +19,6 @@ Group:      Qt/Qt
 License:    GPLv3
 URL:        https://github.com/Sailbook/harbour-matrix
 Source0:    %{name}-%{version}.tar.bz2
-Source100:  harbour-matrix.yaml
 Requires:   sailfishsilica-qt5 >= 0.10.9
 Requires:   nemo-qml-plugin-configuration-qt5
 BuildRequires:  pkgconfig(sailfishapp) >= 1.0.2

@@ -33,6 +33,7 @@ class MessageEventModel: public QAbstractListModel
 
         Q_INVOKABLE void setConnection(QMatrixClient::Connection* connection);
         Q_INVOKABLE void changeRoom(QMatrixClient::Room* room);
+        //Q_INVOKABLE void refreshEvent(const QMatrixClient::RoomEvent* event);
 
         //override QModelIndex index(int row, int column, const QModelIndex& parent=QModelIndex()) const;
         //override QModelIndex parent(const QModelIndex& index) const;

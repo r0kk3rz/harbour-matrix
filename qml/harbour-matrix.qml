@@ -98,9 +98,9 @@ ApplicationWindow
         if(!connect) connect = connection.connectToServer
 
         connection.connected.connect(function() {
-            settings.setValue("user",  connection.userId())
-            settings.setValue("token", connection.token())
-            settings.setValue("device_id", connection.deviceId())
+            settings.setValue("user",  connection.localUserId)
+            settings.setValue("token", connection.token)
+            settings.setValue("device_id", connection.deviceId)
             settings.sync()
 
             connection.syncDone.connect(resync)
@@ -110,15 +110,10 @@ ApplicationWindow
         })
 
         var userParts = user.split(':')
-        if(userParts.length === 1 || userParts[1] === "matrix.org") {
-            console.log("Connect to matrix.org")
+        if(userParts.length === 1 ) {
             connect(user, pass, settings.value("device_id", "sailfish"))
         } else {
-            connection.resolved.connect(function() {
-                connect(user, pass, settings.value("device_id","sailfish"))
-            })
-            console.log("ResolveServer: " + userParts[1])
-            connection.resolveServer(userParts[1])
+            connect("@"+user, pass, settings.value("device_id", "sailfish"))
         }
     }
 

@@ -5,9 +5,15 @@ i18n_files.path = /usr/share/$$TARGET
 
 INSTALLS += i18n_files
 
-CONFIG += c++11 sailfishapp
+CONFIG += c++14 sailfishapp
+
+QMAKE_CXX=/opt/gcc6/bin/g++
+QMAKE_CC=/opt/gcc6/bin/gcc
+QMAKE_LINK=/opt/gcc6/bin/g++
 
 include(lib/libqmatrixclient.pri)
+
+LIBS += -lz -L/opt/gcc6/lib -static-libstdc++
 
 SOURCES += src/harbour-matrix.cpp \
     src/models/messageeventmodel.cpp \
@@ -19,7 +25,6 @@ OTHER_FILES += qml/harbour-matrix.qml \
     qml/cover/CoverPage.qml \
     rpm/harbour-matrix.changes.in \
     rpm/harbour-matrix.spec \
-    rpm/harbour-matrix.yaml \
     translations/*.ts \
     harbour-matrix.desktop
 

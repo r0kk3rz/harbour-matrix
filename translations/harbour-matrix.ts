@@ -194,6 +194,21 @@
     </message>
 </context>
 <context>
+    <name>RoomsPage2</name>
+    <message>
+        <source>Rooms</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>About Matriksi</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Join room...</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>SettingsPage</name>
     <message>
         <source>Fancy colors</source>

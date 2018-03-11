@@ -123,82 +123,82 @@
 <context>
     <name>MessageEventModel</name>
     <message>
-        <location filename="../src/models/messageeventmodel.cpp" line="199"/>
+        <location filename="../src/models/messageeventmodel.cpp" line="201"/>
         <source>invited %1 to the room</source>
         <translation>%1 in den Raum eingeladen</translation>
     </message>
     <message>
-        <location filename="../src/models/messageeventmodel.cpp" line="200"/>
+        <location filename="../src/models/messageeventmodel.cpp" line="202"/>
         <source>joined the room</source>
         <translation>hat den Raum betreten</translation>
     </message>
     <message>
-        <location filename="../src/models/messageeventmodel.cpp" line="206"/>
+        <location filename="../src/models/messageeventmodel.cpp" line="208"/>
         <source>cleared the display name</source>
         <translation>hat den Anzeigenamen gelöscht</translation>
     </message>
     <message>
-        <location filename="../src/models/messageeventmodel.cpp" line="208"/>
+        <location filename="../src/models/messageeventmodel.cpp" line="210"/>
         <source>changed the display name to %1</source>
         <translation>hat den Anzeigename geändert zu</translation>
     </message>
     <message>
-        <location filename="../src/models/messageeventmodel.cpp" line="216"/>
+        <location filename="../src/models/messageeventmodel.cpp" line="218"/>
         <source>cleared the avatar</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/models/messageeventmodel.cpp" line="218"/>
+        <location filename="../src/models/messageeventmodel.cpp" line="220"/>
         <source>updated the avatar</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/models/messageeventmodel.cpp" line="224"/>
+        <location filename="../src/models/messageeventmodel.cpp" line="226"/>
         <source>doesn&apos;t want %1 in the room anymore</source>
         <translation>möchte dass %1 den Raum verlässt</translation>
     </message>
     <message>
-        <location filename="../src/models/messageeventmodel.cpp" line="226"/>
+        <location filename="../src/models/messageeventmodel.cpp" line="228"/>
         <source>left the room</source>
         <translation>hat den Raum verlassen</translation>
     </message>
     <message>
-        <location filename="../src/models/messageeventmodel.cpp" line="229"/>
+        <location filename="../src/models/messageeventmodel.cpp" line="231"/>
         <source>banned %1 from the room</source>
         <translation>hat %1 aus dem Raum verbannt</translation>
     </message>
     <message>
-        <location filename="../src/models/messageeventmodel.cpp" line="231"/>
+        <location filename="../src/models/messageeventmodel.cpp" line="233"/>
         <source>self-banned from the room</source>
         <translation>hat sich selbst aus dem Raum verbannt</translation>
     </message>
     <message>
-        <location filename="../src/models/messageeventmodel.cpp" line="233"/>
+        <location filename="../src/models/messageeventmodel.cpp" line="235"/>
         <source>knocked</source>
         <translation>wurde aus dem Raum entfernt</translation>
     </message>
     <message>
-        <location filename="../src/models/messageeventmodel.cpp" line="244"/>
+        <location filename="../src/models/messageeventmodel.cpp" line="246"/>
         <source>set aliases to: %1</source>
         <translation>hat den Alias geändert in: %1</translation>
     </message>
     <message>
-        <location filename="../src/models/messageeventmodel.cpp" line="249"/>
+        <location filename="../src/models/messageeventmodel.cpp" line="251"/>
         <source>set the room main alias to: %1</source>
         <translation>hat den Hauptalias des Raumes geändert in: %1</translation>
     </message>
     <message>
-        <location filename="../src/models/messageeventmodel.cpp" line="254"/>
+        <location filename="../src/models/messageeventmodel.cpp" line="256"/>
         <source>set the room name to: %1</source>
         <translation>hat den Raumnamen geändert in: %1</translation>
     </message>
     <message>
-        <location filename="../src/models/messageeventmodel.cpp" line="259"/>
+        <location filename="../src/models/messageeventmodel.cpp" line="261"/>
         <source>set the topic to: %1</source>
         <translation>hat das Thema geändert in: %1</translation>
     </message>
     <message>
-        <location filename="../src/models/messageeventmodel.cpp" line="264"/>
+        <location filename="../src/models/messageeventmodel.cpp" line="266"/>
         <source>activated End-to-End Encryption (algorithm: %1)</source>
         <translation>hat End-zu-End-Verschlüsselung aktiviert (Algorithmus: %1)</translation>
     </message>
@@ -234,6 +234,24 @@
         <location filename="../qml/pages/RoomsPage.qml" line="132"/>
         <source>Join room...</source>
         <translation>Betrete einen Raum...</translation>
+    </message>
+</context>
+<context>
+    <name>RoomsPage2</name>
+    <message>
+        <location filename="../qml/pages/RoomsPage2.qml" line="98"/>
+        <source>Rooms</source>
+        <translation type="unfinished">Räume</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/RoomsPage2.qml" line="110"/>
+        <source>About Matriksi</source>
+        <translation type="unfinished">Über Matriksi</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/RoomsPage2.qml" line="169"/>
+        <source>Join room...</source>
+        <translation type="unfinished">Betrete einen Raum...</translation>
     </message>
 </context>
 <context>

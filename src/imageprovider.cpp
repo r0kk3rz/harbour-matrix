@@ -64,7 +64,7 @@ void ImageProvider::doRequest(QString id, QSize requestedSize, QPixmap* pixmap,
     {
         // TODO: need to check result to see if this is success or not
         // No need to lock because we don't deal with the ImageProvider state
-        *pixmap = job->thumbnail();
+        //*pixmap = job->thumbnail();
         condition->wakeAll();
     } );
 }

@@ -34,19 +34,21 @@ void MessageEventModel::changeRoom(QMatrixClient::Room* room)
     if( room )
     {
         using namespace QMatrixClient;
-        connect( room, &Room::aboutToAddNewMessages,
-                [=](const RoomEvents& events)
+        connect(m_currentRoom, &Room::aboutToAddNewMessages, this,
+                [=](RoomEventsRange events)
                 {
-                    beginInsertRows(QModelIndex(), 0, events.size() - 1);
+                    beginInsertRows(QModelIndex(), rowCount(),
+                                    rowCount() + int(events.size()) - 1);
                 });
-        connect( room, &Room::aboutToAddHistoricalMessages,
-                [=](const RoomEvents& events)
+        connect(m_currentRoom, &Room::aboutToAddHistoricalMessages, this,
+                [=](RoomEventsRange events)
                 {
-                    beginInsertRows(QModelIndex(),
-                                    rowCount(), rowCount() + events.size() - 1);
+                    beginInsertRows(QModelIndex(), 0, int(events.size()) - 1);
                 });
-        connect( room, &Room::addedMessages,
-                 this, &MessageEventModel::endInsertRows );
+        connect(m_currentRoom, &Room::addedMessages,
+                this, &MessageEventModel::endInsertRows);
+        qDebug() << "Connected to room" << room->id()
+<< "as" << room->connection()->userId();
     }
     endResetModel();
 }
