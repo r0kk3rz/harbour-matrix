@@ -11,6 +11,7 @@
 #include "lib/events/roommessageevent.h"
 #include "lib/events/roommemberevent.h"
 #include "lib/events/simplestateevents.h"
+#include "lib/events/redactionevent.h"
 
 MessageEventModel::MessageEventModel(QObject* parent)
     : QAbstractListModel(parent)
@@ -45,11 +46,33 @@ void MessageEventModel::changeRoom(QMatrixClient::Room* room)
                 {
                     beginInsertRows(QModelIndex(), 0, int(events.size()) - 1);
                 });
+        connect(m_currentRoom, &Room::readMarkerMoved, this, [this] {
+            refreshEventRoles(
+                std::exchange(lastReadEventId,
+                              m_currentRoom->readMarkerEventId()),
+                {ReadMarkerRole});
+            refreshEventRoles(lastReadEventId, {ReadMarkerRole});
+        });
+        connect(m_currentRoom, &Room::replacedEvent, this,
+                [this] (const RoomEvent* newEvent) {
+                    refreshEvent(newEvent->id());
+        });
         connect(m_currentRoom, &Room::addedMessages,
                 this, &MessageEventModel::endInsertRows);
+        connect(m_currentRoom, &Room::fileTransferProgress,
+                this, &MessageEventModel::refreshEvent);
+        connect(m_currentRoom, &Room::fileTransferCompleted,
+                this, &MessageEventModel::refreshEvent);
+        connect(m_currentRoom, &Room::fileTransferFailed,
+                this, &MessageEventModel::refreshEvent);
+        connect(m_currentRoom, &Room::fileTransferCancelled,
+                this, &MessageEventModel::refreshEvent);
         qDebug() << "Connected to room" << room->id()
-<< "as" << room->connection()->userId();
+            << "as" << room->connection()->userId();
     }
+
+    lastReadEventId = room ? room->readMarkerEventId() : "";
+
     endResetModel();
 }
 
@@ -63,6 +86,22 @@ int MessageEventModel::rowCount(const QModelIndex& parent) const
     if( !m_currentRoom || parent.isValid() )
         return 0;
     return m_currentRoom->messageEvents().size();
+}
+
+void MessageEventModel::refreshEvent(const QString& eventId)
+{
+    refreshEventRoles(eventId, {});
+}
+
+void MessageEventModel::refreshEventRoles(const QString& eventId,
+                                     const QVector<int> roles)
+{
+    const auto it = m_currentRoom->findInTimeline(eventId);
+    if (it != m_currentRoom->timelineEdge())
+    {
+        const auto row = it - m_currentRoom->messageEvents().rbegin();
+        emit dataChanged(index(row), index(row), roles);
+    }
 }
 
 QVariant MessageEventModel::data(const QModelIndex& index, int role) const
@@ -284,10 +323,27 @@ QVariant MessageEventModel::data(const QModelIndex& index, int role) const
         }
     }
 
-    if(role == Qt::DecorationRole)
+    if( role == ReadMarkerRole )
     {
-        User *user = m_connection->user(event->senderId());
-        return QUrl("image://mxc/" + user->avatarUrl().host() + user->avatarUrl().path());
+        return event->id() == lastReadEventId;
+    }
+
+    if( role == SpecialMarksRole )
+    {
+        if (event->isStateEvent() &&
+                static_cast<const StateEventBase*>(event)->repeatsState())
+            return "hidden";
+        return event->isRedacted() ? "redacted" : "";
+    }
+
+    if( role == LongOperationRole )
+    {
+        if (event->type() == EventType::RoomMessage &&
+                static_cast<const RoomMessageEvent*>(event)->hasFileContent())
+        {
+            auto info = m_currentRoom->fileTransferInfo(event->id());
+            return QVariant::fromValue(info);
+        }
     }
 
     if(role == AvatarRole)

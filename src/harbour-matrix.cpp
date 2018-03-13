@@ -1,7 +1,3 @@
-#ifdef QT_QML_DEBUG
-#include <QtQuick>
-#endif
-
 #include <sailfishapp.h>
 #include <QGuiApplication>
 #include <QQmlEngine>
@@ -36,6 +32,8 @@ int main(int argc, char *argv[])
     qmlRegisterType<Connection>        ("Matrix", 1, 0, "Connection");
     qmlRegisterType<MessageEventModel> ("Matrix", 1, 0, "MessageEventModel");
     qmlRegisterType<RoomListModel>     ("Matrix", 1, 0, "RoomListModel");
+    qmlRegisterType<QMatrixClient::FileTransferInfo>();
+    qRegisterMetaType<QMatrixClient::FileTransferInfo>();
 
     Connection conn;
 

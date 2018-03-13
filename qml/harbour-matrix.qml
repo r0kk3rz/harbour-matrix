@@ -99,7 +99,7 @@ ApplicationWindow
 
         connection.connected.connect(function() {
             settings.setValue("user",  connection.localUserId)
-            settings.setValue("token", connection.token)
+            settings.setValue("token", connection.accessToken)
             settings.setValue("device_id", connection.deviceId)
             settings.sync()
 
@@ -111,7 +111,7 @@ ApplicationWindow
 
         var userParts = user.split(':')
         if(userParts.length === 1 ) {
-            connect(user, pass, settings.value("device_id", "sailfish"))
+            connect("@"+user+":matrix.org", pass, settings.value("device_id", "sailfish"))
         } else {
             connect("@"+user, pass, settings.value("device_id", "sailfish"))
         }

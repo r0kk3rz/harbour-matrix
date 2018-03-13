@@ -15,18 +15,23 @@ namespace QMatrixClient
 class MessageEventModel: public QAbstractListModel
 {
         Q_OBJECT
-    public:
-        enum EventRoles {
-            EventTypeRole = Qt::UserRole + 1,
-            EventIdRole,
-            TimeRole,
-            DateRole,
-            AuthorRole,
-            ContentRole,
-            ContentTypeRole,
-            HighlightRole,
-            AvatarRole,
-        };
+public:
+    enum EventRoles {
+        EventTypeRole = Qt::UserRole + 1,
+        EventIdRole,
+        TimeRole,
+        SectionRole,
+        AboveSectionRole,
+        AuthorRole,
+        ContentRole,
+        ContentTypeRole,
+        HighlightRole,
+        ReadMarkerRole,
+        SpecialMarksRole,
+        LongOperationRole,
+        AvatarRole,
+        DateRole,
+    };
 
         MessageEventModel(QObject* parent=0);
         virtual ~MessageEventModel();
@@ -41,9 +46,15 @@ class MessageEventModel: public QAbstractListModel
         QVariant data(const QModelIndex& index, int role = Qt::DisplayRole) const override;
         QHash<int, QByteArray> roleNames() const override;
 
+    private slots:
+        void refreshEvent(const QString& eventId);
+
     private:
         QMatrixClient::Connection* m_connection;
         QMatrixClient::Room* m_currentRoom;
+        QString lastReadEventId;
+
+        void refreshEventRoles(const QString& eventId, const QVector<int> roles);
 };
 
 #endif // LOGMESSAGEMODEL_H
