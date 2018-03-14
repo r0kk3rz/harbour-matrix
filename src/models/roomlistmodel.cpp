@@ -42,7 +42,6 @@ void RoomListModel::setConnection(QMatrixClient::Connection* connection)
     m_rooms.clear();
     connect( connection, &QMatrixClient::Connection::newRoom, this, &RoomListModel::addRoom );
     for( QMatrixClient::Room* room: connection->roomMap().values() ) {
-        connect( room, &QMatrixClient::Room::namesChanged, this, &RoomListModel::namesChanged );
         m_rooms.append(room);
     }
     endResetModel();
@@ -56,12 +55,24 @@ QMatrixClient::Room* RoomListModel::roomAt(int row)
 void RoomListModel::addRoom(QMatrixClient::Room* room)
 {
     beginInsertRows(QModelIndex(), m_rooms.count(), m_rooms.count());
-    connect( room, &QMatrixClient::Room::namesChanged, this, &RoomListModel::namesChanged );
-    connect( room, &QMatrixClient::Room::unreadMessagesChanged, this, &RoomListModel::unreadMessagesChanged );
-    connect( room, &QMatrixClient::Room::highlightCountChanged, this, &RoomListModel::highlightCountChanged );
-    connect( room, &QMatrixClient::Room::avatarChanged, this, [=]{ avatarChanged(room, { RoomEventRoles::AvatarRole }); });
+    connect( room, &QMatrixClient::Room::namesChanged, this, [=]{ refresh(room, {Qt::DisplayRole}); });
+    connect( room, &QMatrixClient::Room::unreadMessagesChanged, this, [=]{ refresh(room, {RoomEventRoles::HasUnreadRole}); });
+    connect( room, &QMatrixClient::Room::highlightCountChanged, this, [=]{ refresh(room, {RoomEventRoles::HighlightCountRole}); });
+    connect( room, &QMatrixClient::Room::avatarChanged, this, [=]{ refresh(room, { RoomEventRoles::AvatarRole }); });
+
     m_rooms.append(room);
     endInsertRows();
+}
+
+void RoomListModel::deleteRoom(QMatrixClient::Room* room)
+{
+    auto i = m_rooms.indexOf(room);
+    if (i == -1)
+        return; // Already deleted, nothing to do
+
+    beginRemoveRows(QModelIndex(), i, i);
+    m_rooms.removeAt(i);
+    endRemoveRows();
 }
 
 int RoomListModel::rowCount(const QModelIndex& parent) const
@@ -86,16 +97,15 @@ QVariant RoomListModel::data(const QModelIndex& index, int role) const
     {
         return room->displayName();
     }
-    if ( role == RoomEventStateRole )
+    if(role == HasUnreadRole)
     {
-        if (room->highlightCount() > 0) {
-            return "highlight";
-        } else if (room->hasUnreadMessages()) {
-            return "unread";
-        } else {
-            return "normal";
-        }
+        return room->hasUnreadMessages();
     }
+    if(role == HighlightCountRole)
+    {
+        return room->highlightCount();
+     }
+
     return QVariant();
 }
 
@@ -103,30 +113,13 @@ QHash<int, QByteArray> RoomListModel::roleNames() const
 {
     QHash<int, QByteArray> roles = QAbstractItemModel::roleNames();
     roles[Qt::DisplayRole] = "display";
-    roles[RoomEventStateRole] = "roomEventState";
+    roles[HasUnreadRole] = "unread";
+    roles[HighlightCountRole] = "highlightcount";
     roles[AvatarRole] = "avatar";
     return roles;
 }
 
-void RoomListModel::namesChanged(QMatrixClient::Room* room)
-{
-    int row = m_rooms.indexOf(room);
-    emit dataChanged(index(row), index(row));
-}
-
-void RoomListModel::unreadMessagesChanged(QMatrixClient::Room* room)
-{
-    int row = m_rooms.indexOf(room);
-    emit dataChanged(index(row), index(row));
-}
-
-void RoomListModel::highlightCountChanged(QMatrixClient::Room* room)
-{
-    int row = m_rooms.indexOf(room);
-    emit dataChanged(index(row), index(row));
-}
-
-void RoomListModel::avatarChanged(QMatrixClient::Room* room, const QVector<int>& roles)
+void RoomListModel::refresh(QMatrixClient::Room* room, const QVector<int>& roles)
 {
     int row = m_rooms.indexOf(room);
     if (row == -1)

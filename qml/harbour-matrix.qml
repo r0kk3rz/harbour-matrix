@@ -86,6 +86,14 @@ ApplicationWindow
         }
     }
 
+    function saveState() {
+        if(connectionActive)
+        {
+           console.log("Saving State...")
+           connection.saveState()
+        }
+    }
+
     function resync() {
         if(!initialised) {
             login.visible = false
@@ -102,6 +110,8 @@ ApplicationWindow
             settings.setValue("token", connection.accessToken)
             settings.setValue("device_id", connection.deviceId)
             settings.sync()
+
+            connection.loadState()
 
             connection.syncDone.connect(resync)
             connection.reconnected.connect(resync)

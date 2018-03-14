@@ -17,6 +17,8 @@ SilicaListView {
         function setRoom(room) {
             currentRoom = room
             messageModel.changeRoom(room)
+            room.markAllMessagesAsRead()
+            room.resetHighlightCount()
         }
 
         function setConnection(conn) {

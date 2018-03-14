@@ -97,23 +97,29 @@ Page {
                 x: Theme.paddingMedium
                 width: parent.width - x-x
 
-                AvatarImage {
-                    id: roomAvatar
-                    iconSource: "qrc:///res/harbour-matrix.png"
-                    iconSize: Theme.paddingLarge + Theme.paddingMedium
+                Row {
+                    spacing: Theme.paddingMedium
                     anchors.verticalCenter: parent.verticalCenter
-                }
 
-                Label {
-                    id: roomLabel
-                    text:(rooms.roomAt(index).name == "") ? display : rooms.roomAt(index).name
-                    color: pressed? Theme.secondaryColor: (rooms.roomAt(index).highlightCount > 0) ? Theme.highlightColor : Theme.primaryColor
-                    font.bold: (rooms.roomAt(index).highlightCount > 0)
-                    anchors.leftMargin: Theme.paddingMedium
-                    anchors.left: roomAvatar.right
-                    anchors.right: parent.right
-                    anchors.verticalCenter: parent.verticalCenter
-                    font.pixelSize: Theme.fontSizeMedium
+                    AvatarImage {
+                        id: roomAvatar
+                        iconSource: "qrc:///res/noavatar.png"
+                        iconSize: Theme.paddingLarge + Theme.paddingMedium
+                    }
+
+                    Label {
+                        text: display
+                        color: highlightcount > 0 ? Theme.highlightColor : Theme.primaryColor
+                        font.bold: unread
+                        anchors.leftMargin: Theme.paddingMedium
+                        font.pointSize: Theme.fontSizeMedium
+                    }
+                    Label {
+                        text: highlightcount
+                        color: Theme.highlightColor
+                        font.pointSize: Theme.fontSizeSmall
+                        visible: highlightcount > 0
+                    }
                 }
             }
 

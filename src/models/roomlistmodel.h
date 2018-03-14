@@ -14,7 +14,9 @@ class RoomListModel: public QAbstractListModel
         Q_OBJECT
     public:
         enum RoomEventRoles {
-            RoomEventStateRole = Qt::UserRole + 1,
+            HasUnreadRole = Qt::UserRole + 1,
+            HighlightCountRole, 
+            JoinStateRole,
             AvatarRole
         };
         RoomListModel(QObject* parent=0);
@@ -29,11 +31,9 @@ class RoomListModel: public QAbstractListModel
         QHash<int, QByteArray> roleNames() const override;
 
     private slots:
-        void namesChanged(QMatrixClient::Room* room);
-        void unreadMessagesChanged(QMatrixClient::Room* room);
         void addRoom(QMatrixClient::Room* room);
-        void highlightCountChanged(QMatrixClient::Room* room);
-        void avatarChanged(QMatrixClient::Room* room, const QVector<int>& roles = {});
+        void refresh(QMatrixClient::Room* room, const QVector<int>& roles = {});
+        void deleteRoom(QMatrixClient::Room* room);
 
     private:
         QMatrixClient::Connection* m_connection;
