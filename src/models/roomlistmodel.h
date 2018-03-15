@@ -17,7 +17,9 @@ class RoomListModel: public QAbstractListModel
             HasUnreadRole = Qt::UserRole + 1,
             HighlightCountRole, 
             JoinStateRole,
-            AvatarRole
+            AvatarRole,
+            TagRole,
+            IsDirectChatRole
         };
         RoomListModel(QObject* parent=0);
         virtual ~RoomListModel();

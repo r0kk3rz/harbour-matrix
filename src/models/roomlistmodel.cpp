@@ -59,6 +59,7 @@ void RoomListModel::addRoom(QMatrixClient::Room* room)
     connect( room, &QMatrixClient::Room::unreadMessagesChanged, this, [=]{ refresh(room, {RoomEventRoles::HasUnreadRole}); });
     connect( room, &QMatrixClient::Room::highlightCountChanged, this, [=]{ refresh(room, {RoomEventRoles::HighlightCountRole}); });
     connect( room, &QMatrixClient::Room::avatarChanged, this, [=]{ refresh(room, { RoomEventRoles::AvatarRole }); });
+    connect( room, &QMatrixClient::Room::tagsChanged, this, [=]{ refresh(room, { RoomEventRoles::TagRole }); });
 
     m_rooms.append(room);
     endInsertRows();
@@ -104,7 +105,11 @@ QVariant RoomListModel::data(const QModelIndex& index, int role) const
     if(role == HighlightCountRole)
     {
         return room->highlightCount();
-     }
+    }
+    if(role == TagRole)
+    {
+       return room->tagNames();
+    }
 
     return QVariant();
 }
@@ -116,6 +121,8 @@ QHash<int, QByteArray> RoomListModel::roleNames() const
     roles[HasUnreadRole] = "unread";
     roles[HighlightCountRole] = "highlightcount";
     roles[AvatarRole] = "avatar";
+    roles[TagRole] = "tags";
+    roles[IsDirectChatRole] = "isDirectChat";
     return roles;
 }
 
