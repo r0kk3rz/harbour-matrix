@@ -51,6 +51,8 @@ ApplicationWindow
     property string appName: "Matriksi"
     property string version: "0.9.7 Beta"
 
+    property int syncCounter: 0
+
     Connections {
         target: connection
 
@@ -99,7 +101,14 @@ ApplicationWindow
             login.visible = false
             initialised = true
         }
-        connection.sync(3000)
+
+        syncCounter++
+        if(syncCounter % 17 == 2)
+        {
+            saveState()
+        }
+
+        connection.sync(30*1000)
     }
 
     function login(user, pass, connect) {
