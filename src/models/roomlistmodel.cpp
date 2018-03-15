@@ -98,6 +98,10 @@ QVariant RoomListModel::data(const QModelIndex& index, int role) const
     {
         return room->displayName();
     }
+    if(role == RoomIdRole)
+    {
+        return room->id();
+    }
     if(role == HasUnreadRole)
     {
         return room->hasUnreadMessages();
@@ -108,7 +112,14 @@ QVariant RoomListModel::data(const QModelIndex& index, int role) const
     }
     if(role == TagRole)
     {
-       return room->tagNames();
+        if(room->tagNames().count() > 0)
+        {
+            return room->tagNames().at(0);
+        }
+        else
+        {
+            return "rooms";
+        }
     }
 
     return QVariant();
@@ -123,6 +134,7 @@ QHash<int, QByteArray> RoomListModel::roleNames() const
     roles[AvatarRole] = "avatar";
     roles[TagRole] = "tags";
     roles[IsDirectChatRole] = "isDirectChat";
+    roles[RoomIdRole] = "roomid";
     return roles;
 }
 

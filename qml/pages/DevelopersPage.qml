@@ -15,17 +15,17 @@ Page
             PageHeader
             {
                 id: pageheader
-                title: qsTr("Matriksi developers")
+                title: qsTr("harbour-matrix developers")
             }
 
             CollaboratorsLabel {
                 title: qsTr("Developers");
-                labelData: [ "Xray2000", "r0kk3rz", "AlmAck" ]
+                labelData: [ "r0kk3rz" ]
             }
 
             CollaboratorsLabel {
-                title: qsTr("Previous developer");
-                labelData: [ "Anttsam" ]
+                title: qsTr("Previous developers");
+                labelData: [ "Xray2000", "AlmAck", "Anttsam" ]
             }
 
             CollaboratorsLabel {

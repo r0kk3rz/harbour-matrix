@@ -14,11 +14,12 @@ SilicaListView {
         property var currentRoom: null
         property string textvalue: ""
 
-        function setRoom(room) {
-            currentRoom = room
-            messageModel.changeRoom(room)
-            room.markAllMessagesAsRead()
-            room.resetHighlightCount()
+        function setRoom(roomIndex) {
+            messageModel.changeRoom(roomIndex)
+            currentRoom = messageModel.getRoom()
+
+            currentRoom.markAllMessagesAsRead()
+            currentRoom.resetHighlightCount()
         }
 
         function setConnection(conn) {
@@ -154,24 +155,11 @@ SilicaListView {
 
         section {
             property: "author"
-            //criteria: ViewSection.FullString
-            //labelPositioning: ViewSection.InlineLabels
-            /*delegate:
-                Label {
-                    width: parent.width
-                    //text: chatView.ListView.nextSection //section.toLocaleString(Qt.locale())
-                    horizontalAlignment: Text.AlignHCenter
-                    color: Theme.highlightColor
-                    font.pixelSize: Theme.fontSizeSmall
-                    font.bold: true
-                }*/
-
-
         }
+
 
         onAtYBeginningChanged: {
             if(currentRoom && atYBeginning) currentRoom.getPreviousContent()
         }
-
     }
 

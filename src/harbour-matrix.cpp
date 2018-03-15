@@ -36,6 +36,14 @@ int main(int argc, char *argv[])
     qRegisterMetaType<QMatrixClient::FileTransferInfo>();
 
     Connection conn;
+    RoomListModel rooms;
+    rooms.setConnection(&conn);
+
+    QSortFilterProxyModel roomsProxy;
+    roomsProxy.setSortRole(RoomListModel::TagRole);
+    roomsProxy.setDynamicSortFilter(true);
+    roomsProxy.setSourceModel(&rooms);
+    roomsProxy.sort(0, Qt::AscendingOrder);
 
     QScopedPointer<QQuickView> view(SailfishApp::createView());
     QQmlEngine* engine = view->engine();
@@ -45,6 +53,8 @@ int main(int argc, char *argv[])
     ScriptLauncher launcher;
 
     view->rootContext()->setContextProperty("scriptLauncher", &launcher);
+    view->rootContext()->setContextProperty("rooms", &rooms);
+    view->rootContext()->setContextProperty("roomsProxy", &roomsProxy);
     view->rootContext()->setContextProperty("connection", &conn);
     view->setSource(SailfishApp::pathTo("qml/harbour-matrix.qml"));
 

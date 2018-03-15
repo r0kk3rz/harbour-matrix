@@ -24,8 +24,18 @@ MessageEventModel::~MessageEventModel()
 {
 }
 
+void MessageEventModel::changeRoom(QString roomId)
+{
+    QMatrixClient::Room * room = m_connection->roomMap().value(qMakePair(roomId, false));
+    qDebug() << "changing to room " << room->name();
+    changeRoom(room);
+}
+
 void MessageEventModel::changeRoom(QMatrixClient::Room* room)
 {
+    if (room == m_currentRoom)
+        return;
+
     beginResetModel();
     if( m_currentRoom )
     {
@@ -76,6 +86,11 @@ void MessageEventModel::changeRoom(QMatrixClient::Room* room)
     endResetModel();
 }
 
+QMatrixClient::Room * MessageEventModel::getRoom()
+{
+    return m_currentRoom;
+}
+
 void MessageEventModel::setConnection(QMatrixClient::Connection* connection)
 {
     m_connection = connection;
@@ -116,6 +131,16 @@ QVariant MessageEventModel::data(const QModelIndex& index, int role) const
 
     if( role == Qt::DisplayRole )
     {
+        if (event->isRedacted())
+        {
+            auto reason = event->redactedBecause()->reason();
+            if (reason.isEmpty())
+                return tr("Redacted");
+            else
+                return tr("Redacted: %1")
+                    .arg(event->redactedBecause()->reason());
+        }
+
         if( event->type() == EventType::RoomMessage )
         {
             RoomMessageEvent* e = static_cast<RoomMessageEvent*>(event);
@@ -125,19 +150,59 @@ QVariant MessageEventModel::data(const QModelIndex& index, int role) const
         if( event->type() == EventType::RoomMember )
         {
             RoomMemberEvent* e = static_cast<RoomMemberEvent*>(event);
+
+            QString subjectName = m_currentRoom->roomMembername(e->userId());
+
             switch( e->membership() )
             {
                 case MembershipType::Join:
-                    return QString("%1 (%2) joined the room").arg(e->displayName(), e->userId());
+                    return QString("%1 (%2) joined the room").arg(e->displayName(), subjectName);
                 case MembershipType::Leave:
-                    return QString("%1 (%2) left the room").arg(e->displayName(), e->userId());
+                    return QString("%1 (%2) left the room").arg(e->displayName(), subjectName);
                 case MembershipType::Ban:
-                    return QString("%1 (%2) was banned from the room").arg(e->displayName(), e->userId());
+                    return QString("%1 (%2) was banned from the room").arg(e->displayName(), subjectName);
                 case MembershipType::Invite:
-                    return QString("%1 (%2) was invited to the room").arg(e->displayName(), e->userId());
+                    return QString("%1 (%2) was invited to the room").arg(e->displayName(), subjectName);
                 case MembershipType::Knock:
-                    return QString("%1 (%2) knocked").arg(e->displayName(), e->userId());
+                    return QString("%1 (%2) knocked").arg(e->displayName(), subjectName);
             }
+        }
+        if( event->type() == EventType::RoomAliases )
+        {
+            auto* e = static_cast<const RoomAliasesEvent*>(event);
+            return tr("set aliases to: %1").arg(e->aliases().join(", "));
+        }
+        if( event->type() == EventType::RoomCanonicalAlias )
+        {
+            auto* e = static_cast<const RoomCanonicalAliasEvent*>(event);
+            if (e->alias().isEmpty())
+                return tr("cleared the room main alias");
+            else
+                return tr("set the room main alias to: %1").arg(e->alias());
+        }
+        if( event->type() == EventType::RoomName )
+        {
+            auto* e = static_cast<const RoomNameEvent*>(event);
+            if (e->name().isEmpty())
+                return tr("cleared the room name");
+            else
+                return tr("set the room name to: %1").arg(e->name());
+        }
+        if( event->type() == EventType::RoomTopic )
+        {
+            auto* e = static_cast<const RoomTopicEvent*>(event);
+            if (e->topic().isEmpty())
+                return tr("cleared the topic");
+            else
+                return tr("set the topic to: %1").arg(e->topic());
+        }
+        if( event->type() == EventType::RoomAvatar )
+        {
+            return tr("changed the room avatar");
+        }
+        if( event->type() == EventType::RoomEncryption )
+        {
+            return tr("activated End-to-End Encryption");
         }
         return "Unknown Event";
     }
@@ -149,13 +214,21 @@ QVariant MessageEventModel::data(const QModelIndex& index, int role) const
 
     if( role == EventTypeRole )
     {
-        if( event->type() == EventType::RoomMessage ) {
-            RoomMessageEvent* re = static_cast<RoomMessageEvent*>(event);
-            if (re->msgtype() == RoomMessageEvent::MsgType::Emote) {
-                return "message.emote";
-            } else if (re->msgtype() == RoomMessageEvent::MsgType::Notice) {
-                return "message.notice";
-            } else {
+        if( event->type() == EventType::RoomMessage )
+        {
+            switch (static_cast<const RoomMessageEvent*>(event)->msgtype())
+            {
+                case MessageEventType::Emote:
+                    return "emote";
+                case MessageEventType::Notice:
+                    return "notice";
+                case MessageEventType::Image:
+                    return "image";
+                case MessageEventType::File:
+                case MessageEventType::Audio:
+                case MessageEventType::Video:
+                    return "file";
+            default:
                 return "message";
             }
         }
@@ -196,6 +269,16 @@ QVariant MessageEventModel::data(const QModelIndex& index, int role) const
 
     if( role == ContentRole )
     {
+        if (event->isRedacted())
+         {
+             auto reason = event->redactedBecause()->reason();
+             if (reason.isEmpty())
+                 return tr("Redacted");
+             else
+                 return tr("Redacted: %1")
+                     .arg(event->redactedBecause()->reason());
+         }
+
         if( event->type() == EventType::RoomMessage )
         {
             using namespace MessageEventContent;
@@ -218,6 +301,9 @@ QVariant MessageEventModel::data(const QModelIndex& index, int role) const
                     return QUrl("image://mxc/" +
                                 content->url.host() + content->url.path());
                 }
+            case MessageEventType::File:
+            case MessageEventType::Audio:
+            case MessageEventType::Video:
             default:
                 return e->plainBody();
             }

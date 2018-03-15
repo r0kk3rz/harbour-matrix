@@ -5,8 +5,8 @@ import Sailfish.Silica 1.0
 Page {
     id: room
 
-    function setRoom(room) {
-        chat.setRoom(room)
+    function setRoom(roomid) {
+        chat.setRoom(roomid)
     }
 
     function setConnection(conn) {
@@ -32,7 +32,6 @@ Page {
         anchors.top: parent.top
 
     }
-
 
     Component.onCompleted: {
         setConnection(connection)

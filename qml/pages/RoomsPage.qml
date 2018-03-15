@@ -16,25 +16,17 @@ Page {
 
     RemorsePopup { id: remorse }
 
-    RoomListModel {
-        id: rooms
-    }
-
-    function setConnection(conn) {
-        rooms.setConnection(conn)
-    }
-
-    function init() {
-        initialised = true
-        var found = false
-        for(var i = 0; i < rooms.rowCount(); i++) {
-            if(rooms.roomAt(i).canonicalAlias() === "#tensor:matrix.org") {
-                roomListView.currentIndex = i
-                enterRoom(rooms.roomAt(i))
-                found = true
-            }
-        }
-        if(!found) joinRoom("#tensor:matrix.org")
+    function stringToColour(str) {
+      var hash = 0;
+      for (var i = 0; i < str.length; i++) {
+        hash = str.charCodeAt(i) + ((hash << 5) - hash);
+      }
+      var colour = '#';
+      for (var i = 0; i < 3; i++) {
+        var value = (hash >> (i * 8)) & 0xFF;
+        colour += ('00' + value.toString(16)).substr(-2);
+      }
+      return colour;
     }
 
     function refresh() {
@@ -44,9 +36,10 @@ Page {
 
     SilicaListView {
         id: roomListView
-        model: rooms
+        model: roomsProxy
         width: parent.width
         height: parent.height - textEntry.height
+        signal sectionClicked(string name)
 
         anchors.top: parent.top
 
@@ -88,9 +81,40 @@ Page {
           }
        }
 
+        section.property: "tags"
+        section.criteria: ViewSection.FullString
+        section.delegate: ListItem {
+            Row {
+                spacing: Theme.paddingMedium
+                anchors.verticalCenter: parent.verticalCenter
+                Image {
+                    source: "image://theme/icon-m-down"
+                }
+
+                Label{
+                    text: qsTr(section)
+                    font.bold: true
+                    font.pointSize: Theme.fontSizeLarge
+                }
+            }
+
+            onClicked: roomListView.sectionClicked(section)
+        }
+
         delegate: ListItem {
+            id: item
             width: parent.width
-            contentHeight: Theme.itemSizeSmall
+            contentHeight: visible ? Theme.itemSizeSmall : 0
+
+            Behavior on contentHeight
+            {
+                NumberAnimation { duration: 200 }
+            }
+
+            Connections {
+                target: item.ListView.view
+                onSectionClicked: if (item.ListView.section === name) visible = !visible;
+            }
 
             Item {
                 height: parent.height
@@ -104,7 +128,25 @@ Page {
                     AvatarImage {
                         id: roomAvatar
                         iconSource: "qrc:///res/noavatar.png"
-                        iconSize: Theme.paddingLarge + Theme.paddingMedium
+                        iconSize: Theme.itemSizeSmall - Theme.paddingMedium
+                        visible: false
+                    }
+
+                    Rectangle {
+                        id: bubble
+                        height: Theme.itemSizeSmall - Theme.paddingMedium
+                        width: height
+                        radius: height/2
+                        color: useFancyColors ? stringToColour(display): Theme.secondaryHighlightColor
+                        visible: roomAvatar.visible == false
+
+                        Label {
+                            anchors.verticalCenter: parent.verticalCenter
+                            anchors.horizontalCenter: parent.horizontalCenter
+                            text: display.charAt(0).toUpperCase()
+                            font.bold: true
+                            font.pointSize: Theme.fontSizeLarge
+                        }
                     }
 
                     Label {
@@ -125,7 +167,7 @@ Page {
 
             onClicked: {
                 roomListView.currentIndex = index
-                enterRoom(rooms.roomAt(index))
+                enterRoom(roomid)
                 pageStack.push(roomView)
             }
         }
@@ -140,7 +182,6 @@ Page {
     }
 
     Component.onCompleted: {
-        setConnection(connection)
         enterRoom.connect(roomView.setRoom)
         joinRoom.connect(connection.joinRoom)
     }

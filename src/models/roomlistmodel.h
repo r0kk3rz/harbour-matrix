@@ -19,7 +19,8 @@ class RoomListModel: public QAbstractListModel
             JoinStateRole,
             AvatarRole,
             TagRole,
-            IsDirectChatRole
+            IsDirectChatRole,
+            RoomIdRole
         };
         RoomListModel(QObject* parent=0);
         virtual ~RoomListModel();

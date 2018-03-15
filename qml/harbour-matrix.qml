@@ -144,7 +144,6 @@ ApplicationWindow
     RoomView {
         id: roomView
         Component.onCompleted: {
-            setConnection(connection)
             loadSettings()
         }
     }
