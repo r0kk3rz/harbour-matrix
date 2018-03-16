@@ -48,8 +48,7 @@ void MessageEventModel::changeRoom(QMatrixClient::Room* room)
         connect(m_currentRoom, &Room::aboutToAddNewMessages, this,
                 [=](RoomEventsRange events)
                 {
-                    beginInsertRows(QModelIndex(), rowCount(),
-                                    rowCount() + int(events.size()) - 1);
+                    beginInsertRows(QModelIndex(), 0, int(events.size()) - 1);
                 });
         connect(m_currentRoom, &Room::aboutToAddHistoricalMessages, this,
                 [=](RoomEventsRange events)
@@ -69,6 +68,7 @@ void MessageEventModel::changeRoom(QMatrixClient::Room* room)
         });
         connect(m_currentRoom, &Room::addedMessages,
                 this, &MessageEventModel::endInsertRows);
+
         connect(m_currentRoom, &Room::fileTransferProgress,
                 this, &MessageEventModel::refreshEvent);
         connect(m_currentRoom, &Room::fileTransferCompleted,
