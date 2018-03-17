@@ -81,20 +81,20 @@ SilicaListView {
                         width: height
                         radius: height/2
                         anchors.bottom: parent.bottom
-                        color: eventType == "message" ? useFancyColors ? stringToColour(author): Theme.secondaryHighlightColor: ""
+                        color: userAvatar.visible == false ? useFancyColors ? stringToColour(author): Theme.secondaryHighlightColor : "white"
                         Label {
                             anchors.centerIn: parent
                             text:  eventType == "message" ? author.charAt(0).toUpperCase() : ""
                             font.pixelSize: parent.height *0.8
+                            visible: userAvatar.visible == false
                         }
-                    }
 
-                    AvatarImage {
-                        id: userAvatar
-                        iconSource: avatar
-                        iconSize: Theme.paddingLarge + Theme.paddingMedium
-                        anchors.bottom: parent.bottom
-                        visible: avatar == Image.Null ? false : true
+                        AvatarImage {
+                            id: userAvatar
+                            iconSource: avatar
+                            iconSize: parent.height
+                            visible: avatar != ""
+                        }
                     }
 
                     Label {

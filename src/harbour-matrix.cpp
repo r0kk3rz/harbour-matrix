@@ -5,10 +5,12 @@
 #include <QQuickView>
 #include <QQmlContext>
 #include <QScopedPointer>
+#include <QSortFilterProxyModel>
 #include "connection.h"
 #include "room.h"
 #include "user.h"
 #include "jobs/syncjob.h"
+#include "jobs/joinroomjob.h"
 #include "imageprovider.h"
 #include "src/scriptlauncher.h"
 #include "models/messageeventmodel.h"
@@ -27,6 +29,7 @@ int main(int argc, char *argv[])
     application->setApplicationName("harbour-matrix");
 
     qmlRegisterType<SyncJob>(); qRegisterMetaType<SyncJob*> ("SyncJob*");
+    qmlRegisterType<JoinRoomJob>(); qRegisterMetaType<JoinRoomJob*>("JoinRoomJob*");
     qmlRegisterType<Room>();    qRegisterMetaType<Room*>    ("Room*");
     qmlRegisterType<User>();    qRegisterMetaType<User*>    ("User*");
     qmlRegisterType<Connection>        ("Matrix", 1, 0, "Connection");
@@ -36,6 +39,7 @@ int main(int argc, char *argv[])
     qRegisterMetaType<QMatrixClient::FileTransferInfo>();
 
     Connection conn;
+
     RoomListModel rooms;
     rooms.setConnection(&conn);
 

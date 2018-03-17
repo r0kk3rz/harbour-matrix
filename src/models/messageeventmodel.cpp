@@ -165,6 +165,8 @@ QVariant MessageEventModel::data(const QModelIndex& index, int role) const
                     return QString("%1 (%2) was invited to the room").arg(e->displayName(), subjectName);
                 case MembershipType::Knock:
                     return QString("%1 (%2) knocked").arg(e->displayName(), subjectName);
+                case MembershipType::Undefined:
+                    return QString("Undefined");
             }
         }
         if( event->type() == EventType::RoomAliases )
@@ -435,11 +437,12 @@ QVariant MessageEventModel::data(const QModelIndex& index, int role) const
     if(role == AvatarRole)
     {
         User *user = m_connection->user(event->senderId());
-        if(user->avatarUrl().isValid()) {
-        return QUrl("image://mxc/" + user->avatarUrl().host() + user->avatarUrl().path());
-    }
-        return QUrl("qrc:/res/noavatar.png");
-    }
+        if(user->avatarUrl().isValid())
+        {
+            return QUrl("image://mxc/" + user->avatarUrl().host() + user->avatarUrl().path());
+        }
+            return QUrl();
+        }
 
     if( role == EventIdRole )
     {

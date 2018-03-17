@@ -6,17 +6,17 @@
 #include <QtCore/QDebug>
 
 ImageProvider::ImageProvider(QMatrixClient::Connection* connection)
-    : QQuickImageProvider(QQmlImageProviderBase::Pixmap, QQmlImageProviderBase::ForceAsynchronousImageLoading),
+    : QQuickImageProvider(QQmlImageProviderBase::Image, QQmlImageProviderBase::ForceAsynchronousImageLoading),
       m_connection(connection)
 {
-    qRegisterMetaType<QPixmap*>();
+    qRegisterMetaType<QImage*>();
     qRegisterMetaType<QWaitCondition*>();
 }
 
-QPixmap ImageProvider::requestPixmap(const QString& id,
+QImage ImageProvider::requestImage(const QString& id,
                                      QSize* size, const QSize& requestedSize)
 {
-    QPixmap result;
+    QImage result;
 
     if(id == "")
     {
@@ -27,7 +27,7 @@ QPixmap ImageProvider::requestPixmap(const QString& id,
 
     QMetaObject::invokeMethod(this, "doRequest", Qt::QueuedConnection,
                               Q_ARG(QString, "mxc://" + id), Q_ARG(QSize, requestedSize),
-                              Q_ARG(QPixmap*, &result),
+                              Q_ARG(QImage*, &result),
                               Q_ARG(QWaitCondition*, &condition));
     condition.wait(&m_mutex);
 
@@ -44,7 +44,7 @@ void ImageProvider::setConnection(const QMatrixClient::Connection* connection)
     m_connection = connection;
 }
 
-void ImageProvider::doRequest(QString id, QSize requestedSize, QPixmap* pixmap,
+void ImageProvider::doRequest(QString id, QSize requestedSize, QImage* pixmap,
                               QWaitCondition* condition)
 {
     Q_ASSERT(pixmap);
@@ -52,7 +52,7 @@ void ImageProvider::doRequest(QString id, QSize requestedSize, QPixmap* pixmap,
     if( !m_connection )
     {
         qDebug() << "ImageProvider::requestPixmap: no connection!";
-        *pixmap = QPixmap();
+        *pixmap = QImage();
         condition->wakeAll();
         return;
     }
@@ -64,7 +64,7 @@ void ImageProvider::doRequest(QString id, QSize requestedSize, QPixmap* pixmap,
     {
         // TODO: need to check result to see if this is success or not
         // No need to lock because we don't deal with the ImageProvider state
-        //*pixmap = job->thumbnail();
+        *pixmap = job->thumbnail();
         condition->wakeAll();
     } );
 }

@@ -125,20 +125,12 @@ Page {
                     spacing: Theme.paddingMedium
                     anchors.verticalCenter: parent.verticalCenter
 
-                    AvatarImage {
-                        id: roomAvatar
-                        iconSource: "qrc:///res/noavatar.png"
-                        iconSize: Theme.itemSizeSmall - Theme.paddingMedium
-                        visible: false
-                    }
-
                     Rectangle {
                         id: bubble
                         height: Theme.itemSizeSmall - Theme.paddingMedium
                         width: height
                         radius: height/2
-                        color: useFancyColors ? stringToColour(display): Theme.secondaryHighlightColor
-                        visible: roomAvatar.visible == false
+                        color: roomAvatar.visible == false ? stringToColour(display): "white"
 
                         Label {
                             anchors.verticalCenter: parent.verticalCenter
@@ -146,6 +138,14 @@ Page {
                             text: display.charAt(0).toUpperCase()
                             font.bold: true
                             font.pointSize: Theme.fontSizeLarge
+                            visible: roomAvatar.visible == false
+                        }
+
+                        AvatarImage {
+                            id: roomAvatar
+                            iconSource: avatar
+                            iconSize: parent.height
+                            visible: avatar != ""
                         }
                     }
 
@@ -161,6 +161,12 @@ Page {
                         color: Theme.highlightColor
                         font.pointSize: Theme.fontSizeSmall
                         visible: highlightcount > 0
+                    }
+
+                    Button {
+                        Image{source: "image://theme/icon-m-like"}
+                        onClicked: joinRoom(roomid)
+                        visible: tags == "m.invite"
                     }
                 }
             }

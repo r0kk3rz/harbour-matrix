@@ -112,13 +112,28 @@ QVariant RoomListModel::data(const QModelIndex& index, int role) const
     }
     if(role == TagRole)
     {
+        if(room->joinState() == QMatrixClient::JoinState::Invite)
+        {
+            return "m.invite";
+        }
+
         if(room->tagNames().count() > 0)
         {
             return room->tagNames().at(0);
         }
         else
         {
-            return "rooms";
+            return "m.rooms";
+        }
+    }
+    if(role == AvatarRole)
+    {
+        if(room->avatarUrl().isValid()) {
+            return QUrl("image://mxc/" + room->avatarUrl().host() + room->avatarUrl().path());
+        }
+        else
+        {
+            return QUrl();
         }
     }
 
