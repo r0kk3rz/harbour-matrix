@@ -1,5 +1,6 @@
 [Desktop Entry]
 Type=Application
+X-Nemo-Application-Type=generic
 Icon=harbour-matrix
 Exec=harbour-matrix
 Name=Matrix
