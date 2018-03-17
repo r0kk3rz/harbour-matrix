@@ -57,10 +57,8 @@ ApplicationWindow
         target: connection
 
         onNetworkError: {
-            console.log("Connection Error, reconnecting...")
-            connection.reconnect();
+            console.log("Connection Error")
             connectionActive = false
-            login.abortLogin()
         }
         onConnected: {
             console.log("connected!")
@@ -86,6 +84,13 @@ ApplicationWindow
             connectionActive = false;
             login.abortLogin()
         }
+        onSyncDone: {
+            if(initialised == false)
+            {
+                login.visible = false
+                initialised = true
+            }
+        }
     }
 
     function saveState() {
@@ -97,10 +102,6 @@ ApplicationWindow
     }
 
     function resync() {
-        if(!initialised) {
-            login.visible = false
-            initialised = true
-        }
 
         syncCounter++
         if(syncCounter % 17 == 2)
@@ -108,7 +109,7 @@ ApplicationWindow
             saveState()
         }
 
-        connection.sync(30*1000)
+        connection.sync(10*1000)
     }
 
     function login(user, pass, connect) {
@@ -123,16 +124,14 @@ ApplicationWindow
             connection.loadState()
 
             connection.syncDone.connect(resync)
-            connection.reconnected.connect(resync)
-
-            connection.sync()
+            connection.sync(30000)
         })
 
         var userParts = user.split(':')
         if(userParts.length === 1 ) {
-            connect("@"+user+":matrix.org", pass, settings.value("device_id", "sailfish"))
+            connect(user+":matrix.org", pass, settings.value("device_id", "sailfish"))
         } else {
-            connect("@"+user, pass, settings.value("device_id", "sailfish"))
+            connect(user, pass, settings.value("device_id", "sailfish"))
         }
     }
 

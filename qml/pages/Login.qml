@@ -9,7 +9,7 @@ Item {
 
     function login(pretend) {
         label.text = qsTr("Please wait...")
-        if(!pretend) window.login(userNameField.text, passwordField.text)
+        if(!pretend) window.login("@"+userNameField.text, passwordField.text)
         userNameField.enabled = false
         passwordField.enabled = false
         loginbutton.enabled = false
@@ -47,8 +47,8 @@ Item {
         }
 
         Item {
-            width: 128
-            height: 128
+            width: Theme.iconSizeExtraLarge
+            height: Theme.iconSizeExtraLarge
             anchors.horizontalCenter: parent.horizontalCenter
             Image {
                 anchors.fill: parent
@@ -65,17 +65,16 @@ Item {
             }
 
             BusyIndicator {
+                size: BusyIndicatorSize.Large
                 anchors.centerIn: parent
                 running: !showstuff
                 opacity: !showstuff ? 1:0
             }
         }
 
-        Label { id: phantomLabel; visible: false }
-
         Label {
             id: label
-            font.pixelSize: phantomLabel.font.pixelSize * 3/2
+            font.pixelSize: Theme.fontSizeExtraLarge
             text: qsTr("Matriksi")
             anchors.horizontalCenter: parent.horizontalCenter
             color: "#888"
