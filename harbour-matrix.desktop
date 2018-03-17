@@ -1,7 +1,6 @@
 [Desktop Entry]
 Type=Application
-X-Nemo-Application-Type=silica-qt5
 Icon=harbour-matrix
 Exec=harbour-matrix
-Name=Matriksi
+Name=Matrix
 

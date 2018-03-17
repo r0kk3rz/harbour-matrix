@@ -13,7 +13,7 @@ Page {
 
         PageHeader { title: qsTr("Settings") }
 
-        SectionHeader{ text: qsTr("Matriksi Settings") }
+        SectionHeader{ text: qsTr("Matrix Settings") }
 
         TextSwitch {
             id: colorSwitch

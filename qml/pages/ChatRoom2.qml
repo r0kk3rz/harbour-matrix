@@ -33,16 +33,20 @@ SilicaListView {
         }
 
         function stringToColour(str) {
-          var hash = 0;
-          for (var i = 0; i < str.length; i++) {
-            hash = str.charCodeAt(i) + ((hash << 5) - hash);
+            if(str)
+            {
+              var hash = 0;
+              for (var i = 0; i < str.length; i++) {
+                hash = str.charCodeAt(i) + ((hash << 5) - hash);
+              }
+              var colour = '#';
+              for (var i = 0; i < 3; i++) {
+                var value = (hash >> (i * 8)) & 0xFF;
+                colour += ('00' + value.toString(16)).substr(-2);
+              }
+              return colour;
           }
-          var colour = '#';
-          for (var i = 0; i < 3; i++) {
-            var value = (hash >> (i * 8)) & 0xFF;
-            colour += ('00' + value.toString(16)).substr(-2);
-          }
-          return colour;
+            return "blue"
         }
 
         header: TextArea {
@@ -85,7 +89,7 @@ SilicaListView {
                         Label {
                             anchors.centerIn: parent
                             text:  eventType == "message" ? author.charAt(0).toUpperCase() : ""
-                            font.pixelSize: parent.height *0.8
+                            font.pointSize: parent.height *0.8
                             visible: userAvatar.visible == false
                         }
 
@@ -104,7 +108,7 @@ SilicaListView {
                         anchors.leftMargin: Theme.paddingMedium
                         anchors.verticalCenter: bubble.verticalCenter
                         color: eventType == "message" ? useFancyColors ? stringToColour(author) : Theme.secondaryHighlightColor: ""
-                        font.pixelSize: Theme.fontSizeSmall
+                        font.pointSize: Theme.fontSizeSmall
                         font.bold: true
                     }
                     Label {
@@ -112,7 +116,7 @@ SilicaListView {
                         text: eventType == "message" ? time.toLocaleTimeString("hh:mm:ss") : ""
                         anchors.right: parent.right
                         anchors.verticalCenter: bubble.verticalCenter
-                        font.pixelSize: Theme.fontSizeTiny
+                        font.pointSize: Theme.fontSizeTiny
                         color: Theme.secondaryColor
                     }
                 }
@@ -120,14 +124,14 @@ SilicaListView {
                 Label {
                     x: parent.x + Theme.paddingLarge + Theme.paddingMedium
                     width: parent.width - x
-                    height: eventType == "message" ? undefined:  lineCount* font.pixelSize + Theme.paddingMedium
+                    height: eventType == "message" ? undefined:  lineCount* font.pointSize + Theme.paddingMedium
                     id: chattext
                     text:content
                     verticalAlignment: Text.AlignBottom
                     horizontalAlignment: eventType == "message" ? Text.AlignLeft : Text.AlignHCenter
                     color: eventType == "message" ? Theme.primaryColor: Theme.secondaryColor
                     wrapMode: Text.WordWrap
-                    font.pixelSize: eventType == "message" ? Theme.fontSizeSmall : Theme.fontSizeTiny
+                    font.pointSize: eventType == "message" ? Theme.fontSizeSmall : Theme.fontSizeTiny
                 }
             }
 
@@ -140,7 +144,7 @@ SilicaListView {
                         text: content
                         color: Theme.highlightColor
                         wrapMode: Text.WordWrap
-                        font.pixelSize: Theme.fontSizeExtraSmall
+                        font.pointSize: Theme.fontSizeExtraSmall
                         Component.onCompleted: selectAll();
                     }
 

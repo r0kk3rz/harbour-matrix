@@ -23,7 +23,7 @@ Item {
 
     function abortLogin()
     {
-        label.text = qsTr("Matriksi")
+        label.text = qsTr("Matrix")
         userNameField.enabled = true
         passwordField.enabled = true
         loginbutton.enabled = true

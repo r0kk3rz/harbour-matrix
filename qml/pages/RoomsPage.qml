@@ -144,7 +144,9 @@ Page {
                         AvatarImage {
                             id: roomAvatar
                             iconSource: avatar
-                            iconSize: parent.height
+                            iconSize: parent.height + 2
+                            anchors.verticalCenter: parent.verticalCenter
+                            anchors.horizontalCenter: parent.horizontalCenter
                             visible: avatar != ""
                         }
                     }

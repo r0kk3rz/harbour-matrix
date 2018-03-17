@@ -15,7 +15,7 @@ Page
             PageHeader
             {
                 id: pageheader
-                title: qsTr("About Matriksi")
+                title: qsTr("About Matrix")
             }
 
             Image
@@ -37,7 +37,7 @@ Page
                     verticalAlignment: Text.AlignVCenter
                     font.bold: true
                     font.pixelSize: Theme.fontSizeLarge
-                    text: "Matriksi"
+                    text: "harbour-matrix"
                 }
 
                 Label
@@ -68,7 +68,7 @@ Page
                     verticalAlignment: Text.AlignVCenter
                     font.pixelSize: Theme.fontSizeExtraSmall
                     wrapMode: Text.WordWrap
-                    text: qsTr("Matriksi is an unofficial Matrix Client for SailfishOS and distributed under the GPLv3 license.")
+                    text: qsTr("harbour-matrix is an unofficial Matrix Client for SailfishOS and distributed under the GPLv3 license.")
                 }
             }
 
@@ -83,15 +83,6 @@ Page
                     text: qsTr("Developers")
                     anchors.horizontalCenter: parent.horizontalCenter
                     onClicked: pageStack.push(Qt.resolvedUrl("DevelopersPage.qml"))
-                }
-                
-                Button
-                {
-                   id: donatebutton
-                   text: qsTr("Donate with Paypal")
-                   anchors.horizontalCenter: parent.horizontalCenter
-                   onClicked: { Qt.openUrlExternally("https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=6Z4P9MAAD996W");
-                   }
                 }
 
                 Button
