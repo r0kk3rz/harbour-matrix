@@ -43,6 +43,7 @@ class ImageProvider: public QObject, public QQuickImageProvider
                                    QImage* pixmap, QWaitCondition* condition);
 
         const QMatrixClient::Connection* m_connection;
+        QString cachePath;
         QMutex m_mutex;
 };
 
