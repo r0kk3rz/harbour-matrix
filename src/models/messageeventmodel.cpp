@@ -53,7 +53,8 @@ void MessageEventModel::changeRoom(QMatrixClient::Room* room)
         connect(m_currentRoom, &Room::aboutToAddHistoricalMessages, this,
                 [=](RoomEventsRange events)
                 {
-                    beginInsertRows(QModelIndex(), 0, int(events.size()) - 1);
+                    beginInsertRows(QModelIndex(), rowCount(),
+                                    rowCount() + int(events.size()) - 1);
                 });
         connect(m_currentRoom, &Room::readMarkerMoved, this, [this] {
             refreshEventRoles(
@@ -218,6 +219,8 @@ QVariant MessageEventModel::data(const QModelIndex& index, int role) const
     {
         if( event->type() == EventType::RoomMessage )
         {
+            //  Text, Emote, Notice, Image, File, Location, Video, Audio, Unknown
+
             switch (static_cast<const RoomMessageEvent*>(event)->msgtype())
             {
                 case MessageEventType::Emote:
@@ -227,9 +230,12 @@ QVariant MessageEventModel::data(const QModelIndex& index, int role) const
                 case MessageEventType::Image:
                     return "image";
                 case MessageEventType::File:
+                    return "file";
                 case MessageEventType::Audio:
                 case MessageEventType::Video:
-                    return "file";
+                    return "media";
+                case MessageEventType::Unknown:
+                    return "unknown";
             default:
                 return "message";
             }
