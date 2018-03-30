@@ -84,21 +84,6 @@ ApplicationWindow
             connectionActive = false;
             login.abortLogin()
         }
-        onSyncDone: {
-            if(initialised == false)
-            {
-                login.visible = false
-                initialised = true
-            }
-        }
-    }
-
-    function saveState() {
-        if(connectionActive)
-        {
-           console.log("Saving State...")
-           connection.saveState()
-        }
     }
 
     function resync() {
@@ -106,7 +91,10 @@ ApplicationWindow
         syncCounter++
         if(syncCounter % 17 == 2)
         {
-            saveState()
+            if(connectionActive)
+            {
+               connection.saveState()
+            }
         }
 
         connection.sync(10*1000)
@@ -122,6 +110,9 @@ ApplicationWindow
             settings.sync()
 
             connection.loadState()
+
+            initialised = true
+            login.visible = false
 
             connection.syncDone.connect(resync)
             connection.sync(30000)

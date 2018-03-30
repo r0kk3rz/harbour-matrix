@@ -2,6 +2,7 @@ import QtQuick 2.2
 import Sailfish.Silica 1.0
 import Matrix 1.0
 import "../components/custom"
+import "../components"
 
 SilicaListView {
         id: chatView
@@ -18,6 +19,7 @@ SilicaListView {
             messageModel.changeRoom(roomIndex)
             currentRoom = messageModel.getRoom()
 
+            currentRoom.getPreviousContent()
             currentRoom.markAllMessagesAsRead()
             currentRoom.resetHighlightCount()
         }
@@ -49,25 +51,50 @@ SilicaListView {
             return "blue"
         }
 
+        function onModelReset()
+        {
+            if(currentRoom)
+            {
+                currentRoom.getPreviousContent(25)
+            }
+        }
+
         header: TextArea {
             id: textEntry
             width: chatView.width
-            placeholderText: qsTr("Message @") + currentRoom.displayName
+            placeholderText: qsTr("Message @") + (currentRoom ? currentRoom.displayName : "")
             EnterKey.onClicked: {
                 sendLine(text)
                 textEntry.text = ""
             }
         }
 
-        delegate: ListItem {
+        delegate: Item {
             id: myListItem
-            menu: contextMenuComponent
             width: chatView.width
-            contentHeight: visible ? labelColumn.height+ Theme.paddingSmall : 0
+            height: visible ? labelColumn.height+ Theme.paddingSmall : 0
 
             ListView.onAdd: AddAnimation {
                 target: myListItem
                 duration: 300
+            }
+
+            Component.onCompleted: {
+                if(eventType == "message")
+                {
+                    var component = Qt.createComponent(Qt.resolvedUrl("../components/TextMessageItem.qml"))
+                    component.createObject(labelColumn, { itemText: content } )
+                }
+                else if(eventType == "image")
+                {
+                    var component = Qt.createComponent(Qt.resolvedUrl("../components/MediaMessageItem.qml"))
+                    component.createObject(labelColumn, { itemContent: content, type: eventType } )
+                }
+                else
+                {
+                    var component = Qt.createComponent(Qt.resolvedUrl("../components/StatusMessageItem.qml"))
+                    component.createObject(labelColumn, { itemText: content } )
+                }
             }
 
             Column {
@@ -76,6 +103,7 @@ SilicaListView {
                 width: parent.width - x-x
 
                 Item {
+                    id: messageItem
                     height: eventType == "message" ? authorLabel.height+ Theme.paddingLarge: authorLabel.height+  Theme.paddingLarge
                     visible: eventType == "message" ? (myListItem.ListView.nextSection != myListItem.ListView.section) : false
                     width: parent.width
@@ -89,7 +117,7 @@ SilicaListView {
                         Label {
                             anchors.centerIn: parent
                             text:  eventType == "message" ? author.charAt(0).toUpperCase() : ""
-                            font.pointSize: parent.height *0.8
+                            font.pixelSize: parent.height *0.8
                             visible: userAvatar.visible == false
                         }
 
@@ -108,7 +136,7 @@ SilicaListView {
                         anchors.leftMargin: Theme.paddingMedium
                         anchors.verticalCenter: bubble.verticalCenter
                         color: eventType == "message" ? useFancyColors ? stringToColour(author) : Theme.secondaryHighlightColor: ""
-                        font.pointSize: Theme.fontSizeSmall
+                        font.pixelSize: Theme.fontSizeSmall
                         font.bold: true
                     }
                     Label {
@@ -116,41 +144,11 @@ SilicaListView {
                         text: eventType == "message" ? time.toLocaleTimeString("hh:mm:ss") : ""
                         anchors.right: parent.right
                         anchors.verticalCenter: bubble.verticalCenter
-                        font.pointSize: Theme.fontSizeTiny
+                        font.pixelSize: Theme.fontSizeTiny
                         color: Theme.secondaryColor
                     }
                 }
-
-                Label {
-                    x: parent.x + Theme.paddingLarge + Theme.paddingMedium
-                    width: parent.width - x
-                    height: eventType == "message" ? undefined:  lineCount* font.pointSize + Theme.paddingMedium
-                    id: chattext
-                    text:content
-                    verticalAlignment: Text.AlignBottom
-                    horizontalAlignment: eventType == "message" ? Text.AlignLeft : Text.AlignHCenter
-                    color: eventType == "message" ? Theme.primaryColor: Theme.secondaryColor
-                    wrapMode: Text.WordWrap
-                    font.pointSize: eventType == "message" ? Theme.fontSizeSmall : Theme.fontSizeTiny
-                }
             }
-
-            Component {
-                id: contextMenuComponent
-                ContextMenu {
-                    TextArea {
-                        x: 10
-                        width: chatView.width -x
-                        text: content
-                        color: Theme.highlightColor
-                        wrapMode: Text.WordWrap
-                        font.pointSize: Theme.fontSizeExtraSmall
-                        Component.onCompleted: selectAll();
-                    }
-
-                }
-            }
-
         }
 
         VerticalScrollDecorator {
@@ -161,6 +159,11 @@ SilicaListView {
             property: "author"
         }
 
+        Connections
+        {
+            target: messageModel
+            onModelReset: onModelReset()
+        }
 
         onAtYBeginningChanged: {
             if(currentRoom && atYBeginning) currentRoom.getPreviousContent()

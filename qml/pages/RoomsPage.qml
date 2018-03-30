@@ -12,9 +12,20 @@ Page {
     enabled: initialised
     opacity: initialised ? 1: 0
 
+    property bool isLoaded: false
+
     Behavior on opacity {NumberAnimation{duration: 400}}
 
     RemorsePopup { id: remorse }
+
+    function syncDone()
+    {
+        if(isLoaded == false )
+        {
+            console.log("Initial Syncing Done")
+            isLoaded = true;
+        }
+    }
 
     function stringToColour(str) {
       var hash = 0;
@@ -48,12 +59,22 @@ Page {
 
         header: PageHeader {
             title: qsTr("Rooms")
-            GlassItem {
-                color: connectionActive ? "green" : "red"
-                cache: false
-                anchors.verticalCenter: parent.verticalCenter
-            }
 
+            Item {
+                anchors.verticalCenter: parent.verticalCenter
+
+                BusyIndicator {
+                    visible: running
+                    running: isLoaded == false
+                    size: isLoaded ? 0 : BusyIndicatorSize.Medium
+                }
+
+                GlassItem {
+                    color: connectionActive ? "green" : "red"
+                    cache: false
+                    visible: isLoaded
+                }
+            }
         }
 
         PullDownMenu {
@@ -73,6 +94,7 @@ Page {
            MenuItem {
                text: qsTr("Logout")
                onClicked: remorse.execute(qsTr("Logging out"), function(){
+                   initialised = false
                    connection.logout()
                    scriptLauncher.launchScript()
                    pageStack.clear();
@@ -92,9 +114,9 @@ Page {
                 }
 
                 Label{
-                    text: qsTr(section)
+                    text: qsTrId(section)
                     font.bold: true
-                    font.pointSize: Theme.fontSizeLarge
+                    font.pixelSize: Theme.fontSizeLarge
                 }
             }
 
@@ -104,7 +126,9 @@ Page {
         delegate: ListItem {
             id: item
             width: parent.width
-            contentHeight: visible ? Theme.itemSizeSmall : 0
+            property bool collapsed: false
+            contentHeight: !collapsed ? Theme.itemSizeSmall : 0
+            visible: contentHeight > 0
 
             Behavior on contentHeight
             {
@@ -113,7 +137,7 @@ Page {
 
             Connections {
                 target: item.ListView.view
-                onSectionClicked: if (item.ListView.section === name) visible = !visible;
+                onSectionClicked: if (item.ListView.section === name) collapsed = !collapsed;
             }
 
             Item {
@@ -137,7 +161,7 @@ Page {
                             anchors.horizontalCenter: parent.horizontalCenter
                             text: display.charAt(0).toUpperCase()
                             font.bold: true
-                            font.pointSize: Theme.fontSizeLarge
+                            font.pixelSize: Theme.fontSizeLarge
                             visible: roomAvatar.visible == false
                         }
 
@@ -156,19 +180,21 @@ Page {
                         color: highlightcount > 0 ? Theme.highlightColor : Theme.primaryColor
                         font.bold: unread
                         anchors.leftMargin: Theme.paddingMedium
-                        font.pointSize: Theme.fontSizeMedium
+                        font.pixelSize: Theme.fontSizeMedium
                     }
                     Label {
                         text: highlightcount
                         color: Theme.highlightColor
-                        font.pointSize: Theme.fontSizeSmall
+                        font.pixelSize: Theme.fontSizeSmall
                         visible: highlightcount > 0
                     }
 
-                    Button {
+                    IconButton {
                         Image{source: "image://theme/icon-m-like"}
                         onClicked: joinRoom(roomid)
                         visible: tags == "m.invite"
+                        anchors.right: parent.right
+                        width: Theme.buttonWidthMedium
                     }
                 }
             }
@@ -187,6 +213,15 @@ Page {
         anchors.bottom: parent.bottom
         placeholderText: qsTr("Join room...")
         EnterKey.onClicked: { joinRoom(text); text = "" }
+        enabled: isLoaded
+        visible: isLoaded
+    }
+
+    Connections
+    {
+        target: connection
+
+        onSyncDone: syncDone()
     }
 
     Component.onCompleted: {
