@@ -22,8 +22,8 @@
 #include <QtGui/QColor>
 #include <QtCore/QDebug>
 
-#include "lib/connection.h"
-#include "lib/room.h"
+#include "connection.h"
+#include "room.h"
 
 RoomListModel::RoomListModel(QObject* parent)
     : QAbstractListModel(parent)
@@ -60,6 +60,7 @@ void RoomListModel::addRoom(QMatrixClient::Room* room)
     connect( room, &QMatrixClient::Room::highlightCountChanged, this, [=]{ refresh(room, {RoomEventRoles::HighlightCountRole}); });
     connect( room, &QMatrixClient::Room::avatarChanged, this, [=]{ refresh(room, { RoomEventRoles::AvatarRole }); });
     connect( room, &QMatrixClient::Room::tagsChanged, this, [=]{ refresh(room, { RoomEventRoles::TagRole }); });
+    connect(m_connection, &QMatrixClient::Connection::directChatsListChanged, this, &RoomListModel::refreshDirectChats);
 
     m_rooms.append(room);
     endInsertRows();
@@ -114,7 +115,12 @@ QVariant RoomListModel::data(const QModelIndex& index, int role) const
     {
         if(room->joinState() == QMatrixClient::JoinState::Invite)
         {
-            return "m.invite";
+            return QStringLiteral("m.invite");
+        }
+
+        if(room->isDirectChat())
+        {
+            return QStringLiteral("m.direct");
         }
 
         if(room->tagNames().count() > 0)
@@ -123,7 +129,7 @@ QVariant RoomListModel::data(const QModelIndex& index, int role) const
         }
         else
         {
-            return "m.rooms";
+            return QStringLiteral("m.rooms");
         }
     }
     if(role == AvatarRole)
@@ -160,4 +166,11 @@ void RoomListModel::refresh(QMatrixClient::Room* room, const QVector<int>& roles
         qCritical() << "Room" << room->id() << "not found in the room list";
     else
         emit dataChanged(index(row), index(row), roles);
+}
+
+void RoomListModel::refreshDirectChats(QMatrixClient::Connection::DirectChatsMap additions, QMatrixClient::Connection::DirectChatsMap removals)
+{
+    foreach (QMatrixClient::Room* room, m_rooms) {
+        refresh(room, {RoomEventRoles::TagRole});
+    }
 }

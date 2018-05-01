@@ -36,6 +36,7 @@ class RoomListModel: public QAbstractListModel
     private slots:
         void addRoom(QMatrixClient::Room* room);
         void refresh(QMatrixClient::Room* room, const QVector<int>& roles = {});
+        void refreshDirectChats(QMatrixClient::DirectChatsMap additions,QMatrixClient::DirectChatsMap removals);
         void deleteRoom(QMatrixClient::Room* room);
 
     private:
