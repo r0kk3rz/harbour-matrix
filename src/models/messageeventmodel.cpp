@@ -128,7 +128,7 @@ QVariant MessageEventModel::data(const QModelIndex& index, int role) const
             index.row() < 0 || index.row() >= m_currentRoom->messageEvents().size() )
         return QVariant();
 
-    RoomEvent *event = (m_currentRoom->messageEvents().end() - index.row() - 1)->event();
+    const RoomEvent *event = (m_currentRoom->messageEvents().rbegin() + index.row())->event();
 
     if( role == Qt::DisplayRole )
     {
@@ -144,13 +144,13 @@ QVariant MessageEventModel::data(const QModelIndex& index, int role) const
 
         if( event->type() == EventType::RoomMessage )
         {
-            RoomMessageEvent* e = static_cast<RoomMessageEvent*>(event);
+            const RoomMessageEvent* e = static_cast<const RoomMessageEvent*>(event);
             User* user = m_connection->user(e->senderId());
             return QString("%1 (%2): %3").arg(user->displayname()).arg(user->id()).arg(e->plainBody());
         }
         if( event->type() == EventType::RoomMember )
         {
-            RoomMemberEvent* e = static_cast<RoomMemberEvent*>(event);
+            const RoomMemberEvent* e = static_cast<const RoomMemberEvent*>(event);
 
             QString subjectName = m_currentRoom->roomMembername(e->userId());
 
@@ -257,7 +257,7 @@ QVariant MessageEventModel::data(const QModelIndex& index, int role) const
     {
         if( event->type() == EventType::RoomMessage )
         {
-            RoomMessageEvent* e = static_cast<RoomMessageEvent*>(event);
+            const RoomMessageEvent* e = static_cast<const RoomMessageEvent*>(event);
             User *user = m_connection->user(e->senderId());
             return user->displayname();
         }
@@ -269,7 +269,7 @@ QVariant MessageEventModel::data(const QModelIndex& index, int role) const
         if (event->type() == EventType::RoomMessage)
         {
             const auto& contentType =
-                static_cast<RoomMessageEvent*>(event)->mimeType().name();
+                static_cast<const RoomMessageEvent*>(event)->mimeType().name();
             return contentType == "text/plain" ? "text/html" : contentType;
         }
         return "text/plain";
@@ -291,7 +291,7 @@ QVariant MessageEventModel::data(const QModelIndex& index, int role) const
         {
             using namespace MessageEventContent;
 
-            auto e = static_cast<RoomMessageEvent*>(event);
+            auto e = static_cast<const RoomMessageEvent*>(event);
             switch (e->msgtype())
             {
             case MessageEventType::Emote:
@@ -318,7 +318,7 @@ QVariant MessageEventModel::data(const QModelIndex& index, int role) const
         }
         if( event->type() == EventType::RoomMember )
         {
-            auto e = static_cast<RoomMemberEvent*>(event);
+            auto e = static_cast<const RoomMemberEvent*>(event);
             // FIXME: Rewind to the name that was at the time of this event
             QString subjectName = m_currentRoom->roomMembername(e->userId());
             // The below code assumes senderName output in AuthorRole
@@ -370,32 +370,32 @@ QVariant MessageEventModel::data(const QModelIndex& index, int role) const
         }
         if( event->type() == EventType::RoomAliases )
         {
-            RoomAliasesEvent* e = static_cast<RoomAliasesEvent*>(event);
+            const RoomAliasesEvent* e = static_cast<const RoomAliasesEvent*>(event);
             return QString("Current aliases: %1").arg(e->aliases().join(", "));
         }
         if( event->type() == EventType::RoomAliases )
         {
-            auto e = static_cast<RoomAliasesEvent*>(event);
+            auto e = static_cast<const RoomAliasesEvent*>(event);
             return tr("set aliases to: %1").arg(e->aliases().join(", "));
         }
         if( event->type() == EventType::RoomCanonicalAlias )
         {
-            auto e = static_cast<RoomCanonicalAliasEvent*>(event);
+            auto e = static_cast<const RoomCanonicalAliasEvent*>(event);
             return tr("set the room main alias to: %1").arg(e->alias());
         }
         if( event->type() == EventType::RoomName )
         {
-            auto e = static_cast<RoomNameEvent*>(event);
+            auto e = static_cast<const RoomNameEvent*>(event);
             return tr("set the room name to: %1").arg(e->name());
         }
         if( event->type() == EventType::RoomTopic )
         {
-            auto e = static_cast<RoomTopicEvent*>(event);
+            auto e = static_cast<const RoomTopicEvent*>(event);
             return tr("set the topic to: %1").arg(e->topic());
         }
         if( event->type() == EventType::RoomEncryption )
         {
-            auto e = static_cast<EncryptionEvent*>(event);
+            auto e = static_cast<const EncryptionEvent*>(event);
             return tr("activated End-to-End Encryption (algorithm: %1)")
                 .arg(e->algorithm());
         }
@@ -406,7 +406,7 @@ QVariant MessageEventModel::data(const QModelIndex& index, int role) const
     {
         if( event->type() == EventType::RoomMessage )
         {
-            RoomMessageEvent* message = static_cast<RoomMessageEvent*>(event);
+            const RoomMessageEvent* message = static_cast<const RoomMessageEvent*>(event);
             User* localUser = m_currentRoom->connection()->user();
 
             bool m_isHighlight = message->senderId() != localUser->id() &&
