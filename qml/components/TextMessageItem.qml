@@ -9,15 +9,19 @@ Item {
     width: parent.width - x
     height: textMessage.height
 
-    Text {
+    TextEdit {
         id: textMessage
+
         width: parent.width
         height: contentHeight + Theme.paddingMedium
-        text: itemText
         verticalAlignment: Text.AlignBottom
         horizontalAlignment: Text.AlignLeft
-        color: Theme.primaryColor
+
+        readOnly: true
+        textFormat: TextEdit.RichText
+        text: itemText
         wrapMode: Text.WordWrap
+        color: Theme.primaryColor
         font.pixelSize: Theme.fontSizeSmall
     }
 }

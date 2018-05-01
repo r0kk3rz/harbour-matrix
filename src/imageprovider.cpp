@@ -1,6 +1,6 @@
 #include "imageprovider.h"
 
-#include "lib/connection.h"
+#include "connection.h"
 #include "jobs/mediathumbnailjob.h"
 
 #include <QtCore/QDebug>
