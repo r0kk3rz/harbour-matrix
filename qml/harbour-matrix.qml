@@ -77,7 +77,6 @@ ApplicationWindow
         onSyncError:{
             console.log("Sync Error");
             connectionActive = false;
-            login.abortLogin()
         }
         onResolveError:{
             console.log("Resolve Error");
@@ -88,13 +87,12 @@ ApplicationWindow
 
     function resync() {
 
+        connectionActive = true;
+        
         syncCounter++
         if(syncCounter % 17 == 2)
         {
-            if(connectionActive)
-            {
-               connection.saveState()
-            }
+            connection.saveState()   
         }
 
         connection.sync(10*1000)
