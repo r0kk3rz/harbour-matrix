@@ -22,6 +22,8 @@ SilicaListView {
             currentRoom.getPreviousContent()
             currentRoom.markAllMessagesAsRead()
             currentRoom.resetHighlightCount()
+
+            currentRoom.typingChanged.connect(onTypingChanged)
         }
 
         function setConnection(conn) {
@@ -59,7 +61,34 @@ SilicaListView {
             }
         }
 
-        header: TextArea {
+        function onTypingChanged()
+        {
+		var typing = currentRoom.usersTyping()
+		var text = ""
+
+                console.log("typing changed...")
+
+		if(typing.length > 0)
+		{
+			for(var i = 0, len = typing.length; i < len; i++)
+			{
+				text = text + currentRoom.roomMembername(typing[i]) + ", "
+			}
+			text = text + "typing..."
+		}
+
+		typingLabel.text = text
+        }
+
+        header: Column {
+
+            Label {
+                id: typingLabel
+                font.pixelSize: Theme.fontSizeExtraSmall
+                color: Theme.secondaryColor
+            }
+
+            TextArea {
             id: textEntry
             width: chatView.width
             placeholderText: qsTr("Message @") + (currentRoom ? currentRoom.displayName : "")
@@ -67,6 +96,7 @@ SilicaListView {
                 sendLine(text)
                 textEntry.text = ""
             }
+	    }
         }
 
         delegate: Item {
