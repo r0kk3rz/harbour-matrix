@@ -145,8 +145,8 @@ QVariant MessageEventModel::data(const QModelIndex& index, int role) const
         if( event->type() == EventType::RoomMessage )
         {
             const RoomMessageEvent* e = static_cast<const RoomMessageEvent*>(event);
-            User* user = m_connection->user(e->senderId());
-            return QString("%1 (%2): %3").arg(user->displayname()).arg(user->id()).arg(e->plainBody());
+
+	    return m_currentRoom->prettyPrint(e->plainBody());
         }
         if( event->type() == EventType::RoomMember )
         {
@@ -299,7 +299,7 @@ QVariant MessageEventModel::data(const QModelIndex& index, int role) const
             case MessageEventType::Notice:
                 {
                     if (e->mimeType().name() == "text/plain")
-                        return e->plainBody();
+                        return m_currentRoom->prettyPrint(e->plainBody());
 
                     return static_cast<const TextContent*>(e->content())->body;
                 }

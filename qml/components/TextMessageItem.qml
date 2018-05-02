@@ -23,5 +23,7 @@ Item {
         wrapMode: Text.WordWrap
         color: Theme.primaryColor
         font.pixelSize: Theme.fontSizeSmall
+
+	onLinkActivated: Qt.openUrlExternally(link)
     }
 }
