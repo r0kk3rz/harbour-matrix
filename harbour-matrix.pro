@@ -5,7 +5,14 @@ i18n_files.path = /usr/share/$$TARGET
 
 INSTALLS += i18n_files
 
+lipstick_config.files = $$PWD/*.conf
+lipstick_config.path  = /usr/share/lipstick/notificationcategories
+INSTALLS    += lipstick_config
+
 CONFIG += c++14 sailfishapp
+
+PKGCONFIG += keepalive
+PKGCONFIG += nemonotifications-qt5
 
 QMAKE_CXX=/opt/gcc6/bin/g++
 QMAKE_CC=/opt/gcc6/bin/gcc
@@ -13,20 +20,22 @@ QMAKE_LINK=/opt/gcc6/bin/g++
 
 include(lib/libqmatrixclient.pri)
 
-LIBS += -lz -L/opt/gcc6/lib -static-libstdc++
+LIBS += -lz -L/opt/gcc6/lib -Lkeepalive -Lnemonotifications-qt5 -static-libstdc++
 
 SOURCES += src/harbour-matrix.cpp \
     src/models/messageeventmodel.cpp \
     src/models/roomlistmodel.cpp \
     src/scriptlauncher.cpp \
-    src/imageprovider.cpp
+    src/imageprovider.cpp \
+    src/notificationsprovider.cpp
 
 OTHER_FILES += qml/harbour-matrix.qml \
     qml/cover/CoverPage.qml \
     rpm/harbour-matrix.changes.in \
     rpm/harbour-matrix.spec \
     translations/*.ts \
-    harbour-matrix.desktop
+    harbour-matrix.desktop \
+    harbour.matrix.notification.conf
 
 SAILFISHAPP_ICONS = 86x86 108x108 128x128 256x256
 
@@ -40,7 +49,8 @@ HEADERS += \
     src/models/messageeventmodel.h \
     src/models/roomlistmodel.h \
     src/scriptlauncher.h \
-    src/imageprovider.h
+    src/imageprovider.h \
+    src/notificationsprovider.h
 
 DISTFILES += \
     qml/components/about/CollaboratorsLabel.qml \

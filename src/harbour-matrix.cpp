@@ -10,8 +10,8 @@
 #include "room.h"
 #include "user.h"
 #include "jobs/syncjob.h"
-#include "jobs/joinroomjob.h"
 #include "imageprovider.h"
+#include "notificationsprovider.h"
 #include "src/scriptlauncher.h"
 #include "models/messageeventmodel.h"
 #include "models/roomlistmodel.h"
@@ -29,7 +29,6 @@ int main(int argc, char *argv[])
     application->setApplicationName("harbour-matrix");
 
     qmlRegisterType<SyncJob>(); qRegisterMetaType<SyncJob*> ("SyncJob*");
-    qmlRegisterType<JoinRoomJob>(); qRegisterMetaType<JoinRoomJob*>("JoinRoomJob*");
     qmlRegisterType<Room>();    qRegisterMetaType<Room*>    ("Room*");
     qmlRegisterType<User>();    qRegisterMetaType<User*>    ("User*");
     qmlRegisterType<Connection>        ("Matrix", 1, 0, "Connection");
@@ -55,6 +54,9 @@ int main(int argc, char *argv[])
     QObject::connect(engine, SIGNAL(quit()), application.data(), SLOT(quit()));
 
     ScriptLauncher launcher;
+
+    NotificationsProvider notifyTask(&conn);
+    Q_UNUSED(notifyTask);
 
     view->rootContext()->setContextProperty("scriptLauncher", &launcher);
     view->rootContext()->setContextProperty("rooms", &rooms);
