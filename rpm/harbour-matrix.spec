@@ -24,6 +24,7 @@ BuildRequires:  pkgconfig(Qt5Qml)
 BuildRequires:  pkgconfig(Qt5Quick)
 BuildRequires:  pkgconfig(keepalive)
 BuildRequires:  pkgconfig(nemonotifications-qt5)
+BuildRequires:  pkgconfig(nemodbus)
 BuildRequires:  desktop-file-utils
 BuildRequires:  opt-gcc6
 

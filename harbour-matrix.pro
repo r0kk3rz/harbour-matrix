@@ -20,7 +20,11 @@ QMAKE_LINK=/opt/gcc6/bin/g++
 
 include(lib/libqmatrixclient.pri)
 
-LIBS += -lz -L/opt/gcc6/lib -Lkeepalive -Lnemonotifications-qt5 -static-libstdc++
+LIBS += -lz -L/opt/gcc6/lib \
+            -Lkeepalive \
+            -Lnemonotifications-qt5 \
+            -Lnemodbus \
+            -static-libstdc++
 
 SOURCES += src/harbour-matrix.cpp \
     src/models/messageeventmodel.cpp \
