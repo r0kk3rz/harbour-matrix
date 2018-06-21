@@ -30,7 +30,7 @@ Page
 
             CollaboratorsLabel {
                 title: qsTr("Contributors");
-                labelData: [ "minitreintje", "KitsuneRal" ]
+                labelData: [ "minitreintje", "KitsuneRal", "aa13q" ]
             }
         }
     }
