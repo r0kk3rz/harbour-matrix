@@ -115,22 +115,11 @@ Page {
 
         section.property: "tags"
         section.criteria: ViewSection.FullString
-        section.delegate: ListItem {
-            Row {
-                spacing: Theme.paddingMedium
-                anchors.verticalCenter: parent.verticalCenter
-                Image {
-                    source: "image://theme/icon-m-down"
-                }
-
-                Label {
-                    text: qsTrId(section)
-                    font.bold: true
-                    font.pixelSize: Theme.fontSizeLarge
-                }
+        section.delegate: ExpandingSection {
+            title: qsTrId(section)
+            onExpandedChanged: {
+                roomListView.sectionClicked(section)
             }
-
-            onClicked: roomListView.sectionClicked(section)
         }
 
         delegate: ListItem {
