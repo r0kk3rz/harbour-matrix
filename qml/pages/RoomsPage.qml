@@ -61,15 +61,21 @@ Page {
             title: qsTr("Rooms")
 
             Item {
+                anchors.left: parent.left
                 anchors.verticalCenter: parent.verticalCenter
 
                 BusyIndicator {
+                    anchors.left: parent.left
+                    anchors.leftMargin: Theme.horizontalPageMargin
+                    anchors.verticalCenter: parent.verticalCenter
                     visible: running
                     running: isLoaded == false
                     size: isLoaded ? 0 : BusyIndicatorSize.Medium
                 }
 
                 GlassItem {
+                    anchors.left: parent.left
+                    anchors.verticalCenter: parent.verticalCenter
                     color: connectionActive ? "green" : "red"
                     cache: false
                     visible: isLoaded
