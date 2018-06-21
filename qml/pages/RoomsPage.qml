@@ -52,13 +52,8 @@ Page {
     SilicaListView {
         id: roomListView
         model: roomsProxy
-        width: parent.width
-        height: parent.height - textEntry.height
+        anchors.fill: parent
         signal sectionClicked(string name)
-
-        anchors.top: parent.top
-
-        clip: true
         currentIndex: -1
 
         header: PageHeader {
@@ -141,25 +136,30 @@ Page {
             }
 
             Item {
-                height: parent.height
-                x: Theme.paddingMedium
-                width: parent.width - x - x
+                anchors.fill: parent
+                anchors.leftMargin: Theme.horizontalPageMargin
+                anchors.rightMargin: Theme.horizontalPageMargin
+                anchors.topMargin: Theme.paddingSmall
+                anchors.bottomMargin: Theme.paddingSmall
 
-                Row {
-                    spacing: Theme.paddingMedium
-                    anchors.verticalCenter: parent.verticalCenter
+                Item {
+                    anchors.fill: parent
 
                     Rectangle {
                         id: bubble
-                        height: Theme.itemSizeSmall - Theme.paddingMedium
+                        height: parent.height
                         width: height
                         radius: height / 2
+                        anchors.left: parent.left
+                        anchors.verticalCenter: parent.verticalCenter
                         color: roomAvatar.visible == false ? stringToColour(
-                                                                 display) : "white"
+                                                                 display) : Theme.secondaryColor
 
                         Label {
                             anchors.verticalCenter: parent.verticalCenter
                             anchors.horizontalCenter: parent.horizontalCenter
+                            horizontalAlignment: Text.AlignHCenter
+                            verticalAlignment: Text.AlignVCenter
                             text: display.charAt(0).toUpperCase()
                             font.bold: true
                             font.pixelSize: Theme.fontSizeLarge
@@ -169,7 +169,7 @@ Page {
                         AvatarImage {
                             id: roomAvatar
                             iconSource: avatar
-                            iconSize: parent.height + 2
+                            iconSize: parent.height
                             anchors.verticalCenter: parent.verticalCenter
                             anchors.horizontalCenter: parent.horizontalCenter
                             visible: avatar != ""
@@ -177,27 +177,40 @@ Page {
                     }
 
                     Label {
+                        anchors.left: bubble.right
+                        anchors.right: counterLabel.left
+                        anchors.margins: Theme.paddingMedium
+                        anchors.verticalCenter: parent.verticalCenter
+                        verticalAlignment: Text.AlignVCenter
+                        truncationMode: TruncationMode.Fade
+
                         text: display
                         color: highlightcount > 0 ? Theme.highlightColor : Theme.primaryColor
                         font.bold: unread
-                        anchors.leftMargin: Theme.paddingMedium
-                        font.pixelSize: Theme.fontSizeMedium
                     }
                     Label {
+                        anchors.right: inviteButton.left
+                        anchors.margins: visible ? Theme.horizontalPageMargin : 0
+                        anchors.verticalCenter: parent.verticalCenter
+                        verticalAlignment: Text.AlignVCenter
+                        id: counterLabel
                         text: highlightcount
                         color: Theme.highlightColor
                         font.pixelSize: Theme.fontSizeSmall
                         visible: highlightcount > 0
+                        width: visible ? implicitWidth : 0
                     }
 
                     IconButton {
+                        id: inviteButton
                         Image {
-                            source: "image://theme/icon-m-like"
+                            source: "image://theme/icon-m-acknowledge"
                         }
                         onClicked: joinRoom(roomid)
                         visible: tags == "m.invite"
                         anchors.right: parent.right
-                        width: Theme.buttonWidthMedium
+                        anchors.verticalCenter: parent.verticalCenter
+                        width: visible ? Theme.iconSizeMedium : 0
                     }
                 }
             }
@@ -208,24 +221,22 @@ Page {
                 pageStack.push(roomView)
             }
         }
-    }
-
-    TextField {
-        id: textEntry
-        width: parent.width
-        anchors.bottom: parent.bottom
-        placeholderText: qsTr("Join room...")
-        EnterKey.onClicked: {
-            joinRoom(text)
-            text = ""
+        footer: TextField {
+            id: textEntry
+            width: parent.width
+            height: implicitHeight
+            placeholderText: qsTr("Join room...")
+            EnterKey.onClicked: {
+                joinRoom(text)
+                text = ""
+            }
+            enabled: isLoaded
+            visible: isLoaded
         }
-        enabled: isLoaded
-        visible: isLoaded
     }
 
     Connections {
         target: connection
-
         onSyncDone: syncDone()
     }
 
