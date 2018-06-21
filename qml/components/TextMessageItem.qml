@@ -24,6 +24,6 @@ Item {
         color: Theme.primaryColor
         font.pixelSize: Theme.fontSizeSmall
 
-	onLinkActivated: Qt.openUrlExternally(link)
+        onLinkActivated: Qt.openUrlExternally(link)
     }
 }

@@ -2,18 +2,21 @@ import QtQuick 2.2
 import Sailfish.Silica 1.0
 import "../components/textlabel"
 
-
 Page {
     id: settingsPage
 
     Column {
-        width: parent.width -x
+        width: parent.width - x
         spacing: Theme.paddingMedium
         x: Theme.paddingLarge
 
-        PageHeader { title: qsTr("Settings") }
+        PageHeader {
+            title: qsTr("Settings")
+        }
 
-        SectionHeader{ text: qsTr("Matrix Settings") }
+        SectionHeader {
+            text: qsTr("Matrix Settings")
+        }
 
         TextSwitch {
             id: colorSwitch
@@ -39,4 +42,4 @@ Page {
             }
         }
     }
- }
+}

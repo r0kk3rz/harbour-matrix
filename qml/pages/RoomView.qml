@@ -1,7 +1,6 @@
 import QtQuick 2.2
 import Sailfish.Silica 1.0
 
-
 Page {
     id: room
 
@@ -30,14 +29,9 @@ Page {
         anchors.right: parent.right
         anchors.left: parent.left
         anchors.top: parent.top
-
     }
 
     Component.onCompleted: {
         setConnection(connection)
     }
 }
-
-
-
-

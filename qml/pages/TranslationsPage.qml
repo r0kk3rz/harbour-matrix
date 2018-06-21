@@ -7,14 +7,17 @@ Page {
         anchors.fill: parent
         contentHeight: transColumn.height
 
-        VerticalScrollDecorator {}
+        VerticalScrollDecorator {
+        }
 
         Column {
             id: transColumn
             width: parent.width
             spacing: Theme.paddingLarge
-            
-            PageHeader { title: qsTr("Translators") }
+
+            PageHeader {
+                title: qsTr("Translators")
+            }
 
             IconTextButton {
                 anchors.horizontalCenter: parent.horizontalCenter
@@ -27,6 +30,6 @@ Page {
                 text: "Carmen Fdez"
                 iconSource: "qrc:/res/icon-spain.png"
             }
-         }
+        }
     }
-}           
+}

@@ -10,38 +10,42 @@ Page {
     signal joinRoom(string name)
 
     enabled: initialised
-    opacity: initialised ? 1: 0
+    opacity: initialised ? 1 : 0
 
     property bool isLoaded: false
 
-    Behavior on opacity {NumberAnimation{duration: 400}}
+    Behavior on opacity {
+        NumberAnimation {
+            duration: 400
+        }
+    }
 
-    RemorsePopup { id: remorse }
+    RemorsePopup {
+        id: remorse
+    }
 
-    function syncDone()
-    {
-        if(isLoaded == false )
-        {
+    function syncDone() {
+        if (isLoaded == false) {
             console.log("Initial Syncing Done")
-            isLoaded = true;
+            isLoaded = true
         }
     }
 
     function stringToColour(str) {
-      var hash = 0;
-      for (var i = 0; i < str.length; i++) {
-        hash = str.charCodeAt(i) + ((hash << 5) - hash);
-      }
-      var colour = '#';
-      for (var i = 0; i < 3; i++) {
-        var value = (hash >> (i * 8)) & 0xFF;
-        colour += ('00' + value.toString(16)).substr(-2);
-      }
-      return colour;
+        var hash = 0
+        for (var i = 0; i < str.length; i++) {
+            hash = str.charCodeAt(i) + ((hash << 5) - hash)
+        }
+        var colour = '#'
+        for (var i = 0; i < 3; i++) {
+            var value = (hash >> (i * 8)) & 0xFF
+            colour += ('00' + value.toString(16)).substr(-2)
+        }
+        return colour
     }
 
     function refresh() {
-        if(roomListView.visible)
+        if (roomListView.visible)
             roomListView.forceLayout()
     }
 
@@ -85,29 +89,29 @@ Page {
 
         PullDownMenu {
 
-           MenuItem {
+            MenuItem {
                 text: qsTr("About Matriksi")
                 onClicked: pageStack.push(aboutPage)
             }
 
-           MenuItem {
-               text: qsTr("Settings")
-               onClicked: {
-                   pageStack.push(settingsPage)
+            MenuItem {
+                text: qsTr("Settings")
+                onClicked: {
+                    pageStack.push(settingsPage)
+                }
             }
-         }
 
-           MenuItem {
-               text: qsTr("Logout")
-               onClicked: remorse.execute(qsTr("Logging out"), function(){
-                   initialised = false
-                   connection.logout()
-                   scriptLauncher.launchScript()
-                   pageStack.clear();
-                   pageStack.replace(Qt.resolvedUrl("../harbour-matrix.qml"));
-             });
-          }
-       }
+            MenuItem {
+                text: qsTr("Logout")
+                onClicked: remorse.execute(qsTr("Logging out"), function () {
+                    initialised = false
+                    connection.logout()
+                    scriptLauncher.launchScript()
+                    pageStack.clear()
+                    pageStack.replace(Qt.resolvedUrl("../harbour-matrix.qml"))
+                })
+            }
+        }
 
         section.property: "tags"
         section.criteria: ViewSection.FullString
@@ -119,7 +123,7 @@ Page {
                     source: "image://theme/icon-m-down"
                 }
 
-                Label{
+                Label {
                     text: qsTrId(section)
                     font.bold: true
                     font.pixelSize: Theme.fontSizeLarge
@@ -136,20 +140,22 @@ Page {
             contentHeight: !collapsed ? Theme.itemSizeSmall : 0
             visible: contentHeight > 0
 
-            Behavior on contentHeight
-            {
-                NumberAnimation { duration: 200 }
+            Behavior on contentHeight {
+                NumberAnimation {
+                    duration: 200
+                }
             }
 
             Connections {
                 target: item.ListView.view
-                onSectionClicked: if (item.ListView.section === name) collapsed = !collapsed;
+                onSectionClicked: if (item.ListView.section === name)
+                                      collapsed = !collapsed
             }
 
             Item {
                 height: parent.height
                 x: Theme.paddingMedium
-                width: parent.width - x-x
+                width: parent.width - x - x
 
                 Row {
                     spacing: Theme.paddingMedium
@@ -159,8 +165,9 @@ Page {
                         id: bubble
                         height: Theme.itemSizeSmall - Theme.paddingMedium
                         width: height
-                        radius: height/2
-                        color: roomAvatar.visible == false ? stringToColour(display): "white"
+                        radius: height / 2
+                        color: roomAvatar.visible == false ? stringToColour(
+                                                                 display) : "white"
 
                         Label {
                             anchors.verticalCenter: parent.verticalCenter
@@ -196,7 +203,9 @@ Page {
                     }
 
                     IconButton {
-                        Image{source: "image://theme/icon-m-like"}
+                        Image {
+                            source: "image://theme/icon-m-like"
+                        }
                         onClicked: joinRoom(roomid)
                         visible: tags == "m.invite"
                         anchors.right: parent.right
@@ -218,13 +227,15 @@ Page {
         width: parent.width
         anchors.bottom: parent.bottom
         placeholderText: qsTr("Join room...")
-        EnterKey.onClicked: { joinRoom(text); text = "" }
+        EnterKey.onClicked: {
+            joinRoom(text)
+            text = ""
+        }
         enabled: isLoaded
         visible: isLoaded
     }
 
-    Connections
-    {
+    Connections {
         target: connection
 
         onSyncDone: syncDone()
@@ -234,4 +245,4 @@ Page {
         enterRoom.connect(roomView.setRoom)
         joinRoom.connect(connection.joinRoom)
     }
-  }
+}

@@ -13,7 +13,7 @@ Item {
         horizontalAlignment: Text.AlignHCenter
         color: Theme.secondaryColor
         font.pixelSize: Theme.fontSizeExtraSmall
-        height: lineCount* font.pixelSize + Theme.paddingMedium
+        height: lineCount * font.pixelSize + Theme.paddingMedium
         text: itemText
     }
 }

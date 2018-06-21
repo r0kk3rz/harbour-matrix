@@ -17,15 +17,16 @@ BackgroundItem {
         anchors.verticalCenter: parent.verticalCenter
         anchors.fill: parent
         anchors.margins: padding
-        //spacing: Theme.paddingLarge
 
+        //spacing: Theme.paddingLarge
         Label {
             id: label
             anchors.left: parent.left
-            width: parent.width-image.width-padding
+            width: parent.width - image.width - padding
             verticalAlignment: Text.AlignVCenter
             anchors.verticalCenter: parent.verticalCenter
-            color: root.down || root.contentHighlighted ? Theme.highlightColor : Theme.primaryColor
+            color: root.down
+                   || root.contentHighlighted ? Theme.highlightColor : Theme.primaryColor
             font.pixelSize: Theme.fontSizeSmall
             truncationMode: TruncationMode.Fade
             wrapMode: Text.WordWrap
@@ -40,7 +41,7 @@ BackgroundItem {
             fillMode: Image.PreserveAspectFit
             anchors.verticalCenter: parent.verticalCenter
             source: root.iconSource // + "?" + (root.down || root.contentHighlighted ? Theme.highlightColor
-                                    //                                              : Theme.primaryColor)
+            //                                              : Theme.primaryColor)
         }
     }
 }

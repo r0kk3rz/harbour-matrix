@@ -1,31 +1,34 @@
 import QtQuick 2.1
 import Sailfish.Silica 1.0
 
-Item
-{
+Item {
     property alias icon: imgicon.source
     property alias text: lbltext.text
     property bool remorseRequired: false
     property string actionMessage
 
-    signal actionRequested()
+    signal actionRequested
 
-    BackgroundItem
-    {
+    BackgroundItem {
         id: backgrounditem
         anchors.fill: parent
 
-        RemorseItem { id: remorseitem }
+        RemorseItem {
+            id: remorseitem
+        }
 
-        Row
-        {
+        Row {
             id: row
             spacing: Theme.paddingSmall
             height: parent.height
-            anchors { left: parent.left; right: parent.right; leftMargin: Theme.paddingMedium; rightMargin: Theme.paddingMedium }
+            anchors {
+                left: parent.left
+                right: parent.right
+                leftMargin: Theme.paddingMedium
+                rightMargin: Theme.paddingMedium
+            }
 
-            Image
-            {
+            Image {
                 id: imgicon
                 width: lbltext.contentHeight
                 height: lbltext.contentHeight
@@ -34,8 +37,7 @@ Item
                 visible: imgicon.status === Image.Ready
             }
 
-            Label
-            {
+            Label {
                 id: lbltext
                 width: parent.width - imgicon.width
                 height: parent.height
@@ -44,15 +46,14 @@ Item
         }
 
         onClicked: {
-            if(!remorseRequired) {
-                actionRequested();
-                return;
+            if (!remorseRequired) {
+                actionRequested()
+                return
             }
 
-            remorseitem.execute(backgrounditem, actionMessage,
-                                function() {
-                                    actionRequested();
-                                });
+            remorseitem.execute(backgrounditem, actionMessage, function () {
+                actionRequested()
+            })
         }
     }
 }
