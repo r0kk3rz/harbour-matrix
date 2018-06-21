@@ -88,6 +88,16 @@ Page {
         }
 
         PullDownMenu {
+            MenuItem {
+                text: qsTr("Logout")
+                onClicked: remorse.execute(qsTr("Logging out"), function () {
+                    initialised = false
+                    connection.logout()
+                    scriptLauncher.launchScript()
+                    pageStack.clear()
+                    pageStack.replace(Qt.resolvedUrl("../harbour-matrix.qml"))
+                })
+            }
 
             MenuItem {
                 text: qsTr("About Matriksi")
@@ -99,17 +109,6 @@ Page {
                 onClicked: {
                     pageStack.push(settingsPage)
                 }
-            }
-
-            MenuItem {
-                text: qsTr("Logout")
-                onClicked: remorse.execute(qsTr("Logging out"), function () {
-                    initialised = false
-                    connection.logout()
-                    scriptLauncher.launchScript()
-                    pageStack.clear()
-                    pageStack.replace(Qt.resolvedUrl("../harbour-matrix.qml"))
-                })
             }
         }
 
