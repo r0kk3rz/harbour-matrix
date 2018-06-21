@@ -80,7 +80,7 @@ Page {
                 GlassItem {
                     anchors.left: parent.left
                     anchors.verticalCenter: parent.verticalCenter
-                    color: connectionActive ? "green" : "red"
+                    color: connectionActive ? "lightgreen" : "pink"
                     cache: false
                     visible: isLoaded
                 }
