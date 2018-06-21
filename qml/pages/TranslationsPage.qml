@@ -30,6 +30,12 @@ Page {
                 text: "Carmen Fdez"
                 iconSource: "qrc:/res/icon-spain.png"
             }
+
+            IconTextButton {
+                anchors.horizontalCenter: parent.horizontalCenter
+                text: "Alexey Andreev"
+                iconSource: "qrc:/res/icon-russia.png"
+            }
         }
     }
 }
