@@ -47,7 +47,8 @@ CONFIG += sailfishapp_i18n
 
 TRANSLATIONS += translations/harbour-matrix.ts \
                 translations/harbour-matrix-es.ts \
-                translations/harbour-matrix-de.ts
+                translations/harbour-matrix-de.ts \
+                translations/harbour-matrix-ru.ts
 
 HEADERS += \
     src/models/messageeventmodel.h \
