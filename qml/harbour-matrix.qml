@@ -121,6 +121,24 @@ ApplicationWindow {
                                             useBlackBackground)
     }
 
+    function stringToHue(str) {
+        var hash = 0
+        if ((str).length === 0)
+            return hash
+        for (var i = 0; i < (str).length; i++) {
+            hash = (str).charCodeAt(i) + ((hash << 5) - hash)
+            hash = hash & hash
+        }
+        return Math.abs(360 / (hash % 360) % 1)
+    }
+
+    function stringToColour(str) {
+        if (str) {
+            return Qt.hsla(stringToHue(str), 0.5, 0.4, 1)
+        }
+        return Theme.primaryColor
+    }
+
     RoomView {
         id: roomView
         Component.onCompleted: {
