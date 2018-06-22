@@ -4,28 +4,24 @@
 <context>
     <name>AboutPage</name>
     <message>
-        <source>About Matriksi</source>
-        <translation>О программе</translation>
-    </message>
-    <message>
         <source>An unofficial Matrix Client for SailfishOS</source>
         <translation>Неофициальный клиент Matrix для SailfishOS</translation>
-    </message>
-    <message>
-        <source>Matriksi is an unofficial Matrix Client for SailfishOS and distributed under the GPLv3 license.</source>
-        <translation>Matriksi -- это неофициальный клиент Matrix для SailfishOS, распространяемый по лицензии GPLv3.</translation>
     </message>
     <message>
         <source>Developers</source>
         <translation>Разработчики</translation>
     </message>
     <message>
-        <source>Donate with Paypal</source>
-        <translation>Пожертвование через Paypal</translation>
-    </message>
-    <message>
         <source>Translations</source>
         <translation>Переводы</translation>
+    </message>
+    <message>
+        <source>About Matrix</source>
+        <translation>О программе</translation>
+    </message>
+    <message>
+        <source>harbour-matrix is an unofficial Matrix Client for SailfishOS and distributed under the GPLv3 license.</source>
+        <translation>harbour-matrix -- это неофициальный клиент сети Matrix для SailfishOS, распространяемый по лицензии GPLv3.</translation>
     </message>
 </context>
 <context>
@@ -33,13 +29,6 @@
     <message>
         <source>Say something...</source>
         <translation>Напишите что-нибудь...</translation>
-    </message>
-</context>
-<context>
-    <name>ChatRoom2</name>
-    <message>
-        <source>Message @</source>
-        <translation>Сообщение @</translation>
     </message>
 </context>
 <context>
@@ -56,16 +45,16 @@
         <translation>Разработчики</translation>
     </message>
     <message>
-        <source>Previous developer</source>
-        <translation>Бывшие разработчики</translation>
-    </message>
-    <message>
-        <source>Matriksi developers</source>
-        <translation>Разработчкики клиента</translation>
-    </message>
-    <message>
         <source>Contributors</source>
         <translation>Помощники</translation>
+    </message>
+    <message>
+        <source>harbour-matrix developers</source>
+        <translation>разработчики harbour-matrix</translation>
+    </message>
+    <message>
+        <source>Previous developers</source>
+        <translation>Бывшие разработчики</translation>
     </message>
 </context>
 <context>
@@ -98,40 +87,44 @@
         <source>Create an Matrix account</source>
         <translation>Создать аккаунт Matrix</translation>
     </message>
+    <message>
+        <source>Matrix</source>
+        <translation>Matrix</translation>
+    </message>
 </context>
 <context>
     <name>MessageEventModel</name>
     <message>
         <source>invited %1 to the room</source>
-        <translation>-- приглашение %1 в комнату</translation>
+        <translation>приглашение %1 в комнату</translation>
     </message>
     <message>
         <source>joined the room</source>
-        <translation>-- вступление в комнату</translation>
+        <translation>вход в комнату</translation>
     </message>
     <message>
         <source>cleared the display name</source>
-        <translation>-- убрано отображаемое имя</translation>
+        <translation>убрано отображаемое имя</translation>
     </message>
     <message>
         <source>changed the display name to %1</source>
-        <translation>-- отображаемое имя изменено на %1</translation>
+        <translation>отображаемое имя изменено на %1</translation>
     </message>
     <message>
         <source>doesn&apos;t want %1 in the room anymore</source>
-        <translation>-- больше не желает видеть пользователя %1 в комнате</translation>
+        <translation>больше не желает видеть пользователя %1 в комнате</translation>
     </message>
     <message>
         <source>left the room</source>
-        <translation>-- выход из комнаты</translation>
+        <translation>выход из комнаты</translation>
     </message>
     <message>
         <source>banned %1 from the room</source>
-        <translation>-- запрет на посещение комнаты пользователю %1</translation>
+        <translation>запрет на посещение комнаты пользователю %1</translation>
     </message>
     <message>
         <source>self-banned from the room</source>
-        <translation>-- запрет на посещение комнаты самому себе</translation>
+        <translation>запрет на посещение комнаты самому себе</translation>
     </message>
     <message>
         <source>knocked</source>
@@ -139,31 +132,74 @@
     </message>
     <message>
         <source>set aliases to: %1</source>
-        <translation>-- установлен псевдоним: %1</translation>
+        <translation>установлен псевдоним: %1</translation>
     </message>
     <message>
         <source>set the room main alias to: %1</source>
-        <translation>-- установлен основной псевдоним комнаты: %1</translation>
+        <translation>установлен основной псевдоним комнаты: %1</translation>
     </message>
     <message>
         <source>set the room name to: %1</source>
-        <translation>-- установлено имя комнаты: %1</translation>
+        <translation>установлено имя комнаты: %1</translation>
     </message>
     <message>
         <source>set the topic to: %1</source>
-        <translation>-- установлена тема комнаты: %1</translation>
+        <translation>установлена тема комнаты: %1</translation>
     </message>
     <message>
         <source>activated End-to-End Encryption (algorithm: %1)</source>
-        <translation>-- включено сквозное шифрование (алгоритм: %1)</translation>
+        <translation>включено сквозное шифрование (алгоритм: %1)</translation>
     </message>
     <message>
         <source>cleared the avatar</source>
-        <translation>-- аватар убран</translation>
+        <translation>аватар убран</translation>
     </message>
     <message>
         <source>updated the avatar</source>
-        <translation>-- аватар обновлен</translation>
+        <translation>аватар обновлен</translation>
+    </message>
+    <message>
+        <source>Redacted</source>
+        <translation>Отредактировано</translation>
+    </message>
+    <message>
+        <source>Redacted: %1</source>
+        <translation>Отредактировано: %1</translation>
+    </message>
+    <message>
+        <source>cleared the room main alias</source>
+        <translation>убран основной псевдоним комнаты</translation>
+    </message>
+    <message>
+        <source>cleared the room name</source>
+        <translation>убрано имя комнаты</translation>
+    </message>
+    <message>
+        <source>cleared the topic</source>
+        <translation>убрана тема комнаты</translation>
+    </message>
+    <message>
+        <source>changed the room avatar</source>
+        <translation>изменен аватар комнаты</translation>
+    </message>
+    <message>
+        <source>activated End-to-End Encryption</source>
+        <translation>включено сквозное шифрование</translation>
+    </message>
+</context>
+<context>
+    <name>RoomView</name>
+    <message>
+        <source>Message @</source>
+        <translation>Сообщение @</translation>
+    </message>
+    <message>
+        <source>Add attachment</source>
+        <translation>Добавить вложение</translation>
+    </message>
+    <message>
+        <source>Add photo</source>
+        <translation>Добавить фото</translation>
     </message>
 </context>
 <context>
@@ -194,21 +230,6 @@
     </message>
 </context>
 <context>
-    <name>RoomsPage2</name>
-    <message>
-        <source>Rooms</source>
-        <translation>Комнаты</translation>
-    </message>
-    <message>
-        <source>About Matriksi</source>
-        <translation>О Matriksi</translation>
-    </message>
-    <message>
-        <source>Join room...</source>
-        <translation>Вступить в комнату...</translation>
-    </message>
-</context>
-<context>
     <name>SettingsPage</name>
     <message>
         <source>Fancy colors</source>
@@ -227,11 +248,11 @@
         <translation>Затемненный фон для страницы переписки</translation>
     </message>
     <message>
-        <source>Matriksi Settings</source>
-        <translation>Настройки Matriksi</translation>
+        <source>Settings</source>
+        <translation>Настройки</translation>
     </message>
     <message>
-        <source>Settings</source>
+        <source>Matrix Settings</source>
         <translation>Настройки</translation>
     </message>
 </context>

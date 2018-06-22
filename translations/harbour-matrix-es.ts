@@ -4,28 +4,24 @@
 <context>
     <name>AboutPage</name>
     <message>
-        <source>About Matriksi</source>
-        <translation>Acerca de</translation>
-    </message>
-    <message>
         <source>An unofficial Matrix Client for SailfishOS</source>
         <translation>Un cliente no oficial de Matrix para SailfishOS</translation>
-    </message>
-    <message>
-        <source>Matriksi is an unofficial Matrix Client for SailfishOS and distributed under the GPLv3 license.</source>
-        <translation>Matriksi es un cliente no oficial de Matrix para SailfishOS y distribuido bajo la licencia GPLv3.</translation>
     </message>
     <message>
         <source>Developers</source>
         <translation>Desarrolladores</translation>
     </message>
     <message>
-        <source>Donate with Paypal</source>
-        <translation>Donar por paypal</translation>
-    </message>
-    <message>
         <source>Translations</source>
         <translation>Traductores</translation>
+    </message>
+    <message>
+        <source>About Matrix</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>harbour-matrix is an unofficial Matrix Client for SailfishOS and distributed under the GPLv3 license.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -33,13 +29,6 @@
     <message>
         <source>Say something...</source>
         <translation>Decir algo...</translation>
-    </message>
-</context>
-<context>
-    <name>ChatRoom2</name>
-    <message>
-        <source>Message @</source>
-        <translation>Mensaje @</translation>
     </message>
 </context>
 <context>
@@ -56,15 +45,15 @@
         <translation>Desarrolladores</translation>
     </message>
     <message>
-        <source>Previous developer</source>
-        <translation>Desarrolladores anteriores</translation>
-    </message>
-    <message>
-        <source>Matriksi developers</source>
-        <translation>Desarrollador de Matriksi</translation>
-    </message>
-    <message>
         <source>Contributors</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>harbour-matrix developers</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Previous developers</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -97,6 +86,10 @@
     <message>
         <source>Create an Matrix account</source>
         <translation>Crear cuenta de Matrix</translation>
+    </message>
+    <message>
+        <source>Matrix</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -165,6 +158,49 @@
         <source>updated the avatar</source>
         <translation>actualizó el avatar</translation>
     </message>
+    <message>
+        <source>Redacted</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Redacted: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>cleared the room main alias</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>cleared the room name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>cleared the topic</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>changed the room avatar</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>activated End-to-End Encryption</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>RoomView</name>
+    <message>
+        <source>Message @</source>
+        <translation type="unfinished">Mensaje @</translation>
+    </message>
+    <message>
+        <source>Add attachment</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Add photo</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>RoomsPage</name>
@@ -194,21 +230,6 @@
     </message>
 </context>
 <context>
-    <name>RoomsPage2</name>
-    <message>
-        <source>Rooms</source>
-        <translation type="unfinished">Salas</translation>
-    </message>
-    <message>
-        <source>About Matriksi</source>
-        <translation type="unfinished">Acerca de</translation>
-    </message>
-    <message>
-        <source>Join room...</source>
-        <translation type="unfinished">Unirse a una sala...</translation>
-    </message>
-</context>
-<context>
     <name>SettingsPage</name>
     <message>
         <source>Fancy colors</source>
@@ -227,12 +248,12 @@
         <translation>Usa fondo oscuro en la conversación</translation>
     </message>
     <message>
-        <source>Matriksi Settings</source>
+        <source>Settings</source>
         <translation>Ajustes</translation>
     </message>
     <message>
-        <source>Settings</source>
-        <translation>Ajustes</translation>
+        <source>Matrix Settings</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
