@@ -15,6 +15,7 @@ public slots:
     void startRun();
     void processNotifications(QMatrixClient::BaseJob *job);
     void sendSailfishNotification(QString id, QString sender, QString message, QString origin, QDateTime timestamp);
+    void closeSailfishNotification(QString origin);
 
 private:
     QMatrixClient::Connection* m_connection;
