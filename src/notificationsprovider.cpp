@@ -22,7 +22,7 @@
     using namespace QMatrixClient;
 
     const QString from("");
-    int limit = 10;
+    int limit = 25;
     const QString filter("");
     auto notificationjob = m_connection->callApi<GetNotificationsJob>(from, limit, filter);
 
@@ -41,9 +41,8 @@
       {
           if(notification.read == false)
           {
-              if( notification.event->type() == EventType::RoomMessage )
+              if( auto e = ptrCast<RoomMessageEvent>(move(notification.event)))
               {
-                  auto e = ptrCast<RoomMessageEvent>(move(notification.event));
                   User *user = m_connection->user(e->senderId());
 
                   sendSailfishNotification(notification.roomId, user->displayname(), e->plainBody(), e->id(), QDateTime::fromMSecsSinceEpoch(notification.ts));
@@ -51,7 +50,24 @@
           }
           else
           {
-              // Figure out if we need to close any notifications
+              if( auto e = ptrCast<RoomMessageEvent>(move(notification.event)) )
+              {
+                  closeSailfishNotification(e->id());
+              }
+          }
+      }
+  }
+
+  void NotificationsProvider::closeSailfishNotification(QString origin)
+  {
+      for(auto existing : Notification::notifications())
+      {
+          Notification* existingNotification = static_cast<Notification*>(existing);
+          if(existingNotification->origin() == origin)
+          {
+              qDebug() << "Close Read Notification " << existingNotification->origin();
+              existingNotification->close();
+              break;
           }
       }
   }
@@ -85,9 +101,9 @@
 
          QVariantMap remoteaction;
          remoteaction["name"] = "default";
-         remoteaction["service"] = "org.harbour.matrix";
+         remoteaction["service"] = "org.harbour.mutiny";
          remoteaction["path"] = "/";
-         remoteaction["iface"] = "org.harbour.matrix";
+         remoteaction["iface"] = "org.harbour.mutiny";
          remoteaction["method"] = "openRoom";
          remoteaction["arguments"] = (QVariantList() << roomid);
          remoteaction["icon"] = "icon-m-notifications";
@@ -95,8 +111,8 @@
          notification->setRemoteAction(remoteaction);
 
 
-         notification->setCategory("harbour.matrix.notification");
-         notification->setAppName("harbour-matrix");
+         notification->setCategory("harbour.mutiny.notification");
+         notification->setAppName("harbour-mutiny");
          notification->setTimestamp(timestamp);
          notification->setOrigin(origin);
 
