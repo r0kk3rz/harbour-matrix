@@ -6,5 +6,6 @@
         <file>res/circle.png</file>
         <file>res/noavatar.png</file>
         <file>res/icon-russia.png</file>
+        <file>res/send.svg</file>
     </qresource>
 </RCC>

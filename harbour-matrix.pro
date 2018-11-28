@@ -63,6 +63,8 @@ DISTFILES += \
     qml/components/custom/BackgroundRectangle.qml \    
     qml/components/custom/ClickableLabel.qml \
     qml/components/custom/AvatarImage.qml \
+    qml/components/custom/AvatarBubble.qml \
+    qml/components/custom/IconCustomButton.qml \
     qml/components/textlabel/TextLabel.qml \
     qml/components/translation/IconTextButton.qml \
     qml/pages/ThirdPartyPage.qml \
