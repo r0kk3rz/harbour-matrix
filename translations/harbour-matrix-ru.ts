@@ -39,6 +39,25 @@
     </message>
 </context>
 <context>
+    <name>DetailsPage</name>
+    <message>
+        <source>Details</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>harbour-matrix is an unofficial Matrix Client for SailfishOS and distributed under the GPLv3 license.</source>
+        <translation type="unfinished">harbour-matrix -- это неофициальный клиент сети Matrix для SailfishOS, распространяемый по лицензии GPLv3.</translation>
+    </message>
+    <message>
+        <source>Developers</source>
+        <translation type="unfinished">Разработчики</translation>
+    </message>
+    <message>
+        <source>Translations</source>
+        <translation type="unfinished">Переводы</translation>
+    </message>
+</context>
+<context>
     <name>DevelopersPage</name>
     <message>
         <source>Developers</source>
@@ -147,10 +166,6 @@
         <translation>установлена тема комнаты: %1</translation>
     </message>
     <message>
-        <source>activated End-to-End Encryption (algorithm: %1)</source>
-        <translation>включено сквозное шифрование (алгоритм: %1)</translation>
-    </message>
-    <message>
         <source>cleared the avatar</source>
         <translation>аватар убран</translation>
     </message>
@@ -177,14 +192,6 @@
     <message>
         <source>cleared the topic</source>
         <translation>убрана тема комнаты</translation>
-    </message>
-    <message>
-        <source>changed the room avatar</source>
-        <translation>изменен аватар комнаты</translation>
-    </message>
-    <message>
-        <source>activated End-to-End Encryption</source>
-        <translation>включено сквозное шифрование</translation>
     </message>
 </context>
 <context>

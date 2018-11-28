@@ -39,6 +39,25 @@
     </message>
 </context>
 <context>
+    <name>DetailsPage</name>
+    <message>
+        <source>Details</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>harbour-matrix is an unofficial Matrix Client for SailfishOS and distributed under the GPLv3 license.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Developers</source>
+        <translation type="unfinished">Desarrolladores</translation>
+    </message>
+    <message>
+        <source>Translations</source>
+        <translation type="unfinished">Traductores</translation>
+    </message>
+</context>
+<context>
     <name>DevelopersPage</name>
     <message>
         <source>Developers</source>
@@ -147,10 +166,6 @@
         <translation>establecer tema a: %1</translation>
     </message>
     <message>
-        <source>activated End-to-End Encryption (algorithm: %1)</source>
-        <translation>Cifrado end-to-end activado (algoritmo:%1)</translation>
-    </message>
-    <message>
         <source>cleared the avatar</source>
         <translation>borró el avatar</translation>
     </message>
@@ -176,14 +191,6 @@
     </message>
     <message>
         <source>cleared the topic</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>changed the room avatar</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>activated End-to-End Encryption</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
