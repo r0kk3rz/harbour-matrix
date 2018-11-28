@@ -238,17 +238,17 @@
 <context>
     <name>RoomView</name>
     <message>
-        <location filename="../qml/pages/RoomView.qml" line="127"/>
+        <location filename="../qml/pages/RoomView.qml" line="128"/>
         <source>Message @</source>
         <translation type="unfinished">Nachricht @</translation>
     </message>
     <message>
-        <location filename="../qml/pages/RoomView.qml" line="167"/>
+        <location filename="../qml/pages/RoomView.qml" line="168"/>
         <source>Add attachment</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/RoomView.qml" line="171"/>
+        <location filename="../qml/pages/RoomView.qml" line="172"/>
         <source>Add photo</source>
         <translation type="unfinished"></translation>
     </message>
