@@ -23,9 +23,9 @@ You could get it thanks to rinigus merproject repo something like:
 1. answer `yes` to accept rinigus repo and `i` after that to ignore signature check
 
 You also could try live coding via qmllive for the qml parts that don't require rebuilding the package.
-Do it via SailfishSDK of manually with archlinux and aa13q [qt5-qmllive-git](https://aur.archlinux.org/packages/qt5-qmllive-git/):
+Do it via SailfishSDK or manually with archlinux and aa13q [qt5-qmllive-git](https://aur.archlinux.org/packages/qt5-qmllive-git/):
 
-1. yaourt -S qt5-qmllive-git
+1. `yaourt -S qt5-qmllive-git`
 1. run `qmllivebench` on a host, specify hosts and workspace to qml directory
 1. run `qmlliveruntime-sailfish --update-on-connect /usr/bin/harbour-matrix` on a device
 1. make edits at qml via qt creator and save them
