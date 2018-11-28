@@ -6,17 +6,14 @@ import "../components"
 
 SilicaListView {
     id: chatView
-    anchors.fill: parent
+    spacing: Theme.paddingMedium
     flickableDirection: Flickable.VerticalFlick
     verticalLayoutDirection: ListView.BottomToTop
-    model: MessageEventModel {
-        id: messageModel
-    }
-    clip: true
-    property Connection currentConnection: null
-    property var currentRoom: null
-    property string textvalue: ""
+    property bool wantToScroll: false
 
+    clip: true
+
+    // property string textvalue: ""
     function setRoom(roomIndex) {
         messageModel.changeRoom(roomIndex)
         currentRoom = messageModel.getRoom()
@@ -61,6 +58,9 @@ SilicaListView {
         typingLabel.text = text
     }
 
+
+    /*
+
     header: Column {
 
         Label {
@@ -79,7 +79,7 @@ SilicaListView {
             }
         }
     }
-
+    */
     delegate: Item {
         id: myListItem
         width: chatView.width

@@ -14,12 +14,14 @@ Page {
 
     property bool isLoaded: false
 
+
+    /*
     Behavior on opacity {
         NumberAnimation {
             duration: 400
         }
     }
-
+    */
     RemorsePopup {
         id: remorse
     }
@@ -132,35 +134,20 @@ Page {
                 Item {
                     anchors.fill: parent
 
-                    Rectangle {
+                    AvatarBubble {
                         id: bubble
+                        anchors.left: parent.left
                         height: parent.height
                         width: height
-                        radius: height / 2
-                        anchors.left: parent.left
                         anchors.verticalCenter: parent.verticalCenter
-                        color: roomAvatar.visible == false ? stringToColour(
-                                                                 display) : Theme.secondaryColor
 
-                        Label {
-                            anchors.verticalCenter: parent.verticalCenter
-                            anchors.horizontalCenter: parent.horizontalCenter
-                            horizontalAlignment: Text.AlignHCenter
-                            verticalAlignment: Text.AlignVCenter
-                            text: display.charAt(0).toUpperCase()
-                            font.bold: true
-                            font.pixelSize: Theme.fontSizeLarge
-                            visible: roomAvatar.visible == false
-                        }
+                        imageVisible: avatar != ""
+                        imageSource: avatar
 
-                        AvatarImage {
-                            id: roomAvatar
-                            iconSource: avatar
-                            iconSize: parent.height
-                            anchors.verticalCenter: parent.verticalCenter
-                            anchors.horizontalCenter: parent.horizontalCenter
-                            visible: avatar != ""
-                        }
+                        rectLabelVisible: !imageVisible
+                        rectColor: imageVisible ? Theme.secondaryColor : stringToColour(
+                                                      display)
+                        rectLabelText: display.charAt(0).toUpperCase()
                     }
 
                     Label {
