@@ -12,7 +12,19 @@ Page {
     enabled: initialised
     opacity: initialised ? 1 : 0
 
+    showNavigationIndicator: false
+
     property bool isLoaded: false
+
+
+    /*
+    onStatusChanged: {
+        if (status == PageStatus.Active
+                && pageStack._currentContainer.attachedContainer === null) {
+            pageStack.popAttached(Qt.resolvedUrl("../pages/DetailsPage.qml"))
+        }
+    }
+    */
 
 
     /*
@@ -62,8 +74,16 @@ Page {
                 }
 
                 GlassItem {
-                    anchors.left: parent.left
                     anchors.verticalCenter: parent.verticalCenter
+                    anchors.horizontalCenter: parent.left
+                    radius: 0.22
+                    falloffRadius: 0.18
+                    MouseArea {
+                        anchors.fill: parent
+                        onClicked: {
+                            pageStack.navigateBack()
+                        }
+                    }
                     color: connectionActive ? "lightgreen" : "pink"
                     cache: false
                     visible: isLoaded

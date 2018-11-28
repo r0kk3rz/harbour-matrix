@@ -7,7 +7,7 @@ import Matrix 1.0
 
 ApplicationWindow {
     initialPage: Component {
-        RoomsPage {
+        DetailsPage {
         }
     }
     cover: undefined //Qt.resolvedUrl("cover/CoverPage.qml")

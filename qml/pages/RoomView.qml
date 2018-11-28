@@ -35,6 +35,15 @@ Page {
     property Connection currentConnection: null
     property var currentRoom: null
 
+    onStatusChanged: {
+        if (status == PageStatus.Active
+                && pageStack._currentContainer.attachedContainer === null) {
+            pageStack.pushAttached(Qt.resolvedUrl("../pages/DetailsPage.qml"), {
+                                       "currentRoom": currentRoom
+                                   })
+        }
+    }
+
     Item {
         id: bubbleItem
         width: Theme.iconSizeLauncher

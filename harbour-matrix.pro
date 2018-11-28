@@ -76,7 +76,8 @@ DISTFILES += \
     qml/pages/RoomView.qml \
     qml/pages/ChatRoom.qml \
     qml/pages/ChatRoom2.qml \
-    qml/pages/SettingsPage.qml
+    qml/pages/SettingsPage.qml \
+    qml/pages/DetailsPage.qml
 
 RESOURCES += \
     resources.qrc
