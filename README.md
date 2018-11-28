@@ -4,6 +4,8 @@ An unofficial Matrix.org client for Sailfish OS based upon QMatrixClient
 ## Features
 - Rooms
 
+![Imgur](https://i.imgur.com/eV5hLvg.png)
+
 ## License
 GNU General Public License v3.0
 
