@@ -33,7 +33,7 @@ SilicaListView {
     function sendLine(text) {
         if (!currentRoom || !currentConnection)
             return
-        currentConnection.postMessage(currentRoom, "m.text", text)
+        currentRoom.postPlainText(text)
     }
 
     function onModelReset() {
@@ -91,26 +91,27 @@ SilicaListView {
         }
 
         Component.onCompleted: {
+            var component
             if (eventType == "message") {
-                var component = Qt.createComponent(
+                component = Qt.createComponent(
                             Qt.resolvedUrl("../components/TextMessageItem.qml"))
                 component.createObject(labelColumn, {
-                                           itemText: content
+                                           "itemText": content
                                        })
             } else if (eventType == "image") {
-                var component = Qt.createComponent(
+                component = Qt.createComponent(
                             Qt.resolvedUrl(
                                 "../components/MediaMessageItem.qml"))
                 component.createObject(labelColumn, {
-                                           itemContent: content,
-                                           type: eventType
+                                           "itemContent": content,
+                                           "type": eventType
                                        })
             } else {
-                var component = Qt.createComponent(
+                component = Qt.createComponent(
                             Qt.resolvedUrl(
                                 "../components/StatusMessageItem.qml"))
                 component.createObject(labelColumn, {
-                                           itemText: content
+                                           "itemText": content
                                        })
             }
         }

@@ -101,7 +101,7 @@ Page {
                 onHeightChanged: {
                     if ((height <= Screen.height / 2)) {
                         if (wantToScroll) {
-                            listView.positionViewAtEnd()
+                            chat.positionViewAtEnd()
                         }
                     }
                 }
@@ -139,11 +139,11 @@ Page {
                         focusOutBehavior: FocusBehavior.KeepFocus
                         onFocusChanged: {
                             if (focus) {
-                                if (listView.atYEnd) {
-                                    listView.wantToScroll = true
+                                if (chat.atYEnd) {
+                                    chat.wantToScroll = true
                                 }
                             } else {
-                                listView.wantToScroll = false
+                                chat.wantToScroll = false
                             }
                         }
                     }
@@ -165,6 +165,8 @@ Page {
                         source: "qrc:/res/send.svg"
                         onClicked: {
                             sendLine(textArea.text)
+                            // stupid hack %(
+                            textArea.text = " "
                             textArea.text = ""
                         }
                     }
