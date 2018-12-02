@@ -101,7 +101,7 @@ Page {
                 onHeightChanged: {
                     if ((height <= Screen.height / 2)) {
                         if (wantToScroll) {
-                            chat.positionViewAtEnd()
+                            chat.positionViewAtBeginning()
                         }
                     }
                 }
