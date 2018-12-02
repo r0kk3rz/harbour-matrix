@@ -10,67 +10,81 @@ Page {
     signal joinRoom(string name)
 
     enabled: initialised
-    opacity: initialised ? 1: 0
+    opacity: initialised ? 1 : 0
+
+    showNavigationIndicator: false
 
     property bool isLoaded: false
 
-    Behavior on opacity {NumberAnimation{duration: 400}}
 
-    RemorsePopup { id: remorse }
+    /*
+    onStatusChanged: {
+        if (status == PageStatus.Active
+                && pageStack._currentContainer.attachedContainer === null) {
+            pageStack.popAttached(Qt.resolvedUrl("../pages/DetailsPage.qml"))
+        }
+    }
+    */
 
-    function syncDone()
-    {
-        if(isLoaded == false )
-        {
+
+    /*
+    Behavior on opacity {
+        NumberAnimation {
+            duration: 400
+        }
+    }
+    */
+    RemorsePopup {
+        id: remorse
+    }
+
+    function syncDone() {
+        if (isLoaded == false) {
             console.log("Initial Syncing Done")
-            isLoaded = true;
+            isLoaded = true
         }
     }
 
-    function stringToColour(str) {
-      var hash = 0;
-      for (var i = 0; i < str.length; i++) {
-        hash = str.charCodeAt(i) + ((hash << 5) - hash);
-      }
-      var colour = '#';
-      for (var i = 0; i < 3; i++) {
-        var value = (hash >> (i * 8)) & 0xFF;
-        colour += ('00' + value.toString(16)).substr(-2);
-      }
-      return colour;
-    }
-
     function refresh() {
-        if(roomListView.visible)
+        if (roomListView.visible)
             roomListView.forceLayout()
     }
 
     SilicaListView {
         id: roomListView
         model: roomsProxy
-        width: parent.width
-        height: parent.height - textEntry.height
+        anchors.fill: parent
         signal sectionClicked(string name)
-
-        anchors.top: parent.top
-
-        clip: true
         currentIndex: -1
 
         header: PageHeader {
             title: qsTr("Rooms")
 
             Item {
+                anchors.left: parent.left
                 anchors.verticalCenter: parent.verticalCenter
 
                 BusyIndicator {
+                    anchors.left: parent.left
+                    anchors.leftMargin: Theme.horizontalPageMargin
+                    anchors.verticalCenter: parent.verticalCenter
                     visible: running
                     running: isLoaded == false
                     size: isLoaded ? 0 : BusyIndicatorSize.Medium
                 }
 
                 GlassItem {
-                    color: connectionActive ? "green" : "red"
+                    anchors.verticalCenter: parent.verticalCenter
+                    anchors.horizontalCenter: parent.left
+                    radius: 0.22
+                    falloffRadius: 0.18
+                    MouseArea {
+                        anchors.fill: parent
+                        onClicked: {
+                            pageStack.navigateBack()
+                        }
+                    }
+                    color: connectionActive ? "lightgreen" : "pink"
                     cache: false
                     visible: isLoaded
                 }
@@ -78,49 +92,37 @@ Page {
         }
 
         PullDownMenu {
+            MenuItem {
+                text: qsTr("Logout")
+                onClicked: remorse.execute(qsTr("Logging out"), function () {
+                    initialised = false
+                    connection.logout()
+                    scriptLauncher.launchScript()
+                    pageStack.clear()
+                    pageStack.replace(Qt.resolvedUrl("../harbour-matrix.qml"))
+                })
+            }
 
-           MenuItem {
+            MenuItem {
                 text: qsTr("About Matriksi")
                 onClicked: pageStack.push(aboutPage)
             }
 
-           MenuItem {
-               text: qsTr("Settings")
-               onClicked: {
-                   pageStack.push(settingsPage)
+            MenuItem {
+                text: qsTr("Settings")
+                onClicked: {
+                    pageStack.push(settingsPage)
+                }
             }
-         }
-
-           MenuItem {
-               text: qsTr("Logout")
-               onClicked: remorse.execute(qsTr("Logging out"), function(){
-                   initialised = false
-                   connection.logout()
-                   scriptLauncher.launchScript()
-                   pageStack.clear();
-                   pageStack.replace(Qt.resolvedUrl("../harbour-matrix.qml"));
-             });
-          }
-       }
+        }
 
         section.property: "tags"
         section.criteria: ViewSection.FullString
-        section.delegate: ListItem {
-            Row {
-                spacing: Theme.paddingMedium
-                anchors.verticalCenter: parent.verticalCenter
-                Image {
-                    source: "image://theme/icon-m-down"
-                }
-
-                Label{
-                    text: qsTrId(section)
-                    font.bold: true
-                    font.pixelSize: Theme.fontSizeLarge
-                }
+        section.delegate: ExpandingSection {
+            title: qsTrId(section)
+            onExpandedChanged: {
+                roomListView.sectionClicked(section)
             }
-
-            onClicked: roomListView.sectionClicked(section)
         }
 
         delegate: ListItem {
@@ -130,71 +132,79 @@ Page {
             contentHeight: !collapsed ? Theme.itemSizeSmall : 0
             visible: contentHeight > 0
 
-            Behavior on contentHeight
-            {
-                NumberAnimation { duration: 200 }
+            Behavior on contentHeight {
+                NumberAnimation {
+                    duration: 200
+                }
             }
 
             Connections {
                 target: item.ListView.view
-                onSectionClicked: if (item.ListView.section === name) collapsed = !collapsed;
+                onSectionClicked: if (item.ListView.section === name)
+                                      collapsed = !collapsed
             }
 
             Item {
-                height: parent.height
-                x: Theme.paddingMedium
-                width: parent.width - x-x
+                anchors.fill: parent
+                anchors.leftMargin: Theme.horizontalPageMargin
+                anchors.rightMargin: Theme.horizontalPageMargin
+                anchors.topMargin: Theme.paddingSmall
+                anchors.bottomMargin: Theme.paddingSmall
 
-                Row {
-                    spacing: Theme.paddingMedium
-                    anchors.verticalCenter: parent.verticalCenter
+                Item {
+                    anchors.fill: parent
 
-                    Rectangle {
+                    AvatarBubble {
                         id: bubble
-                        height: Theme.itemSizeSmall - Theme.paddingMedium
+                        anchors.left: parent.left
+                        height: parent.height
                         width: height
-                        radius: height/2
-                        color: roomAvatar.visible == false ? stringToColour(display): "white"
+                        anchors.verticalCenter: parent.verticalCenter
 
-                        Label {
-                            anchors.verticalCenter: parent.verticalCenter
-                            anchors.horizontalCenter: parent.horizontalCenter
-                            text: display.charAt(0).toUpperCase()
-                            font.bold: true
-                            font.pixelSize: Theme.fontSizeLarge
-                            visible: roomAvatar.visible == false
-                        }
+                        imageVisible: avatar != ""
+                        imageSource: avatar
 
-                        AvatarImage {
-                            id: roomAvatar
-                            iconSource: avatar
-                            iconSize: parent.height + 2
-                            anchors.verticalCenter: parent.verticalCenter
-                            anchors.horizontalCenter: parent.horizontalCenter
-                            visible: avatar != ""
-                        }
+                        rectLabelVisible: !imageVisible
+                        rectColor: imageVisible ? Theme.secondaryColor : stringToColour(
+                                                      display)
+                        rectLabelText: display.charAt(0).toUpperCase()
                     }
 
                     Label {
+                        anchors.left: bubble.right
+                        anchors.right: counterLabel.left
+                        anchors.margins: Theme.paddingMedium
+                        anchors.verticalCenter: parent.verticalCenter
+                        verticalAlignment: Text.AlignVCenter
+                        truncationMode: TruncationMode.Fade
+
                         text: display
                         color: highlightcount > 0 ? Theme.highlightColor : Theme.primaryColor
                         font.bold: unread
-                        anchors.leftMargin: Theme.paddingMedium
-                        font.pixelSize: Theme.fontSizeMedium
                     }
                     Label {
+                        anchors.right: inviteButton.left
+                        anchors.margins: visible ? Theme.horizontalPageMargin : 0
+                        anchors.verticalCenter: parent.verticalCenter
+                        verticalAlignment: Text.AlignVCenter
+                        id: counterLabel
                         text: highlightcount
                         color: Theme.highlightColor
                         font.pixelSize: Theme.fontSizeSmall
                         visible: highlightcount > 0
+                        width: visible ? implicitWidth : 0
                     }
 
                     IconButton {
-                        Image{source: "image://theme/icon-m-like"}
+                        id: inviteButton
+                        Image {
+                            source: "image://theme/icon-m-acknowledge"
+                        }
                         onClicked: joinRoom(roomid)
                         visible: tags == "m.invite"
                         anchors.right: parent.right
-                        width: Theme.buttonWidthMedium
+                        anchors.verticalCenter: parent.verticalCenter
+                        width: visible ? Theme.iconSizeMedium : 0
                     }
                 }
             }
@@ -205,22 +215,22 @@ Page {
                 pageStack.push(roomView)
             }
         }
+        footer: TextField {
+            id: textEntry
+            width: parent.width
+            height: implicitHeight
+            placeholderText: qsTr("Join room...")
+            EnterKey.onClicked: {
+                joinRoom(text)
+                text = ""
+            }
+            enabled: isLoaded
+            visible: isLoaded
+        }
     }
 
-    TextField {
-        id: textEntry
-        width: parent.width
-        anchors.bottom: parent.bottom
-        placeholderText: qsTr("Join room...")
-        EnterKey.onClicked: { joinRoom(text); text = "" }
-        enabled: isLoaded
-        visible: isLoaded
-    }
-
-    Connections
-    {
+    Connections {
         target: connection
-
         onSyncDone: syncDone()
     }
 
@@ -228,4 +238,4 @@ Page {
         enterRoom.connect(roomView.setRoom)
         joinRoom.connect(connection.joinRoom)
     }
-  }
+}

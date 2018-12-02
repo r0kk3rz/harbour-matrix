@@ -19,11 +19,10 @@ Item {
 
         readOnly: true
         textFormat: TextEdit.RichText
-        text: itemText
+        text: "<style>a:link { color: " + Theme.highlightColor + "; }</style>" + itemText
         wrapMode: Text.WordWrap
         color: Theme.primaryColor
         font.pixelSize: Theme.fontSizeSmall
-
-	onLinkActivated: Qt.openUrlExternally(link)
+        onLinkActivated: Qt.openUrlExternally(link)
     }
 }

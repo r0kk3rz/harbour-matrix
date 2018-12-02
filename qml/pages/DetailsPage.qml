@@ -3,7 +3,33 @@ import Sailfish.Silica 1.0
 import "../components/custom"
 
 Page {
-    id: aboutpage
+    id: root
+
+    property string displayText: currentRoom ? currentRoom.name : connection.localUser.displayName
+    property string extraText: currentRoom ? currentRoom.topic : connection.localUser.fullName
+    property string imageSource: currentRoom ? ("image://mxc/" + String(
+                                                    currentRoom.avatarUrl).substring(
+                                                    6)) : ("image://mxc/" + String(
+                                                               connection.localUser.avatarUrl).substring(
+                                                               6))
+
+    property var currentRoom: null
+
+    canNavigateForward: true
+
+    onStatusChanged: {
+        if (status == PageStatus.Activating) {
+            if (doOnce) {
+
+                pageStack.completeAnimation()
+                pageStack.pushAttached(Qt.resolvedUrl("../pages/RoomsPage.qml"))
+                pageStack.navigateForward(PageStackAction.Immediate)
+                doOnce = false
+            }
+        }
+    }
+
+    property bool doOnce: true
 
     Column {
         id: content
@@ -12,13 +38,13 @@ Page {
 
         PageHeader {
             id: pageheader
-            title: qsTr("About Matrix")
+            title: qsTr("Details")
         }
 
         Image {
             id: sglogo
             anchors.horizontalCenter: parent.horizontalCenter
-            source: "qrc:/res/harbour-matrix.png"
+            source: imageSource
         }
 
         Column {
@@ -37,10 +63,11 @@ Page {
                 verticalAlignment: Text.AlignVCenter
                 font.bold: true
                 font.pixelSize: Theme.fontSizeLarge
-                text: "harbour-matrix"
+                text: displayText
             }
 
             Label {
+                visible: false
                 id: sgversion
                 anchors {
                     left: parent.left
@@ -65,10 +92,11 @@ Page {
                 verticalAlignment: Text.AlignVCenter
                 font.pixelSize: Theme.fontSizeSmall
                 wrapMode: Text.WordWrap
-                text: qsTr("An unofficial Matrix Client for SailfishOS")
+                text: extraText
             }
 
             Label {
+                visible: false
                 anchors {
                     left: parent.left
                     right: parent.right
@@ -82,6 +110,7 @@ Page {
         }
 
         Column {
+            visible: false
             anchors {
                 left: parent.left
                 right: parent.right
@@ -102,7 +131,7 @@ Page {
                 anchors.horizontalCenter: parent.horizontalCenter
                 onClicked: pageStack.push(Qt.resolvedUrl(
                                               "TranslationsPage.qml"), {
-                                              context: aboutpage.context
+                                              "context": root.context
                                           })
             }
         }

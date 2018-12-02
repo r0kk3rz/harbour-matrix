@@ -11,7 +11,7 @@ Item {
 
     Image {
         id: imageMessage
-        visible: type == "image"
+        visible: type === "image"
         source: visible ? itemContent : ""
         width: parent.width - (Theme.paddingLarge * 2)
         height: visible ? Theme.itemSizeHuge * 2 : 0
@@ -19,12 +19,12 @@ Item {
     }
 
     Rectangle {
-        visible: type == "file"
+        visible: type === "file"
     }
 
     IconButton {
         id: downloadButton
-        visible: type == "file" || type == "image"
+        visible: false // type === "file" || type === "image"
         anchors.right: parent.right
         icon.source: "image://theme/icon-m-cloud-download"
         width: Theme.buttonWidthMedium

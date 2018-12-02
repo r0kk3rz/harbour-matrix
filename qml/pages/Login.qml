@@ -9,7 +9,8 @@ Item {
 
     function login(pretend) {
         label.text = qsTr("Please wait...")
-        if(!pretend) window.login("@"+userNameField.text, passwordField.text)
+        if (!pretend)
+            window.login("@" + userNameField.text, passwordField.text)
         userNameField.enabled = false
         passwordField.enabled = false
         loginbutton.enabled = false
@@ -21,8 +22,7 @@ Item {
         accountbutton.opacity = 0
     }
 
-    function abortLogin()
-    {
+    function abortLogin() {
         label.text = qsTr("Matrix")
         userNameField.enabled = true
         passwordField.enabled = true
@@ -36,7 +36,7 @@ Item {
     }
 
     Column {
-        width: parent.width /1.5
+        width: parent.width / 1.5
         anchors.centerIn: parent
         opacity: 0
         spacing: 18
@@ -68,7 +68,7 @@ Item {
                 size: BusyIndicatorSize.Large
                 anchors.centerIn: parent
                 running: !showstuff
-                opacity: !showstuff ? 1:0
+                opacity: !showstuff ? 1 : 0
             }
         }
 
@@ -84,9 +84,8 @@ Item {
             id: userNameField
             width: parent.width
             placeholderText: qsTr("User Name or Matrix ID:")
-            label: qsTr("username[:server][:port]");
+            label: qsTr("username[:server][:port]")
         }
-
 
         TextField {
             id: passwordField
@@ -96,19 +95,19 @@ Item {
         }
 
         Button {
-           id: loginbutton
+            id: loginbutton
             text: qsTr("Login")
             anchors.horizontalCenter: parent.horizontalCenter
             onClicked: login()
-
         }
 
         Button {
-           id: accountbutton
+            id: accountbutton
             text: qsTr("Create an Matrix account")
             anchors.horizontalCenter: parent.horizontalCenter
-            onClicked: { Qt.openUrlExternally("https://riot.im/app/#/register");
-           }
+            onClicked: {
+                Qt.openUrlExternally("https://riot.im/app/#/register")
+            }
         }
 
         NumberAnimation on opacity {
@@ -119,4 +118,4 @@ Item {
 
         Component.onCompleted: fadeIn.start()
     }
- }
+}

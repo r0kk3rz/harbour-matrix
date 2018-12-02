@@ -1,41 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1">
+<TS version="2.1" language="ru_RU">
 <context>
     <name>AboutPage</name>
     <message>
         <source>An unofficial Matrix Client for SailfishOS</source>
-        <translation type="unfinished"></translation>
+        <translation>Неофициальный клиент Matrix для SailfishOS</translation>
     </message>
     <message>
         <source>Developers</source>
-        <translation type="unfinished"></translation>
+        <translation>Разработчики</translation>
     </message>
     <message>
         <source>Translations</source>
-        <translation type="unfinished"></translation>
+        <translation>Переводы</translation>
     </message>
     <message>
         <source>About Matrix</source>
-        <translation type="unfinished"></translation>
+        <translation>О программе</translation>
     </message>
     <message>
         <source>harbour-matrix is an unofficial Matrix Client for SailfishOS and distributed under the GPLv3 license.</source>
-        <translation type="unfinished"></translation>
+        <translation>harbour-matrix -- это неофициальный клиент сети Matrix для SailfishOS, распространяемый по лицензии GPLv3.</translation>
     </message>
 </context>
 <context>
     <name>ChatRoom</name>
     <message>
         <source>Say something...</source>
-        <translation type="unfinished"></translation>
+        <translation>Напишите что-нибудь...</translation>
     </message>
 </context>
 <context>
     <name>CoverPage</name>
     <message>
         <source>My Cover</source>
-        <translation type="unfinished"></translation>
+        <translation>Моя обложка</translation>
     </message>
 </context>
 <context>
@@ -46,250 +46,250 @@
     </message>
     <message>
         <source>harbour-matrix is an unofficial Matrix Client for SailfishOS and distributed under the GPLv3 license.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">harbour-matrix -- это неофициальный клиент сети Matrix для SailfishOS, распространяемый по лицензии GPLv3.</translation>
     </message>
     <message>
         <source>Developers</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Разработчики</translation>
     </message>
     <message>
         <source>Translations</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Переводы</translation>
     </message>
 </context>
 <context>
     <name>DevelopersPage</name>
     <message>
         <source>Developers</source>
-        <translation type="unfinished"></translation>
+        <translation>Разработчики</translation>
     </message>
     <message>
         <source>Contributors</source>
-        <translation type="unfinished"></translation>
+        <translation>Помощники</translation>
     </message>
     <message>
         <source>harbour-matrix developers</source>
-        <translation type="unfinished"></translation>
+        <translation>разработчики harbour-matrix</translation>
     </message>
     <message>
         <source>Previous developers</source>
-        <translation type="unfinished"></translation>
+        <translation>Бывшие разработчики</translation>
     </message>
 </context>
 <context>
     <name>Login</name>
     <message>
         <source>Please wait...</source>
-        <translation type="unfinished"></translation>
+        <translation>Подождите...</translation>
     </message>
     <message>
         <source>Matriksi</source>
-        <translation type="unfinished"></translation>
+        <translation>Matriksi</translation>
     </message>
     <message>
         <source>User Name or Matrix ID:</source>
-        <translation type="unfinished"></translation>
+        <translation>Имя пользователя или Matrix ID:</translation>
     </message>
     <message>
         <source>username[:server][:port]</source>
-        <translation type="unfinished"></translation>
+        <translation>username[:server][:port]</translation>
     </message>
     <message>
         <source>Password:</source>
-        <translation type="unfinished"></translation>
+        <translation>Пароль:</translation>
     </message>
     <message>
         <source>Login</source>
-        <translation type="unfinished"></translation>
+        <translation>Логин</translation>
     </message>
     <message>
         <source>Create an Matrix account</source>
-        <translation type="unfinished"></translation>
+        <translation>Создать аккаунт Matrix</translation>
     </message>
     <message>
         <source>Matrix</source>
-        <translation type="unfinished"></translation>
+        <translation>Matrix</translation>
     </message>
 </context>
 <context>
     <name>MessageEventModel</name>
     <message>
         <source>invited %1 to the room</source>
-        <translation type="unfinished"></translation>
+        <translation>приглашение %1 в комнату</translation>
     </message>
     <message>
         <source>joined the room</source>
-        <translation type="unfinished"></translation>
+        <translation>вход в комнату</translation>
     </message>
     <message>
         <source>cleared the display name</source>
-        <translation type="unfinished"></translation>
+        <translation>убрано отображаемое имя</translation>
     </message>
     <message>
         <source>changed the display name to %1</source>
-        <translation type="unfinished"></translation>
+        <translation>отображаемое имя изменено на %1</translation>
     </message>
     <message>
         <source>doesn&apos;t want %1 in the room anymore</source>
-        <translation type="unfinished"></translation>
+        <translation>больше не желает видеть пользователя %1 в комнате</translation>
     </message>
     <message>
         <source>left the room</source>
-        <translation type="unfinished"></translation>
+        <translation>выход из комнаты</translation>
     </message>
     <message>
         <source>banned %1 from the room</source>
-        <translation type="unfinished"></translation>
+        <translation>запрет на посещение комнаты пользователю %1</translation>
     </message>
     <message>
         <source>self-banned from the room</source>
-        <translation type="unfinished"></translation>
+        <translation>запрет на посещение комнаты самому себе</translation>
     </message>
     <message>
         <source>knocked</source>
-        <translation type="unfinished"></translation>
+        <translation>постучался</translation>
     </message>
     <message>
         <source>set aliases to: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>установлен псевдоним: %1</translation>
     </message>
     <message>
         <source>set the room main alias to: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>установлен основной псевдоним комнаты: %1</translation>
     </message>
     <message>
         <source>set the room name to: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>установлено имя комнаты: %1</translation>
     </message>
     <message>
         <source>set the topic to: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>установлена тема комнаты: %1</translation>
     </message>
     <message>
         <source>cleared the avatar</source>
-        <translation type="unfinished"></translation>
+        <translation>аватар убран</translation>
     </message>
     <message>
         <source>updated the avatar</source>
-        <translation type="unfinished"></translation>
+        <translation>аватар обновлен</translation>
     </message>
     <message>
         <source>Redacted</source>
-        <translation type="unfinished"></translation>
+        <translation>Отредактировано</translation>
     </message>
     <message>
         <source>Redacted: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Отредактировано: %1</translation>
     </message>
     <message>
         <source>cleared the room main alias</source>
-        <translation type="unfinished"></translation>
+        <translation>убран основной псевдоним комнаты</translation>
     </message>
     <message>
         <source>cleared the room name</source>
-        <translation type="unfinished"></translation>
+        <translation>убрано имя комнаты</translation>
     </message>
     <message>
         <source>cleared the topic</source>
-        <translation type="unfinished"></translation>
+        <translation>убрана тема комнаты</translation>
     </message>
 </context>
 <context>
     <name>RoomView</name>
     <message>
         <source>Message @</source>
-        <translation type="unfinished"></translation>
+        <translation>Сообщение @</translation>
     </message>
     <message>
         <source>Add attachment</source>
-        <translation type="unfinished"></translation>
+        <translation>Добавить вложение</translation>
     </message>
     <message>
         <source>Add photo</source>
-        <translation type="unfinished"></translation>
+        <translation>Добавить фото</translation>
     </message>
 </context>
 <context>
     <name>RoomsPage</name>
     <message>
         <source>Join room...</source>
-        <translation type="unfinished"></translation>
+        <translation>Вступить в комнату...</translation>
     </message>
     <message>
         <source>Rooms</source>
-        <translation type="unfinished"></translation>
+        <translation>Комнаты</translation>
     </message>
     <message>
         <source>About Matriksi</source>
-        <translation type="unfinished"></translation>
+        <translation>О Matriksi</translation>
     </message>
     <message>
         <source>Logout</source>
-        <translation type="unfinished"></translation>
+        <translation>Выход</translation>
     </message>
     <message>
         <source>Logging out</source>
-        <translation type="unfinished"></translation>
+        <translation>Выходим</translation>
     </message>
     <message>
         <source>Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Настройки</translation>
     </message>
 </context>
 <context>
     <name>SettingsPage</name>
     <message>
         <source>Fancy colors</source>
-        <translation type="unfinished"></translation>
+        <translation>Модные цвета</translation>
     </message>
     <message>
         <source>Use fancy colors on user names</source>
-        <translation type="unfinished"></translation>
+        <translation>Использовать разные цвета для пользователей без аватарок</translation>
     </message>
     <message>
         <source>Dark background</source>
-        <translation type="unfinished"></translation>
+        <translation>Темный фон</translation>
     </message>
     <message>
         <source>Use dark background on chat</source>
-        <translation type="unfinished"></translation>
+        <translation>Затемненный фон для страницы переписки</translation>
     </message>
     <message>
         <source>Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Настройки</translation>
     </message>
     <message>
         <source>Matrix Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Настройки</translation>
     </message>
 </context>
 <context>
     <name>ThirdPartyLabel</name>
     <message>
         <source>License</source>
-        <translation type="unfinished"></translation>
+        <translation>Лицензия</translation>
     </message>
     <message>
         <source>Project Page</source>
-        <translation type="unfinished"></translation>
+        <translation>Страница проекта</translation>
     </message>
 </context>
 <context>
     <name>ThirdPartyPage</name>
     <message>
         <source>Third Party</source>
-        <translation type="unfinished"></translation>
+        <translation>Сторонние компоненты</translation>
     </message>
     <message>
         <source>The LGPL-2.1 license</source>
-        <translation type="unfinished"></translation>
+        <translation>Лицензия LGPL-2.1</translation>
     </message>
 </context>
 <context>
     <name>TranslationsPage</name>
     <message>
         <source>Translators</source>
-        <translation type="unfinished"></translation>
+        <translation>Переводчики</translation>
     </message>
 </context>
 </TS>

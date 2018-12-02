@@ -5,9 +5,11 @@ import Nemo.DBus 2.0
 import "pages"
 import Matrix 1.0
 
-ApplicationWindow
-{
-    initialPage: Component { RoomsPage { } }
+ApplicationWindow {
+    initialPage: Component {
+        DetailsPage {
+        }
+    }
     cover: undefined //Qt.resolvedUrl("cover/CoverPage.qml")
     allowedOrientations: Orientation.All
     _defaultPageOrientations: Orientation.All
@@ -45,13 +47,13 @@ ApplicationWindow
             connectionActive = false
             login.abortLogin()
         }
-        onSyncError:{
-            console.log("Sync Error");
-            connectionActive = false;
+        onSyncError: {
+            console.log("Sync Error")
+            connectionActive = false
         }
-        onResolveError:{
-            console.log("Resolve Error");
-            connectionActive = false;
+        onResolveError: {
+            console.log("Resolve Error")
+            connectionActive = false
             login.abortLogin()
         }
     }
@@ -61,16 +63,12 @@ ApplicationWindow
         iface: 'org.harbour.matrix'
         path: '/'
 
-        xml: '  <interface name="org.harbour.matrix">\n' +
-             '    <method name="openRoom">\n' +
-             '      <arg name="roomid" direction="in" type="s">\n'+
-             '        <doc:doc><doc:summary>id of room to open</doc:summary></doc:doc>\n'+
-             '      </arg>\n'+
-             '    </method>\n'+
-             '  </interface>\n'
+        xml: '  <interface name="org.harbour.matrix">\n' + '    <method name="openRoom">\n'
+             + '      <arg name="roomid" direction="in" type="s">\n'
+             + '        <doc:doc><doc:summary>id of room to open</doc:summary></doc:doc>\n'
+             + '      </arg>\n' + '    </method>\n' + '  </interface>\n'
 
-        function openRoom(roomid)
-        {
+        function openRoom(roomid) {
             roomView.setRoom(roomid)
             pageStack.push(roomView)
             window.activate()
@@ -79,22 +77,22 @@ ApplicationWindow
 
     function resync() {
 
-        connectionActive = true;
-        
+        connectionActive = true
+
         syncCounter++
-        if(syncCounter % 17 == 2)
-        {
-            connection.saveState()   
+        if (syncCounter % 17 == 2) {
+            connection.saveState()
         }
 
-        connection.sync(10*1000)
+        connection.sync(10 * 1000)
     }
 
     function login(user, pass, connect) {
-        if(!connect) connect = connection.connectToServer
+        if (!connect)
+            connect = connection.connectToServer
 
-        connection.connected.connect(function() {
-            settings.setValue("user",  connection.localUserId)
+        connection.connected.connect(function () {
+            settings.setValue("user", connection.localUserId)
             settings.setValue("token", connection.accessToken)
             settings.setValue("device_id", connection.deviceId)
             settings.sync()
@@ -109,16 +107,36 @@ ApplicationWindow
         })
 
         var userParts = user.split(':')
-        if(userParts.length === 1 ) {
-            connect(user+":matrix.org", pass, settings.value("device_id", "sailfish"))
+        if (userParts.length === 1) {
+            connect(user + ":matrix.org", pass, settings.value("device_id",
+                                                               "sailfish"))
         } else {
             connect(user, pass, settings.value("device_id", "sailfish"))
         }
     }
 
-    function loadSettings (){
-        useFancyColors = settings.value("fancycolors",useFancyColors)
-        useBlackBackground = settings.value("blackbackground", useBlackBackground)
+    function loadSettings() {
+        useFancyColors = settings.value("fancycolors", useFancyColors)
+        useBlackBackground = settings.value("blackbackground",
+                                            useBlackBackground)
+    }
+
+    function stringToHue(str) {
+        var hash = 0
+        if ((str).length === 0)
+            return hash
+        for (var i = 0; i < (str).length; i++) {
+            hash = (str).charCodeAt(i) + ((hash << 5) - hash)
+            hash = hash & hash
+        }
+        return Math.abs(360 / (hash % 360) % 1)
+    }
+
+    function stringToColour(str) {
+        if (str) {
+            return Qt.hsla(stringToHue(str), 0.5, 0.4, 1)
+        }
+        return Theme.primaryColor
     }
 
     RoomView {
@@ -135,8 +153,7 @@ ApplicationWindow
         id: aboutPage
     }
 
-    ConfigurationGroup
-    {
+    ConfigurationGroup {
         id: settings
         path: "/apps/harbour-matrix/settings"
     }
@@ -146,14 +163,12 @@ ApplicationWindow
         window: window
         anchors.fill: parent
         Component.onCompleted: {
-            var user =  settings.value("user", "")
+            var user = settings.value("user", "")
             var token = settings.value("token", "")
-            if(user != "" && token != "") {
+            if (user != "" && token != "") {
                 login.login(true)
                 window.login(user, token, connection.connectWithToken)
             }
         }
     }
-
 }
-

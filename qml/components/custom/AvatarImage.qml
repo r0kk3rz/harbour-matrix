@@ -8,7 +8,7 @@ Item {
     property string iconSource
     property int iconSize
 
-    signal clicked()
+    signal clicked
 
     height: iconSize
     width: height
@@ -38,8 +38,9 @@ Item {
             smooth: true
             visible: false
         }
-        
-        OpacityMask { // create a circle image
+
+        OpacityMask {
+            // create a circle image
             anchors.fill: avatar
             source: avatar
             maskSource: mask
@@ -50,7 +51,6 @@ Item {
         anchors.fill: parent
         hoverEnabled: true
 
-        onClicked: wrapper.clicked();
+        onClicked: wrapper.clicked()
     }
-  }
-
+}
